@@ -13,6 +13,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.932.0",
+    "@aws-sdk/s3-request-presigner": "^3.932.0",
     "@googlemaps/google-maps-services-js": "^3.4.2",
     "@prisma/client": "^6.14.0",
     "better-auth": "^1.3.6",
@@ -30,7 +32,8 @@
     "sequelize": "^6.25.6",
     "tsyringe": "^4.10.0",
     "typedi": "^0.10.0",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.3",
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
