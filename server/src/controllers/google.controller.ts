@@ -10,12 +10,24 @@ export class GoogleController {
 
   async getSuggestions(req: Request, res: Response) {
     const q: string = req.query.q?.toString() || "";
-    console.log();
+
     if (q == "") return res.send("");
     const suggestions = await this.googleService.getSuggestions(q);
 
     return res.json({
       suggestions: suggestions,
+    });
+  }
+
+  async getCoords(req: Request, res: Response) {
+    const place_id: string = req.query.place_id?.toString() || "";
+
+    if (place_id == "") return res.send("");
+
+    const coords = await this.googleService.getCoords(place_id);
+    console.log(coords)
+    return res.json({
+      coords
     });
   }
 }

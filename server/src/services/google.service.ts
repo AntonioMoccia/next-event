@@ -17,6 +17,22 @@ export class GoogleService {
 
     return suggestions.data.predictions;
   }
+
+  async getCoords(place_id: string) {
+    const response = await this.googleMapsClient.geocode({
+      params: {
+        place_id,
+        key: process.env.GOOGLE_MAPS_API_KEY!,
+      },
+    });
+
+    const coords = response.data.results[0].geometry.location;
+
+    return {
+      lat: coords.lat,
+      lng: coords.lng,
+    };
+  }
 }
 
 /**

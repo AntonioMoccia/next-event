@@ -167,6 +167,42 @@ exports.Prisma.VerificationScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.CategoryScalarFieldEnum = {
+  id: 'id',
+  description: 'description'
+};
+
+exports.Prisma.LocationScalarFieldEnum = {
+  id: 'id',
+  address_name: 'address_name',
+  lat: 'lat',
+  lng: 'lng',
+  place_id: 'place_id'
+};
+
+exports.Prisma.EventTypeScalarFieldEnum = {
+  id: 'id',
+  description: 'description'
+};
+
+exports.Prisma.EventScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  id_category: 'id_category',
+  id_location: 'id_location',
+  data_start: 'data_start',
+  time_start: 'time_start',
+  date_end: 'date_end',
+  time_end: 'time_end',
+  description: 'description',
+  email: 'email',
+  id_event_type: 'id_event_type',
+  image: 'image',
+  phone: 'phone',
+  price: 'price',
+  website: 'website'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -187,7 +223,11 @@ exports.Prisma.ModelName = {
   User: 'User',
   Session: 'Session',
   Account: 'Account',
-  Verification: 'Verification'
+  Verification: 'Verification',
+  Category: 'Category',
+  Location: 'Location',
+  EventType: 'EventType',
+  Event: 'Event'
 };
 
 /**
