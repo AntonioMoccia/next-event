@@ -1,10 +1,10 @@
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 // If your Prisma file is located elsewhere, you can change the path
-import { PrismaClient } from "./generated/prisma/client"; // Ensure Prisma types are imported
 import { FROM_EMAIL, resend } from "@lib/resend";
 import { getResetPasswordEmailHtml } from "../email/reset_password_email";
-const prisma = new PrismaClient();
+import { prisma } from "@lib/prisma-client";
+
 
 export const auth = betterAuth({
   
