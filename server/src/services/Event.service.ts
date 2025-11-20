@@ -1,34 +1,26 @@
-import { Event } from "@controllers/event.controller";
+import { Event } from "../types/index";
 import { prisma } from "@lib/prisma-client";
 
-class EventService {
-  private static instance: EventService;
+export class EventService {
+  private event: Event | undefined;
+  constructor(event: Event | undefined) {
+    this.event = event;
+  }
 
-  private constructor() {}
-
-  public static getInstance(): EventService {
-    if (!EventService.instance) {
-      EventService.instance = new EventService();
+  async createEvent() {
+    if (!this.event) throw new Error("l'oggetto event non puo essere vuoto");
+    try {
+      const newEvent = await prisma.event.create({
+        data: {
+          ...this.event,
+          image: "",
+          phone: "",
+          date_start: new Date(this.event.date_start),
+          date_end: new Date(this.event.date_end),
+        },
+      });
+    } catch (error) {
+      throw new Error("Qualcosa è andato storto nella creazione dell'evento")
     }
-    return EventService.instance;
   }
-
-  async createEvent(event:Event){
-
-    //visualizza se esite quella location e se non esiste la crea
-
-
-    await prisma.event.create({
-      data:{
-        title:event.title,
-        description:event.description,
-        data_start:event.date_start,
-        time_start:event.time_start,
-        date_end:event.date_end,
-        time_end:event.time_end,
-        id_category:"1"
-      }
-    })
-  }
-
 }

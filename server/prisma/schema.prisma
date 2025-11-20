@@ -94,7 +94,7 @@ model Event{
   lat Float
   lng Float
   place_id String
-  data_start DateTime
+  date_start DateTime
   time_start DateTime
   date_end DateTime
   time_end DateTime

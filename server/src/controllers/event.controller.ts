@@ -1,26 +1,7 @@
 import S3 from "@services/S3.service";
 import { Request, Response } from "express";
-
-export type Event={
-    title:string,
-    category:string,
-    description: string,
-    date_start: string,
-    time_start: string,
-    date_end: string,
-    time_end: string,
-    image?: string,
-    event_type: string,
-    price: string,
-    age: string,
-    email?: string,
-    phone?: string,
-    website: string,
-    address_name: string,   
-    lat: number,
-    lng: number
-    place_id: string
-}
+import {EventService} from '@services/Event.service'
+import { Event } from "../types";
 
 export class EventController {
   constructor() {}
@@ -43,7 +24,17 @@ export class EventController {
 
   async createEvent(req:Request, res:Response){
     const event : Event = req.body
+    const newEventClass = new EventService(event)
 
     
+    try {
+      const newEvent = await newEventClass.createEvent()
+      res.json({
+        newEvent
+      })
+    } catch (error) {
+      res.json(error)
+    }
+
   }
 }

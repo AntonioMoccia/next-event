@@ -172,14 +172,6 @@ exports.Prisma.CategoryScalarFieldEnum = {
   description: 'description'
 };
 
-exports.Prisma.LocationScalarFieldEnum = {
-  id: 'id',
-  address_name: 'address_name',
-  lat: 'lat',
-  lng: 'lng',
-  place_id: 'place_id'
-};
-
 exports.Prisma.EventTypeScalarFieldEnum = {
   id: 'id',
   description: 'description'
@@ -189,8 +181,11 @@ exports.Prisma.EventScalarFieldEnum = {
   id: 'id',
   title: 'title',
   id_category: 'id_category',
-  id_location: 'id_location',
-  data_start: 'data_start',
+  address_name: 'address_name',
+  lat: 'lat',
+  lng: 'lng',
+  place_id: 'place_id',
+  date_start: 'date_start',
   time_start: 'time_start',
   date_end: 'date_end',
   time_end: 'time_end',
@@ -225,7 +220,6 @@ exports.Prisma.ModelName = {
   Account: 'Account',
   Verification: 'Verification',
   Category: 'Category',
-  Location: 'Location',
   EventType: 'EventType',
   Event: 'Event'
 };

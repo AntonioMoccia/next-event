@@ -1,0 +1,20 @@
+export type Event = {
+  title: string;
+  id_category: string;
+  description: string;
+  date_start: Date;
+  time_start: string;
+  date_end: Date;
+  time_end: string;
+  image?: string;
+  id_event_type: string;
+  price: number;
+  age: string;
+  email?: string;
+  phone?: string;
+  website: string;
+  address_name: string;
+  lat: number;
+  lng: number;
+  place_id: string;
+};
