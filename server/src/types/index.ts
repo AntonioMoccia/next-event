@@ -2,10 +2,8 @@ export type Event = {
   title: string;
   id_category: string;
   description: string;
-  date_start: Date;
-  time_start: string;
-  date_end: Date;
-  time_end: string;
+  startAt: Date;
+  endAt: Date;
   image?: string;
   id_event_type: string;
   price: number;
@@ -18,3 +16,6 @@ export type Event = {
   lng: number;
   place_id: string;
 };
+export type Category = {
+  description:string
+}

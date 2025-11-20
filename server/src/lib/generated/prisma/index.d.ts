@@ -7992,11 +7992,10 @@ export namespace Prisma {
     address_name: string | null
     lat: number | null
     lng: number | null
+    age: string | null
     place_id: string | null
-    date_start: Date | null
-    time_start: Date | null
-    date_end: Date | null
-    time_end: Date | null
+    startAt: Date | null
+    endAt: Date | null
     description: string | null
     email: string | null
     id_event_type: string | null
@@ -8004,6 +8003,8 @@ export namespace Prisma {
     phone: string | null
     price: number | null
     website: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type EventMaxAggregateOutputType = {
@@ -8013,11 +8014,10 @@ export namespace Prisma {
     address_name: string | null
     lat: number | null
     lng: number | null
+    age: string | null
     place_id: string | null
-    date_start: Date | null
-    time_start: Date | null
-    date_end: Date | null
-    time_end: Date | null
+    startAt: Date | null
+    endAt: Date | null
     description: string | null
     email: string | null
     id_event_type: string | null
@@ -8025,6 +8025,8 @@ export namespace Prisma {
     phone: string | null
     price: number | null
     website: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type EventCountAggregateOutputType = {
@@ -8034,11 +8036,10 @@ export namespace Prisma {
     address_name: number
     lat: number
     lng: number
+    age: number
     place_id: number
-    date_start: number
-    time_start: number
-    date_end: number
-    time_end: number
+    startAt: number
+    endAt: number
     description: number
     email: number
     id_event_type: number
@@ -8046,6 +8047,8 @@ export namespace Prisma {
     phone: number
     price: number
     website: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
@@ -8069,11 +8072,10 @@ export namespace Prisma {
     address_name?: true
     lat?: true
     lng?: true
+    age?: true
     place_id?: true
-    date_start?: true
-    time_start?: true
-    date_end?: true
-    time_end?: true
+    startAt?: true
+    endAt?: true
     description?: true
     email?: true
     id_event_type?: true
@@ -8081,6 +8083,8 @@ export namespace Prisma {
     phone?: true
     price?: true
     website?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type EventMaxAggregateInputType = {
@@ -8090,11 +8094,10 @@ export namespace Prisma {
     address_name?: true
     lat?: true
     lng?: true
+    age?: true
     place_id?: true
-    date_start?: true
-    time_start?: true
-    date_end?: true
-    time_end?: true
+    startAt?: true
+    endAt?: true
     description?: true
     email?: true
     id_event_type?: true
@@ -8102,6 +8105,8 @@ export namespace Prisma {
     phone?: true
     price?: true
     website?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type EventCountAggregateInputType = {
@@ -8111,11 +8116,10 @@ export namespace Prisma {
     address_name?: true
     lat?: true
     lng?: true
+    age?: true
     place_id?: true
-    date_start?: true
-    time_start?: true
-    date_end?: true
-    time_end?: true
+    startAt?: true
+    endAt?: true
     description?: true
     email?: true
     id_event_type?: true
@@ -8123,6 +8127,8 @@ export namespace Prisma {
     phone?: true
     price?: true
     website?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -8219,11 +8225,10 @@ export namespace Prisma {
     address_name: string
     lat: number
     lng: number
+    age: string
     place_id: string
-    date_start: Date
-    time_start: Date
-    date_end: Date
-    time_end: Date
+    startAt: Date
+    endAt: Date
     description: string
     email: string | null
     id_event_type: string
@@ -8231,6 +8236,8 @@ export namespace Prisma {
     phone: string
     price: number
     website: string
+    createdAt: Date
+    updatedAt: Date
     _count: EventCountAggregateOutputType | null
     _avg: EventAvgAggregateOutputType | null
     _sum: EventSumAggregateOutputType | null
@@ -8259,11 +8266,10 @@ export namespace Prisma {
     address_name?: boolean
     lat?: boolean
     lng?: boolean
+    age?: boolean
     place_id?: boolean
-    date_start?: boolean
-    time_start?: boolean
-    date_end?: boolean
-    time_end?: boolean
+    startAt?: boolean
+    endAt?: boolean
     description?: boolean
     email?: boolean
     id_event_type?: boolean
@@ -8271,6 +8277,8 @@ export namespace Prisma {
     phone?: boolean
     price?: boolean
     website?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     category?: boolean | CategoryDefaultArgs<ExtArgs>
     event_type?: boolean | EventTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["event"]>
@@ -8282,11 +8290,10 @@ export namespace Prisma {
     address_name?: boolean
     lat?: boolean
     lng?: boolean
+    age?: boolean
     place_id?: boolean
-    date_start?: boolean
-    time_start?: boolean
-    date_end?: boolean
-    time_end?: boolean
+    startAt?: boolean
+    endAt?: boolean
     description?: boolean
     email?: boolean
     id_event_type?: boolean
@@ -8294,6 +8301,8 @@ export namespace Prisma {
     phone?: boolean
     price?: boolean
     website?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     category?: boolean | CategoryDefaultArgs<ExtArgs>
     event_type?: boolean | EventTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["event"]>
@@ -8305,11 +8314,10 @@ export namespace Prisma {
     address_name?: boolean
     lat?: boolean
     lng?: boolean
+    age?: boolean
     place_id?: boolean
-    date_start?: boolean
-    time_start?: boolean
-    date_end?: boolean
-    time_end?: boolean
+    startAt?: boolean
+    endAt?: boolean
     description?: boolean
     email?: boolean
     id_event_type?: boolean
@@ -8317,6 +8325,8 @@ export namespace Prisma {
     phone?: boolean
     price?: boolean
     website?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     category?: boolean | CategoryDefaultArgs<ExtArgs>
     event_type?: boolean | EventTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["event"]>
@@ -8328,11 +8338,10 @@ export namespace Prisma {
     address_name?: boolean
     lat?: boolean
     lng?: boolean
+    age?: boolean
     place_id?: boolean
-    date_start?: boolean
-    time_start?: boolean
-    date_end?: boolean
-    time_end?: boolean
+    startAt?: boolean
+    endAt?: boolean
     description?: boolean
     email?: boolean
     id_event_type?: boolean
@@ -8340,9 +8349,11 @@ export namespace Prisma {
     phone?: boolean
     price?: boolean
     website?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type EventOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "id_category" | "address_name" | "lat" | "lng" | "place_id" | "date_start" | "time_start" | "date_end" | "time_end" | "description" | "email" | "id_event_type" | "image" | "phone" | "price" | "website", ExtArgs["result"]["event"]>
+  export type EventOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "id_category" | "address_name" | "lat" | "lng" | "age" | "place_id" | "startAt" | "endAt" | "description" | "email" | "id_event_type" | "image" | "phone" | "price" | "website" | "createdAt" | "updatedAt", ExtArgs["result"]["event"]>
   export type EventInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     category?: boolean | CategoryDefaultArgs<ExtArgs>
     event_type?: boolean | EventTypeDefaultArgs<ExtArgs>
@@ -8369,11 +8380,10 @@ export namespace Prisma {
       address_name: string
       lat: number
       lng: number
+      age: string
       place_id: string
-      date_start: Date
-      time_start: Date
-      date_end: Date
-      time_end: Date
+      startAt: Date
+      endAt: Date
       description: string
       email: string | null
       id_event_type: string
@@ -8381,6 +8391,8 @@ export namespace Prisma {
       phone: string
       price: number
       website: string
+      createdAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["event"]>
     composites: {}
   }
@@ -8812,11 +8824,10 @@ export namespace Prisma {
     readonly address_name: FieldRef<"Event", 'String'>
     readonly lat: FieldRef<"Event", 'Float'>
     readonly lng: FieldRef<"Event", 'Float'>
+    readonly age: FieldRef<"Event", 'String'>
     readonly place_id: FieldRef<"Event", 'String'>
-    readonly date_start: FieldRef<"Event", 'DateTime'>
-    readonly time_start: FieldRef<"Event", 'DateTime'>
-    readonly date_end: FieldRef<"Event", 'DateTime'>
-    readonly time_end: FieldRef<"Event", 'DateTime'>
+    readonly startAt: FieldRef<"Event", 'DateTime'>
+    readonly endAt: FieldRef<"Event", 'DateTime'>
     readonly description: FieldRef<"Event", 'String'>
     readonly email: FieldRef<"Event", 'String'>
     readonly id_event_type: FieldRef<"Event", 'String'>
@@ -8824,6 +8835,8 @@ export namespace Prisma {
     readonly phone: FieldRef<"Event", 'String'>
     readonly price: FieldRef<"Event", 'Float'>
     readonly website: FieldRef<"Event", 'String'>
+    readonly createdAt: FieldRef<"Event", 'DateTime'>
+    readonly updatedAt: FieldRef<"Event", 'DateTime'>
   }
     
 
@@ -9333,18 +9346,19 @@ export namespace Prisma {
     address_name: 'address_name',
     lat: 'lat',
     lng: 'lng',
+    age: 'age',
     place_id: 'place_id',
-    date_start: 'date_start',
-    time_start: 'time_start',
-    date_end: 'date_end',
-    time_end: 'time_end',
+    startAt: 'startAt',
+    endAt: 'endAt',
     description: 'description',
     email: 'email',
     id_event_type: 'id_event_type',
     image: 'image',
     phone: 'phone',
     price: 'price',
-    website: 'website'
+    website: 'website',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof EventScalarFieldEnum]
@@ -9825,11 +9839,10 @@ export namespace Prisma {
     address_name?: StringFilter<"Event"> | string
     lat?: FloatFilter<"Event"> | number
     lng?: FloatFilter<"Event"> | number
+    age?: StringFilter<"Event"> | string
     place_id?: StringFilter<"Event"> | string
-    date_start?: DateTimeFilter<"Event"> | Date | string
-    time_start?: DateTimeFilter<"Event"> | Date | string
-    date_end?: DateTimeFilter<"Event"> | Date | string
-    time_end?: DateTimeFilter<"Event"> | Date | string
+    startAt?: DateTimeFilter<"Event"> | Date | string
+    endAt?: DateTimeFilter<"Event"> | Date | string
     description?: StringFilter<"Event"> | string
     email?: StringNullableFilter<"Event"> | string | null
     id_event_type?: StringFilter<"Event"> | string
@@ -9837,6 +9850,8 @@ export namespace Prisma {
     phone?: StringFilter<"Event"> | string
     price?: FloatFilter<"Event"> | number
     website?: StringFilter<"Event"> | string
+    createdAt?: DateTimeFilter<"Event"> | Date | string
+    updatedAt?: DateTimeFilter<"Event"> | Date | string
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
     event_type?: XOR<EventTypeScalarRelationFilter, EventTypeWhereInput>
   }
@@ -9848,11 +9863,10 @@ export namespace Prisma {
     address_name?: SortOrder
     lat?: SortOrder
     lng?: SortOrder
+    age?: SortOrder
     place_id?: SortOrder
-    date_start?: SortOrder
-    time_start?: SortOrder
-    date_end?: SortOrder
-    time_end?: SortOrder
+    startAt?: SortOrder
+    endAt?: SortOrder
     description?: SortOrder
     email?: SortOrderInput | SortOrder
     id_event_type?: SortOrder
@@ -9860,6 +9874,8 @@ export namespace Prisma {
     phone?: SortOrder
     price?: SortOrder
     website?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     category?: CategoryOrderByWithRelationInput
     event_type?: EventTypeOrderByWithRelationInput
   }
@@ -9874,11 +9890,10 @@ export namespace Prisma {
     address_name?: StringFilter<"Event"> | string
     lat?: FloatFilter<"Event"> | number
     lng?: FloatFilter<"Event"> | number
+    age?: StringFilter<"Event"> | string
     place_id?: StringFilter<"Event"> | string
-    date_start?: DateTimeFilter<"Event"> | Date | string
-    time_start?: DateTimeFilter<"Event"> | Date | string
-    date_end?: DateTimeFilter<"Event"> | Date | string
-    time_end?: DateTimeFilter<"Event"> | Date | string
+    startAt?: DateTimeFilter<"Event"> | Date | string
+    endAt?: DateTimeFilter<"Event"> | Date | string
     description?: StringFilter<"Event"> | string
     email?: StringNullableFilter<"Event"> | string | null
     id_event_type?: StringFilter<"Event"> | string
@@ -9886,6 +9901,8 @@ export namespace Prisma {
     phone?: StringFilter<"Event"> | string
     price?: FloatFilter<"Event"> | number
     website?: StringFilter<"Event"> | string
+    createdAt?: DateTimeFilter<"Event"> | Date | string
+    updatedAt?: DateTimeFilter<"Event"> | Date | string
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
     event_type?: XOR<EventTypeScalarRelationFilter, EventTypeWhereInput>
   }, "id">
@@ -9897,11 +9914,10 @@ export namespace Prisma {
     address_name?: SortOrder
     lat?: SortOrder
     lng?: SortOrder
+    age?: SortOrder
     place_id?: SortOrder
-    date_start?: SortOrder
-    time_start?: SortOrder
-    date_end?: SortOrder
-    time_end?: SortOrder
+    startAt?: SortOrder
+    endAt?: SortOrder
     description?: SortOrder
     email?: SortOrderInput | SortOrder
     id_event_type?: SortOrder
@@ -9909,6 +9925,8 @@ export namespace Prisma {
     phone?: SortOrder
     price?: SortOrder
     website?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: EventCountOrderByAggregateInput
     _avg?: EventAvgOrderByAggregateInput
     _max?: EventMaxOrderByAggregateInput
@@ -9926,11 +9944,10 @@ export namespace Prisma {
     address_name?: StringWithAggregatesFilter<"Event"> | string
     lat?: FloatWithAggregatesFilter<"Event"> | number
     lng?: FloatWithAggregatesFilter<"Event"> | number
+    age?: StringWithAggregatesFilter<"Event"> | string
     place_id?: StringWithAggregatesFilter<"Event"> | string
-    date_start?: DateTimeWithAggregatesFilter<"Event"> | Date | string
-    time_start?: DateTimeWithAggregatesFilter<"Event"> | Date | string
-    date_end?: DateTimeWithAggregatesFilter<"Event"> | Date | string
-    time_end?: DateTimeWithAggregatesFilter<"Event"> | Date | string
+    startAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
+    endAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
     description?: StringWithAggregatesFilter<"Event"> | string
     email?: StringNullableWithAggregatesFilter<"Event"> | string | null
     id_event_type?: StringWithAggregatesFilter<"Event"> | string
@@ -9938,6 +9955,8 @@ export namespace Prisma {
     phone?: StringWithAggregatesFilter<"Event"> | string
     price?: FloatWithAggregatesFilter<"Event"> | number
     website?: StringWithAggregatesFilter<"Event"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -10269,13 +10288,13 @@ export namespace Prisma {
   }
 
   export type CategoryCreateInput = {
-    id: string
+    id?: string
     description: string
     events?: EventCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUncheckedCreateInput = {
-    id: string
+    id?: string
     description: string
     events?: EventUncheckedCreateNestedManyWithoutCategoryInput
   }
@@ -10293,7 +10312,7 @@ export namespace Prisma {
   }
 
   export type CategoryCreateManyInput = {
-    id: string
+    id?: string
     description: string
   }
 
@@ -10308,13 +10327,13 @@ export namespace Prisma {
   }
 
   export type EventTypeCreateInput = {
-    id: string
+    id?: string
     description: string
     events?: EventCreateNestedManyWithoutEvent_typeInput
   }
 
   export type EventTypeUncheckedCreateInput = {
-    id: string
+    id?: string
     description: string
     events?: EventUncheckedCreateNestedManyWithoutEvent_typeInput
   }
@@ -10332,7 +10351,7 @@ export namespace Prisma {
   }
 
   export type EventTypeCreateManyInput = {
-    id: string
+    id?: string
     description: string
   }
 
@@ -10347,38 +10366,38 @@ export namespace Prisma {
   }
 
   export type EventCreateInput = {
-    id: string
+    id?: string
     title: string
     address_name: string
     lat: number
     lng: number
+    age: string
     place_id: string
-    date_start: Date | string
-    time_start: Date | string
-    date_end: Date | string
-    time_end: Date | string
+    startAt?: Date | string
+    endAt?: Date | string
     description: string
     email?: string | null
     image: string
     phone: string
     price: number
     website: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     category: CategoryCreateNestedOneWithoutEventsInput
     event_type: EventTypeCreateNestedOneWithoutEventsInput
   }
 
   export type EventUncheckedCreateInput = {
-    id: string
+    id?: string
     title: string
     id_category: string
     address_name: string
     lat: number
     lng: number
+    age: string
     place_id: string
-    date_start: Date | string
-    time_start: Date | string
-    date_end: Date | string
-    time_end: Date | string
+    startAt?: Date | string
+    endAt?: Date | string
     description: string
     email?: string | null
     id_event_type: string
@@ -10386,6 +10405,8 @@ export namespace Prisma {
     phone: string
     price: number
     website: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type EventUpdateInput = {
@@ -10394,17 +10415,18 @@ export namespace Prisma {
     address_name?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
     lng?: FloatFieldUpdateOperationsInput | number
+    age?: StringFieldUpdateOperationsInput | string
     place_id?: StringFieldUpdateOperationsInput | string
-    date_start?: DateTimeFieldUpdateOperationsInput | Date | string
-    time_start?: DateTimeFieldUpdateOperationsInput | Date | string
-    date_end?: DateTimeFieldUpdateOperationsInput | Date | string
-    time_end?: DateTimeFieldUpdateOperationsInput | Date | string
+    startAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     website?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: CategoryUpdateOneRequiredWithoutEventsNestedInput
     event_type?: EventTypeUpdateOneRequiredWithoutEventsNestedInput
   }
@@ -10416,11 +10438,10 @@ export namespace Prisma {
     address_name?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
     lng?: FloatFieldUpdateOperationsInput | number
+    age?: StringFieldUpdateOperationsInput | string
     place_id?: StringFieldUpdateOperationsInput | string
-    date_start?: DateTimeFieldUpdateOperationsInput | Date | string
-    time_start?: DateTimeFieldUpdateOperationsInput | Date | string
-    date_end?: DateTimeFieldUpdateOperationsInput | Date | string
-    time_end?: DateTimeFieldUpdateOperationsInput | Date | string
+    startAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     id_event_type?: StringFieldUpdateOperationsInput | string
@@ -10428,20 +10449,21 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     website?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type EventCreateManyInput = {
-    id: string
+    id?: string
     title: string
     id_category: string
     address_name: string
     lat: number
     lng: number
+    age: string
     place_id: string
-    date_start: Date | string
-    time_start: Date | string
-    date_end: Date | string
-    time_end: Date | string
+    startAt?: Date | string
+    endAt?: Date | string
     description: string
     email?: string | null
     id_event_type: string
@@ -10449,6 +10471,8 @@ export namespace Prisma {
     phone: string
     price: number
     website: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type EventUpdateManyMutationInput = {
@@ -10457,17 +10481,18 @@ export namespace Prisma {
     address_name?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
     lng?: FloatFieldUpdateOperationsInput | number
+    age?: StringFieldUpdateOperationsInput | string
     place_id?: StringFieldUpdateOperationsInput | string
-    date_start?: DateTimeFieldUpdateOperationsInput | Date | string
-    time_start?: DateTimeFieldUpdateOperationsInput | Date | string
-    date_end?: DateTimeFieldUpdateOperationsInput | Date | string
-    time_end?: DateTimeFieldUpdateOperationsInput | Date | string
+    startAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     website?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type EventUncheckedUpdateManyInput = {
@@ -10477,11 +10502,10 @@ export namespace Prisma {
     address_name?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
     lng?: FloatFieldUpdateOperationsInput | number
+    age?: StringFieldUpdateOperationsInput | string
     place_id?: StringFieldUpdateOperationsInput | string
-    date_start?: DateTimeFieldUpdateOperationsInput | Date | string
-    time_start?: DateTimeFieldUpdateOperationsInput | Date | string
-    date_end?: DateTimeFieldUpdateOperationsInput | Date | string
-    time_end?: DateTimeFieldUpdateOperationsInput | Date | string
+    startAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     id_event_type?: StringFieldUpdateOperationsInput | string
@@ -10489,6 +10513,8 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     website?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -10856,11 +10882,10 @@ export namespace Prisma {
     address_name?: SortOrder
     lat?: SortOrder
     lng?: SortOrder
+    age?: SortOrder
     place_id?: SortOrder
-    date_start?: SortOrder
-    time_start?: SortOrder
-    date_end?: SortOrder
-    time_end?: SortOrder
+    startAt?: SortOrder
+    endAt?: SortOrder
     description?: SortOrder
     email?: SortOrder
     id_event_type?: SortOrder
@@ -10868,6 +10893,8 @@ export namespace Prisma {
     phone?: SortOrder
     price?: SortOrder
     website?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type EventAvgOrderByAggregateInput = {
@@ -10883,11 +10910,10 @@ export namespace Prisma {
     address_name?: SortOrder
     lat?: SortOrder
     lng?: SortOrder
+    age?: SortOrder
     place_id?: SortOrder
-    date_start?: SortOrder
-    time_start?: SortOrder
-    date_end?: SortOrder
-    time_end?: SortOrder
+    startAt?: SortOrder
+    endAt?: SortOrder
     description?: SortOrder
     email?: SortOrder
     id_event_type?: SortOrder
@@ -10895,6 +10921,8 @@ export namespace Prisma {
     phone?: SortOrder
     price?: SortOrder
     website?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type EventMinOrderByAggregateInput = {
@@ -10904,11 +10932,10 @@ export namespace Prisma {
     address_name?: SortOrder
     lat?: SortOrder
     lng?: SortOrder
+    age?: SortOrder
     place_id?: SortOrder
-    date_start?: SortOrder
-    time_start?: SortOrder
-    date_end?: SortOrder
-    time_end?: SortOrder
+    startAt?: SortOrder
+    endAt?: SortOrder
     description?: SortOrder
     email?: SortOrder
     id_event_type?: SortOrder
@@ -10916,6 +10943,8 @@ export namespace Prisma {
     phone?: SortOrder
     price?: SortOrder
     website?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type EventSumOrderByAggregateInput = {
@@ -11622,36 +11651,36 @@ export namespace Prisma {
   }
 
   export type EventCreateWithoutCategoryInput = {
-    id: string
+    id?: string
     title: string
     address_name: string
     lat: number
     lng: number
+    age: string
     place_id: string
-    date_start: Date | string
-    time_start: Date | string
-    date_end: Date | string
-    time_end: Date | string
+    startAt?: Date | string
+    endAt?: Date | string
     description: string
     email?: string | null
     image: string
     phone: string
     price: number
     website: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     event_type: EventTypeCreateNestedOneWithoutEventsInput
   }
 
   export type EventUncheckedCreateWithoutCategoryInput = {
-    id: string
+    id?: string
     title: string
     address_name: string
     lat: number
     lng: number
+    age: string
     place_id: string
-    date_start: Date | string
-    time_start: Date | string
-    date_end: Date | string
-    time_end: Date | string
+    startAt?: Date | string
+    endAt?: Date | string
     description: string
     email?: string | null
     id_event_type: string
@@ -11659,6 +11688,8 @@ export namespace Prisma {
     phone: string
     price: number
     website: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type EventCreateOrConnectWithoutCategoryInput = {
@@ -11697,11 +11728,10 @@ export namespace Prisma {
     address_name?: StringFilter<"Event"> | string
     lat?: FloatFilter<"Event"> | number
     lng?: FloatFilter<"Event"> | number
+    age?: StringFilter<"Event"> | string
     place_id?: StringFilter<"Event"> | string
-    date_start?: DateTimeFilter<"Event"> | Date | string
-    time_start?: DateTimeFilter<"Event"> | Date | string
-    date_end?: DateTimeFilter<"Event"> | Date | string
-    time_end?: DateTimeFilter<"Event"> | Date | string
+    startAt?: DateTimeFilter<"Event"> | Date | string
+    endAt?: DateTimeFilter<"Event"> | Date | string
     description?: StringFilter<"Event"> | string
     email?: StringNullableFilter<"Event"> | string | null
     id_event_type?: StringFilter<"Event"> | string
@@ -11709,46 +11739,50 @@ export namespace Prisma {
     phone?: StringFilter<"Event"> | string
     price?: FloatFilter<"Event"> | number
     website?: StringFilter<"Event"> | string
+    createdAt?: DateTimeFilter<"Event"> | Date | string
+    updatedAt?: DateTimeFilter<"Event"> | Date | string
   }
 
   export type EventCreateWithoutEvent_typeInput = {
-    id: string
+    id?: string
     title: string
     address_name: string
     lat: number
     lng: number
+    age: string
     place_id: string
-    date_start: Date | string
-    time_start: Date | string
-    date_end: Date | string
-    time_end: Date | string
+    startAt?: Date | string
+    endAt?: Date | string
     description: string
     email?: string | null
     image: string
     phone: string
     price: number
     website: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     category: CategoryCreateNestedOneWithoutEventsInput
   }
 
   export type EventUncheckedCreateWithoutEvent_typeInput = {
-    id: string
+    id?: string
     title: string
     id_category: string
     address_name: string
     lat: number
     lng: number
+    age: string
     place_id: string
-    date_start: Date | string
-    time_start: Date | string
-    date_end: Date | string
-    time_end: Date | string
+    startAt?: Date | string
+    endAt?: Date | string
     description: string
     email?: string | null
     image: string
     phone: string
     price: number
     website: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type EventCreateOrConnectWithoutEvent_typeInput = {
@@ -11778,12 +11812,12 @@ export namespace Prisma {
   }
 
   export type CategoryCreateWithoutEventsInput = {
-    id: string
+    id?: string
     description: string
   }
 
   export type CategoryUncheckedCreateWithoutEventsInput = {
-    id: string
+    id?: string
     description: string
   }
 
@@ -11793,12 +11827,12 @@ export namespace Prisma {
   }
 
   export type EventTypeCreateWithoutEventsInput = {
-    id: string
+    id?: string
     description: string
   }
 
   export type EventTypeUncheckedCreateWithoutEventsInput = {
-    id: string
+    id?: string
     description: string
   }
 
@@ -11950,16 +11984,15 @@ export namespace Prisma {
   }
 
   export type EventCreateManyCategoryInput = {
-    id: string
+    id?: string
     title: string
     address_name: string
     lat: number
     lng: number
+    age: string
     place_id: string
-    date_start: Date | string
-    time_start: Date | string
-    date_end: Date | string
-    time_end: Date | string
+    startAt?: Date | string
+    endAt?: Date | string
     description: string
     email?: string | null
     id_event_type: string
@@ -11967,6 +12000,8 @@ export namespace Prisma {
     phone: string
     price: number
     website: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type EventUpdateWithoutCategoryInput = {
@@ -11975,17 +12010,18 @@ export namespace Prisma {
     address_name?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
     lng?: FloatFieldUpdateOperationsInput | number
+    age?: StringFieldUpdateOperationsInput | string
     place_id?: StringFieldUpdateOperationsInput | string
-    date_start?: DateTimeFieldUpdateOperationsInput | Date | string
-    time_start?: DateTimeFieldUpdateOperationsInput | Date | string
-    date_end?: DateTimeFieldUpdateOperationsInput | Date | string
-    time_end?: DateTimeFieldUpdateOperationsInput | Date | string
+    startAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     website?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     event_type?: EventTypeUpdateOneRequiredWithoutEventsNestedInput
   }
 
@@ -11995,11 +12031,10 @@ export namespace Prisma {
     address_name?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
     lng?: FloatFieldUpdateOperationsInput | number
+    age?: StringFieldUpdateOperationsInput | string
     place_id?: StringFieldUpdateOperationsInput | string
-    date_start?: DateTimeFieldUpdateOperationsInput | Date | string
-    time_start?: DateTimeFieldUpdateOperationsInput | Date | string
-    date_end?: DateTimeFieldUpdateOperationsInput | Date | string
-    time_end?: DateTimeFieldUpdateOperationsInput | Date | string
+    startAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     id_event_type?: StringFieldUpdateOperationsInput | string
@@ -12007,6 +12042,8 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     website?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type EventUncheckedUpdateManyWithoutCategoryInput = {
@@ -12015,11 +12052,10 @@ export namespace Prisma {
     address_name?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
     lng?: FloatFieldUpdateOperationsInput | number
+    age?: StringFieldUpdateOperationsInput | string
     place_id?: StringFieldUpdateOperationsInput | string
-    date_start?: DateTimeFieldUpdateOperationsInput | Date | string
-    time_start?: DateTimeFieldUpdateOperationsInput | Date | string
-    date_end?: DateTimeFieldUpdateOperationsInput | Date | string
-    time_end?: DateTimeFieldUpdateOperationsInput | Date | string
+    startAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     id_event_type?: StringFieldUpdateOperationsInput | string
@@ -12027,26 +12063,29 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     website?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type EventCreateManyEvent_typeInput = {
-    id: string
+    id?: string
     title: string
     id_category: string
     address_name: string
     lat: number
     lng: number
+    age: string
     place_id: string
-    date_start: Date | string
-    time_start: Date | string
-    date_end: Date | string
-    time_end: Date | string
+    startAt?: Date | string
+    endAt?: Date | string
     description: string
     email?: string | null
     image: string
     phone: string
     price: number
     website: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type EventUpdateWithoutEvent_typeInput = {
@@ -12055,17 +12094,18 @@ export namespace Prisma {
     address_name?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
     lng?: FloatFieldUpdateOperationsInput | number
+    age?: StringFieldUpdateOperationsInput | string
     place_id?: StringFieldUpdateOperationsInput | string
-    date_start?: DateTimeFieldUpdateOperationsInput | Date | string
-    time_start?: DateTimeFieldUpdateOperationsInput | Date | string
-    date_end?: DateTimeFieldUpdateOperationsInput | Date | string
-    time_end?: DateTimeFieldUpdateOperationsInput | Date | string
+    startAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     website?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: CategoryUpdateOneRequiredWithoutEventsNestedInput
   }
 
@@ -12076,17 +12116,18 @@ export namespace Prisma {
     address_name?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
     lng?: FloatFieldUpdateOperationsInput | number
+    age?: StringFieldUpdateOperationsInput | string
     place_id?: StringFieldUpdateOperationsInput | string
-    date_start?: DateTimeFieldUpdateOperationsInput | Date | string
-    time_start?: DateTimeFieldUpdateOperationsInput | Date | string
-    date_end?: DateTimeFieldUpdateOperationsInput | Date | string
-    time_end?: DateTimeFieldUpdateOperationsInput | Date | string
+    startAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     website?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type EventUncheckedUpdateManyWithoutEvent_typeInput = {
@@ -12096,17 +12137,18 @@ export namespace Prisma {
     address_name?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
     lng?: FloatFieldUpdateOperationsInput | number
+    age?: StringFieldUpdateOperationsInput | string
     place_id?: StringFieldUpdateOperationsInput | string
-    date_start?: DateTimeFieldUpdateOperationsInput | Date | string
-    time_start?: DateTimeFieldUpdateOperationsInput | Date | string
-    date_end?: DateTimeFieldUpdateOperationsInput | Date | string
-    time_end?: DateTimeFieldUpdateOperationsInput | Date | string
+    startAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     website?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

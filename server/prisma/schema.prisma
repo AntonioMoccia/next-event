@@ -74,36 +74,38 @@ model Verification {
   @@map("verification")
 }
 
+model Category {
+  id          String  @id @default(uuid())
+  description String
+  events      Event[]
+}
 
-model Category{
-  id String @id
+model EventType {
+  id          String  @id @default(uuid())
   description String
-  events Event[] 
+  events      Event[]
 }
-model EventType{
-  id String @id
-  description String
-  events Event[]
-}
-model Event{
-  id String @id
-  title String
-  id_category String
-  category Category @relation(fields: [id_category],references: [id], onDelete: NoAction)
-  address_name String
-  lat Float
-  lng Float
-  place_id String
-  date_start DateTime
-  time_start DateTime
-  date_end DateTime
-  time_end DateTime
-  description String
-  email String?
+
+model Event {
+  id            String    @id @default(uuid())
+  title         String
+  id_category   String
+  category      Category  @relation(fields: [id_category], references: [id], onDelete: NoAction)
+  address_name  String
+  lat           Float
+  lng           Float
+  age           String
+  place_id      String
+  startAt       DateTime  @default(now())
+  endAt         DateTime  @default(now())
+  description   String
+  email         String?
   id_event_type String
-  event_type EventType @relation(fields: [id_event_type], references: [id], onDelete: NoAction)
-  image String
-  phone String
-  price Float
-  website String
+  event_type    EventType @relation(fields: [id_event_type], references: [id], onDelete: NoAction)
+  image         String
+  phone         String
+  price         Float
+  website       String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
 }

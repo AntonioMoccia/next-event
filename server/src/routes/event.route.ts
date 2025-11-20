@@ -6,6 +6,6 @@ const router = Router()
 const eventController = new EventController()
 const eventWrap = wrap(eventController)
 router.post('/upload',eventWrap(eventController.uploadImageGetSignedUrl))
-router.post('/')
+router.post('/',eventWrap(eventController.createEvent))
 
 export default router
