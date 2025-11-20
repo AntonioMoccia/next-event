@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import {EventService} from '@services/Event.service'
 import { Event } from "../types";
 
+
 export class EventController {
   constructor() {}
 
@@ -37,4 +38,6 @@ export class EventController {
     }
 
   }
+
+
 }

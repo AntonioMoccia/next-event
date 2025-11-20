@@ -25,7 +25,9 @@ export class GoogleService {
         key: process.env.GOOGLE_MAPS_API_KEY!,
       },
     });
-    console.log(response.data)
+
+
+
     const coords = response.data.results[0].geometry.location;
 
     return {
@@ -34,20 +36,3 @@ export class GoogleService {
     };
   }
 }
-
-/**
- * 
-const googleMapsClient = new Client({});
-
-export const getSuggestions = async (input: string) => {
-  const suggestions = await googleMapsClient.placeAutocomplete({
-    params: {
-      input: input,
-      key: process.env.GOOGLE_MAPS_API_KEY!,
-      language:'it'
-    },
-  });
-  return suggestions.data.predictions
-};
-
- */

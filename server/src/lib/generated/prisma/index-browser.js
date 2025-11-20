@@ -172,6 +172,17 @@ exports.Prisma.CategoryScalarFieldEnum = {
   description: 'description'
 };
 
+<<<<<<< HEAD
+=======
+exports.Prisma.LocationScalarFieldEnum = {
+  id: 'id',
+  address_name: 'address_name',
+  lat: 'lat',
+  lng: 'lng',
+  place_id: 'place_id'
+};
+
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
 exports.Prisma.EventTypeScalarFieldEnum = {
   id: 'id',
   description: 'description'
@@ -181,6 +192,7 @@ exports.Prisma.EventScalarFieldEnum = {
   id: 'id',
   title: 'title',
   id_category: 'id_category',
+<<<<<<< HEAD
   address_name: 'address_name',
   lat: 'lat',
   lng: 'lng',
@@ -188,15 +200,26 @@ exports.Prisma.EventScalarFieldEnum = {
   place_id: 'place_id',
   startAt: 'startAt',
   endAt: 'endAt',
+=======
+  id_location: 'id_location',
+  data_start: 'data_start',
+  time_start: 'time_start',
+  date_end: 'date_end',
+  time_end: 'time_end',
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   description: 'description',
   email: 'email',
   id_event_type: 'id_event_type',
   image: 'image',
   phone: 'phone',
   price: 'price',
+<<<<<<< HEAD
   website: 'website',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+=======
+  website: 'website'
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
 };
 
 exports.Prisma.SortOrder = {
@@ -221,6 +244,10 @@ exports.Prisma.ModelName = {
   Account: 'Account',
   Verification: 'Verification',
   Category: 'Category',
+<<<<<<< HEAD
+=======
+  Location: 'Location',
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   EventType: 'EventType',
   Event: 'Event'
 };

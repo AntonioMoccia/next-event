@@ -39,6 +39,14 @@ export type Verification = $Result.DefaultSelection<Prisma.$VerificationPayload>
  */
 export type Category = $Result.DefaultSelection<Prisma.$CategoryPayload>
 /**
+<<<<<<< HEAD
+=======
+ * Model Location
+ * 
+ */
+export type Location = $Result.DefaultSelection<Prisma.$LocationPayload>
+/**
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
  * Model EventType
  * 
  */
@@ -218,6 +226,19 @@ export class PrismaClient<
   get category(): Prisma.CategoryDelegate<ExtArgs, ClientOptions>;
 
   /**
+<<<<<<< HEAD
+=======
+   * `prisma.location`: Exposes CRUD operations for the **Location** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Locations
+    * const locations = await prisma.location.findMany()
+    * ```
+    */
+  get location(): Prisma.LocationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
    * `prisma.eventType`: Exposes CRUD operations for the **EventType** model.
     * Example usage:
     * ```ts
@@ -682,6 +703,10 @@ export namespace Prisma {
     Account: 'Account',
     Verification: 'Verification',
     Category: 'Category',
+<<<<<<< HEAD
+=======
+    Location: 'Location',
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     EventType: 'EventType',
     Event: 'Event'
   };
@@ -702,7 +727,11 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
+<<<<<<< HEAD
       modelProps: "user" | "session" | "account" | "verification" | "category" | "eventType" | "event"
+=======
+      modelProps: "user" | "session" | "account" | "verification" | "category" | "location" | "eventType" | "event"
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1076,6 +1105,83 @@ export namespace Prisma {
           }
         }
       }
+<<<<<<< HEAD
+=======
+      Location: {
+        payload: Prisma.$LocationPayload<ExtArgs>
+        fields: Prisma.LocationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.LocationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LocationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.LocationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LocationPayload>
+          }
+          findFirst: {
+            args: Prisma.LocationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LocationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.LocationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LocationPayload>
+          }
+          findMany: {
+            args: Prisma.LocationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LocationPayload>[]
+          }
+          create: {
+            args: Prisma.LocationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LocationPayload>
+          }
+          createMany: {
+            args: Prisma.LocationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.LocationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LocationPayload>[]
+          }
+          delete: {
+            args: Prisma.LocationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LocationPayload>
+          }
+          update: {
+            args: Prisma.LocationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LocationPayload>
+          }
+          deleteMany: {
+            args: Prisma.LocationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.LocationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.LocationUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LocationPayload>[]
+          }
+          upsert: {
+            args: Prisma.LocationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LocationPayload>
+          }
+          aggregate: {
+            args: Prisma.LocationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateLocation>
+          }
+          groupBy: {
+            args: Prisma.LocationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<LocationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.LocationCountArgs<ExtArgs>
+            result: $Utils.Optional<LocationCountAggregateOutputType> | number
+          }
+        }
+      }
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
       EventType: {
         payload: Prisma.$EventTypePayload<ExtArgs>
         fields: Prisma.EventTypeFieldRefs
@@ -1325,6 +1431,10 @@ export namespace Prisma {
     account?: AccountOmit
     verification?: VerificationOmit
     category?: CategoryOmit
+<<<<<<< HEAD
+=======
+    location?: LocationOmit
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     eventType?: EventTypeOmit
     event?: EventOmit
   }
@@ -1474,6 +1584,40 @@ export namespace Prisma {
 
 
   /**
+<<<<<<< HEAD
+=======
+   * Count Type LocationCountOutputType
+   */
+
+  export type LocationCountOutputType = {
+    events: number
+  }
+
+  export type LocationCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    events?: boolean | LocationCountOutputTypeCountEventsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * LocationCountOutputType without action
+   */
+  export type LocationCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LocationCountOutputType
+     */
+    select?: LocationCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * LocationCountOutputType without action
+   */
+  export type LocationCountOutputTypeCountEventsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EventWhereInput
+  }
+
+
+  /**
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
    * Count Type EventTypeCountOutputType
    */
 
@@ -6931,6 +7075,1117 @@ export namespace Prisma {
 
 
   /**
+<<<<<<< HEAD
+=======
+   * Model Location
+   */
+
+  export type AggregateLocation = {
+    _count: LocationCountAggregateOutputType | null
+    _avg: LocationAvgAggregateOutputType | null
+    _sum: LocationSumAggregateOutputType | null
+    _min: LocationMinAggregateOutputType | null
+    _max: LocationMaxAggregateOutputType | null
+  }
+
+  export type LocationAvgAggregateOutputType = {
+    lat: number | null
+    lng: number | null
+  }
+
+  export type LocationSumAggregateOutputType = {
+    lat: number | null
+    lng: number | null
+  }
+
+  export type LocationMinAggregateOutputType = {
+    id: string | null
+    address_name: string | null
+    lat: number | null
+    lng: number | null
+    place_id: string | null
+  }
+
+  export type LocationMaxAggregateOutputType = {
+    id: string | null
+    address_name: string | null
+    lat: number | null
+    lng: number | null
+    place_id: string | null
+  }
+
+  export type LocationCountAggregateOutputType = {
+    id: number
+    address_name: number
+    lat: number
+    lng: number
+    place_id: number
+    _all: number
+  }
+
+
+  export type LocationAvgAggregateInputType = {
+    lat?: true
+    lng?: true
+  }
+
+  export type LocationSumAggregateInputType = {
+    lat?: true
+    lng?: true
+  }
+
+  export type LocationMinAggregateInputType = {
+    id?: true
+    address_name?: true
+    lat?: true
+    lng?: true
+    place_id?: true
+  }
+
+  export type LocationMaxAggregateInputType = {
+    id?: true
+    address_name?: true
+    lat?: true
+    lng?: true
+    place_id?: true
+  }
+
+  export type LocationCountAggregateInputType = {
+    id?: true
+    address_name?: true
+    lat?: true
+    lng?: true
+    place_id?: true
+    _all?: true
+  }
+
+  export type LocationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Location to aggregate.
+     */
+    where?: LocationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Locations to fetch.
+     */
+    orderBy?: LocationOrderByWithRelationInput | LocationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: LocationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Locations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Locations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Locations
+    **/
+    _count?: true | LocationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: LocationAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: LocationSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: LocationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: LocationMaxAggregateInputType
+  }
+
+  export type GetLocationAggregateType<T extends LocationAggregateArgs> = {
+        [P in keyof T & keyof AggregateLocation]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLocation[P]>
+      : GetScalarType<T[P], AggregateLocation[P]>
+  }
+
+
+
+
+  export type LocationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LocationWhereInput
+    orderBy?: LocationOrderByWithAggregationInput | LocationOrderByWithAggregationInput[]
+    by: LocationScalarFieldEnum[] | LocationScalarFieldEnum
+    having?: LocationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: LocationCountAggregateInputType | true
+    _avg?: LocationAvgAggregateInputType
+    _sum?: LocationSumAggregateInputType
+    _min?: LocationMinAggregateInputType
+    _max?: LocationMaxAggregateInputType
+  }
+
+  export type LocationGroupByOutputType = {
+    id: string
+    address_name: string
+    lat: number
+    lng: number
+    place_id: string
+    _count: LocationCountAggregateOutputType | null
+    _avg: LocationAvgAggregateOutputType | null
+    _sum: LocationSumAggregateOutputType | null
+    _min: LocationMinAggregateOutputType | null
+    _max: LocationMaxAggregateOutputType | null
+  }
+
+  type GetLocationGroupByPayload<T extends LocationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<LocationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof LocationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], LocationGroupByOutputType[P]>
+            : GetScalarType<T[P], LocationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type LocationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    address_name?: boolean
+    lat?: boolean
+    lng?: boolean
+    place_id?: boolean
+    events?: boolean | Location$eventsArgs<ExtArgs>
+    _count?: boolean | LocationCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["location"]>
+
+  export type LocationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    address_name?: boolean
+    lat?: boolean
+    lng?: boolean
+    place_id?: boolean
+  }, ExtArgs["result"]["location"]>
+
+  export type LocationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    address_name?: boolean
+    lat?: boolean
+    lng?: boolean
+    place_id?: boolean
+  }, ExtArgs["result"]["location"]>
+
+  export type LocationSelectScalar = {
+    id?: boolean
+    address_name?: boolean
+    lat?: boolean
+    lng?: boolean
+    place_id?: boolean
+  }
+
+  export type LocationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "address_name" | "lat" | "lng" | "place_id", ExtArgs["result"]["location"]>
+  export type LocationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    events?: boolean | Location$eventsArgs<ExtArgs>
+    _count?: boolean | LocationCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type LocationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type LocationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $LocationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Location"
+    objects: {
+      events: Prisma.$EventPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      address_name: string
+      lat: number
+      lng: number
+      place_id: string
+    }, ExtArgs["result"]["location"]>
+    composites: {}
+  }
+
+  type LocationGetPayload<S extends boolean | null | undefined | LocationDefaultArgs> = $Result.GetResult<Prisma.$LocationPayload, S>
+
+  type LocationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<LocationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: LocationCountAggregateInputType | true
+    }
+
+  export interface LocationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Location'], meta: { name: 'Location' } }
+    /**
+     * Find zero or one Location that matches the filter.
+     * @param {LocationFindUniqueArgs} args - Arguments to find a Location
+     * @example
+     * // Get one Location
+     * const location = await prisma.location.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends LocationFindUniqueArgs>(args: SelectSubset<T, LocationFindUniqueArgs<ExtArgs>>): Prisma__LocationClient<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Location that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {LocationFindUniqueOrThrowArgs} args - Arguments to find a Location
+     * @example
+     * // Get one Location
+     * const location = await prisma.location.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends LocationFindUniqueOrThrowArgs>(args: SelectSubset<T, LocationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LocationClient<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Location that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LocationFindFirstArgs} args - Arguments to find a Location
+     * @example
+     * // Get one Location
+     * const location = await prisma.location.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends LocationFindFirstArgs>(args?: SelectSubset<T, LocationFindFirstArgs<ExtArgs>>): Prisma__LocationClient<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Location that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LocationFindFirstOrThrowArgs} args - Arguments to find a Location
+     * @example
+     * // Get one Location
+     * const location = await prisma.location.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends LocationFindFirstOrThrowArgs>(args?: SelectSubset<T, LocationFindFirstOrThrowArgs<ExtArgs>>): Prisma__LocationClient<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Locations that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LocationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Locations
+     * const locations = await prisma.location.findMany()
+     * 
+     * // Get first 10 Locations
+     * const locations = await prisma.location.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const locationWithIdOnly = await prisma.location.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends LocationFindManyArgs>(args?: SelectSubset<T, LocationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Location.
+     * @param {LocationCreateArgs} args - Arguments to create a Location.
+     * @example
+     * // Create one Location
+     * const Location = await prisma.location.create({
+     *   data: {
+     *     // ... data to create a Location
+     *   }
+     * })
+     * 
+     */
+    create<T extends LocationCreateArgs>(args: SelectSubset<T, LocationCreateArgs<ExtArgs>>): Prisma__LocationClient<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Locations.
+     * @param {LocationCreateManyArgs} args - Arguments to create many Locations.
+     * @example
+     * // Create many Locations
+     * const location = await prisma.location.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends LocationCreateManyArgs>(args?: SelectSubset<T, LocationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Locations and returns the data saved in the database.
+     * @param {LocationCreateManyAndReturnArgs} args - Arguments to create many Locations.
+     * @example
+     * // Create many Locations
+     * const location = await prisma.location.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Locations and only return the `id`
+     * const locationWithIdOnly = await prisma.location.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends LocationCreateManyAndReturnArgs>(args?: SelectSubset<T, LocationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Location.
+     * @param {LocationDeleteArgs} args - Arguments to delete one Location.
+     * @example
+     * // Delete one Location
+     * const Location = await prisma.location.delete({
+     *   where: {
+     *     // ... filter to delete one Location
+     *   }
+     * })
+     * 
+     */
+    delete<T extends LocationDeleteArgs>(args: SelectSubset<T, LocationDeleteArgs<ExtArgs>>): Prisma__LocationClient<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Location.
+     * @param {LocationUpdateArgs} args - Arguments to update one Location.
+     * @example
+     * // Update one Location
+     * const location = await prisma.location.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends LocationUpdateArgs>(args: SelectSubset<T, LocationUpdateArgs<ExtArgs>>): Prisma__LocationClient<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Locations.
+     * @param {LocationDeleteManyArgs} args - Arguments to filter Locations to delete.
+     * @example
+     * // Delete a few Locations
+     * const { count } = await prisma.location.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends LocationDeleteManyArgs>(args?: SelectSubset<T, LocationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Locations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LocationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Locations
+     * const location = await prisma.location.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends LocationUpdateManyArgs>(args: SelectSubset<T, LocationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Locations and returns the data updated in the database.
+     * @param {LocationUpdateManyAndReturnArgs} args - Arguments to update many Locations.
+     * @example
+     * // Update many Locations
+     * const location = await prisma.location.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Locations and only return the `id`
+     * const locationWithIdOnly = await prisma.location.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends LocationUpdateManyAndReturnArgs>(args: SelectSubset<T, LocationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Location.
+     * @param {LocationUpsertArgs} args - Arguments to update or create a Location.
+     * @example
+     * // Update or create a Location
+     * const location = await prisma.location.upsert({
+     *   create: {
+     *     // ... data to create a Location
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Location we want to update
+     *   }
+     * })
+     */
+    upsert<T extends LocationUpsertArgs>(args: SelectSubset<T, LocationUpsertArgs<ExtArgs>>): Prisma__LocationClient<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Locations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LocationCountArgs} args - Arguments to filter Locations to count.
+     * @example
+     * // Count the number of Locations
+     * const count = await prisma.location.count({
+     *   where: {
+     *     // ... the filter for the Locations we want to count
+     *   }
+     * })
+    **/
+    count<T extends LocationCountArgs>(
+      args?: Subset<T, LocationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], LocationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Location.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LocationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends LocationAggregateArgs>(args: Subset<T, LocationAggregateArgs>): Prisma.PrismaPromise<GetLocationAggregateType<T>>
+
+    /**
+     * Group by Location.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LocationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends LocationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: LocationGroupByArgs['orderBy'] }
+        : { orderBy?: LocationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, LocationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLocationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Location model
+   */
+  readonly fields: LocationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Location.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__LocationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    events<T extends Location$eventsArgs<ExtArgs> = {}>(args?: Subset<T, Location$eventsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Location model
+   */
+  interface LocationFieldRefs {
+    readonly id: FieldRef<"Location", 'String'>
+    readonly address_name: FieldRef<"Location", 'String'>
+    readonly lat: FieldRef<"Location", 'Float'>
+    readonly lng: FieldRef<"Location", 'Float'>
+    readonly place_id: FieldRef<"Location", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Location findUnique
+   */
+  export type LocationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Location
+     */
+    select?: LocationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Location
+     */
+    omit?: LocationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LocationInclude<ExtArgs> | null
+    /**
+     * Filter, which Location to fetch.
+     */
+    where: LocationWhereUniqueInput
+  }
+
+  /**
+   * Location findUniqueOrThrow
+   */
+  export type LocationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Location
+     */
+    select?: LocationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Location
+     */
+    omit?: LocationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LocationInclude<ExtArgs> | null
+    /**
+     * Filter, which Location to fetch.
+     */
+    where: LocationWhereUniqueInput
+  }
+
+  /**
+   * Location findFirst
+   */
+  export type LocationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Location
+     */
+    select?: LocationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Location
+     */
+    omit?: LocationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LocationInclude<ExtArgs> | null
+    /**
+     * Filter, which Location to fetch.
+     */
+    where?: LocationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Locations to fetch.
+     */
+    orderBy?: LocationOrderByWithRelationInput | LocationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Locations.
+     */
+    cursor?: LocationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Locations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Locations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Locations.
+     */
+    distinct?: LocationScalarFieldEnum | LocationScalarFieldEnum[]
+  }
+
+  /**
+   * Location findFirstOrThrow
+   */
+  export type LocationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Location
+     */
+    select?: LocationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Location
+     */
+    omit?: LocationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LocationInclude<ExtArgs> | null
+    /**
+     * Filter, which Location to fetch.
+     */
+    where?: LocationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Locations to fetch.
+     */
+    orderBy?: LocationOrderByWithRelationInput | LocationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Locations.
+     */
+    cursor?: LocationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Locations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Locations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Locations.
+     */
+    distinct?: LocationScalarFieldEnum | LocationScalarFieldEnum[]
+  }
+
+  /**
+   * Location findMany
+   */
+  export type LocationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Location
+     */
+    select?: LocationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Location
+     */
+    omit?: LocationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LocationInclude<ExtArgs> | null
+    /**
+     * Filter, which Locations to fetch.
+     */
+    where?: LocationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Locations to fetch.
+     */
+    orderBy?: LocationOrderByWithRelationInput | LocationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Locations.
+     */
+    cursor?: LocationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Locations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Locations.
+     */
+    skip?: number
+    distinct?: LocationScalarFieldEnum | LocationScalarFieldEnum[]
+  }
+
+  /**
+   * Location create
+   */
+  export type LocationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Location
+     */
+    select?: LocationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Location
+     */
+    omit?: LocationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LocationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Location.
+     */
+    data: XOR<LocationCreateInput, LocationUncheckedCreateInput>
+  }
+
+  /**
+   * Location createMany
+   */
+  export type LocationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Locations.
+     */
+    data: LocationCreateManyInput | LocationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Location createManyAndReturn
+   */
+  export type LocationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Location
+     */
+    select?: LocationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Location
+     */
+    omit?: LocationOmit<ExtArgs> | null
+    /**
+     * The data used to create many Locations.
+     */
+    data: LocationCreateManyInput | LocationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Location update
+   */
+  export type LocationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Location
+     */
+    select?: LocationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Location
+     */
+    omit?: LocationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LocationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Location.
+     */
+    data: XOR<LocationUpdateInput, LocationUncheckedUpdateInput>
+    /**
+     * Choose, which Location to update.
+     */
+    where: LocationWhereUniqueInput
+  }
+
+  /**
+   * Location updateMany
+   */
+  export type LocationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Locations.
+     */
+    data: XOR<LocationUpdateManyMutationInput, LocationUncheckedUpdateManyInput>
+    /**
+     * Filter which Locations to update
+     */
+    where?: LocationWhereInput
+    /**
+     * Limit how many Locations to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Location updateManyAndReturn
+   */
+  export type LocationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Location
+     */
+    select?: LocationSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Location
+     */
+    omit?: LocationOmit<ExtArgs> | null
+    /**
+     * The data used to update Locations.
+     */
+    data: XOR<LocationUpdateManyMutationInput, LocationUncheckedUpdateManyInput>
+    /**
+     * Filter which Locations to update
+     */
+    where?: LocationWhereInput
+    /**
+     * Limit how many Locations to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Location upsert
+   */
+  export type LocationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Location
+     */
+    select?: LocationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Location
+     */
+    omit?: LocationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LocationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Location to update in case it exists.
+     */
+    where: LocationWhereUniqueInput
+    /**
+     * In case the Location found by the `where` argument doesn't exist, create a new Location with this data.
+     */
+    create: XOR<LocationCreateInput, LocationUncheckedCreateInput>
+    /**
+     * In case the Location was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<LocationUpdateInput, LocationUncheckedUpdateInput>
+  }
+
+  /**
+   * Location delete
+   */
+  export type LocationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Location
+     */
+    select?: LocationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Location
+     */
+    omit?: LocationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LocationInclude<ExtArgs> | null
+    /**
+     * Filter which Location to delete.
+     */
+    where: LocationWhereUniqueInput
+  }
+
+  /**
+   * Location deleteMany
+   */
+  export type LocationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Locations to delete
+     */
+    where?: LocationWhereInput
+    /**
+     * Limit how many Locations to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Location.events
+   */
+  export type Location$eventsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Event
+     */
+    select?: EventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Event
+     */
+    omit?: EventOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventInclude<ExtArgs> | null
+    where?: EventWhereInput
+    orderBy?: EventOrderByWithRelationInput | EventOrderByWithRelationInput[]
+    cursor?: EventWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: EventScalarFieldEnum | EventScalarFieldEnum[]
+  }
+
+  /**
+   * Location without action
+   */
+  export type LocationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Location
+     */
+    select?: LocationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Location
+     */
+    omit?: LocationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LocationInclude<ExtArgs> | null
+  }
+
+
+  /**
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
    * Model EventType
    */
 
@@ -7974,14 +9229,20 @@ export namespace Prisma {
   }
 
   export type EventAvgAggregateOutputType = {
+<<<<<<< HEAD
     lat: number | null
     lng: number | null
+=======
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     price: number | null
   }
 
   export type EventSumAggregateOutputType = {
+<<<<<<< HEAD
     lat: number | null
     lng: number | null
+=======
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     price: number | null
   }
 
@@ -7989,6 +9250,7 @@ export namespace Prisma {
     id: string | null
     title: string | null
     id_category: string | null
+<<<<<<< HEAD
     address_name: string | null
     lat: number | null
     lng: number | null
@@ -7996,6 +9258,13 @@ export namespace Prisma {
     place_id: string | null
     startAt: Date | null
     endAt: Date | null
+=======
+    id_location: string | null
+    data_start: Date | null
+    time_start: Date | null
+    date_end: Date | null
+    time_end: Date | null
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description: string | null
     email: string | null
     id_event_type: string | null
@@ -8003,14 +9272,18 @@ export namespace Prisma {
     phone: string | null
     price: number | null
     website: string | null
+<<<<<<< HEAD
     createdAt: Date | null
     updatedAt: Date | null
+=======
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   }
 
   export type EventMaxAggregateOutputType = {
     id: string | null
     title: string | null
     id_category: string | null
+<<<<<<< HEAD
     address_name: string | null
     lat: number | null
     lng: number | null
@@ -8018,6 +9291,13 @@ export namespace Prisma {
     place_id: string | null
     startAt: Date | null
     endAt: Date | null
+=======
+    id_location: string | null
+    data_start: Date | null
+    time_start: Date | null
+    date_end: Date | null
+    time_end: Date | null
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description: string | null
     email: string | null
     id_event_type: string | null
@@ -8025,14 +9305,18 @@ export namespace Prisma {
     phone: string | null
     price: number | null
     website: string | null
+<<<<<<< HEAD
     createdAt: Date | null
     updatedAt: Date | null
+=======
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   }
 
   export type EventCountAggregateOutputType = {
     id: number
     title: number
     id_category: number
+<<<<<<< HEAD
     address_name: number
     lat: number
     lng: number
@@ -8040,6 +9324,13 @@ export namespace Prisma {
     place_id: number
     startAt: number
     endAt: number
+=======
+    id_location: number
+    data_start: number
+    time_start: number
+    date_end: number
+    time_end: number
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description: number
     email: number
     id_event_type: number
@@ -8047,21 +9338,30 @@ export namespace Prisma {
     phone: number
     price: number
     website: number
+<<<<<<< HEAD
     createdAt: number
     updatedAt: number
+=======
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     _all: number
   }
 
 
   export type EventAvgAggregateInputType = {
+<<<<<<< HEAD
     lat?: true
     lng?: true
+=======
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     price?: true
   }
 
   export type EventSumAggregateInputType = {
+<<<<<<< HEAD
     lat?: true
     lng?: true
+=======
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     price?: true
   }
 
@@ -8069,6 +9369,7 @@ export namespace Prisma {
     id?: true
     title?: true
     id_category?: true
+<<<<<<< HEAD
     address_name?: true
     lat?: true
     lng?: true
@@ -8076,6 +9377,13 @@ export namespace Prisma {
     place_id?: true
     startAt?: true
     endAt?: true
+=======
+    id_location?: true
+    data_start?: true
+    time_start?: true
+    date_end?: true
+    time_end?: true
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description?: true
     email?: true
     id_event_type?: true
@@ -8083,14 +9391,18 @@ export namespace Prisma {
     phone?: true
     price?: true
     website?: true
+<<<<<<< HEAD
     createdAt?: true
     updatedAt?: true
+=======
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   }
 
   export type EventMaxAggregateInputType = {
     id?: true
     title?: true
     id_category?: true
+<<<<<<< HEAD
     address_name?: true
     lat?: true
     lng?: true
@@ -8098,6 +9410,13 @@ export namespace Prisma {
     place_id?: true
     startAt?: true
     endAt?: true
+=======
+    id_location?: true
+    data_start?: true
+    time_start?: true
+    date_end?: true
+    time_end?: true
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description?: true
     email?: true
     id_event_type?: true
@@ -8105,14 +9424,18 @@ export namespace Prisma {
     phone?: true
     price?: true
     website?: true
+<<<<<<< HEAD
     createdAt?: true
     updatedAt?: true
+=======
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   }
 
   export type EventCountAggregateInputType = {
     id?: true
     title?: true
     id_category?: true
+<<<<<<< HEAD
     address_name?: true
     lat?: true
     lng?: true
@@ -8120,6 +9443,13 @@ export namespace Prisma {
     place_id?: true
     startAt?: true
     endAt?: true
+=======
+    id_location?: true
+    data_start?: true
+    time_start?: true
+    date_end?: true
+    time_end?: true
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description?: true
     email?: true
     id_event_type?: true
@@ -8127,8 +9457,11 @@ export namespace Prisma {
     phone?: true
     price?: true
     website?: true
+<<<<<<< HEAD
     createdAt?: true
     updatedAt?: true
+=======
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     _all?: true
   }
 
@@ -8222,6 +9555,7 @@ export namespace Prisma {
     id: string
     title: string
     id_category: string
+<<<<<<< HEAD
     address_name: string
     lat: number
     lng: number
@@ -8229,6 +9563,13 @@ export namespace Prisma {
     place_id: string
     startAt: Date
     endAt: Date
+=======
+    id_location: string
+    data_start: Date
+    time_start: Date
+    date_end: Date
+    time_end: Date
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description: string
     email: string | null
     id_event_type: string
@@ -8236,8 +9577,11 @@ export namespace Prisma {
     phone: string
     price: number
     website: string
+<<<<<<< HEAD
     createdAt: Date
     updatedAt: Date
+=======
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     _count: EventCountAggregateOutputType | null
     _avg: EventAvgAggregateOutputType | null
     _sum: EventSumAggregateOutputType | null
@@ -8263,6 +9607,7 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     id_category?: boolean
+<<<<<<< HEAD
     address_name?: boolean
     lat?: boolean
     lng?: boolean
@@ -8270,6 +9615,13 @@ export namespace Prisma {
     place_id?: boolean
     startAt?: boolean
     endAt?: boolean
+=======
+    id_location?: boolean
+    data_start?: boolean
+    time_start?: boolean
+    date_end?: boolean
+    time_end?: boolean
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description?: boolean
     email?: boolean
     id_event_type?: boolean
@@ -8277,9 +9629,14 @@ export namespace Prisma {
     phone?: boolean
     price?: boolean
     website?: boolean
+<<<<<<< HEAD
     createdAt?: boolean
     updatedAt?: boolean
     category?: boolean | CategoryDefaultArgs<ExtArgs>
+=======
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+    location?: boolean | LocationDefaultArgs<ExtArgs>
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     event_type?: boolean | EventTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["event"]>
 
@@ -8287,6 +9644,7 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     id_category?: boolean
+<<<<<<< HEAD
     address_name?: boolean
     lat?: boolean
     lng?: boolean
@@ -8294,6 +9652,13 @@ export namespace Prisma {
     place_id?: boolean
     startAt?: boolean
     endAt?: boolean
+=======
+    id_location?: boolean
+    data_start?: boolean
+    time_start?: boolean
+    date_end?: boolean
+    time_end?: boolean
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description?: boolean
     email?: boolean
     id_event_type?: boolean
@@ -8301,9 +9666,14 @@ export namespace Prisma {
     phone?: boolean
     price?: boolean
     website?: boolean
+<<<<<<< HEAD
     createdAt?: boolean
     updatedAt?: boolean
     category?: boolean | CategoryDefaultArgs<ExtArgs>
+=======
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+    location?: boolean | LocationDefaultArgs<ExtArgs>
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     event_type?: boolean | EventTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["event"]>
 
@@ -8311,6 +9681,7 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     id_category?: boolean
+<<<<<<< HEAD
     address_name?: boolean
     lat?: boolean
     lng?: boolean
@@ -8318,6 +9689,13 @@ export namespace Prisma {
     place_id?: boolean
     startAt?: boolean
     endAt?: boolean
+=======
+    id_location?: boolean
+    data_start?: boolean
+    time_start?: boolean
+    date_end?: boolean
+    time_end?: boolean
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description?: boolean
     email?: boolean
     id_event_type?: boolean
@@ -8325,9 +9703,14 @@ export namespace Prisma {
     phone?: boolean
     price?: boolean
     website?: boolean
+<<<<<<< HEAD
     createdAt?: boolean
     updatedAt?: boolean
     category?: boolean | CategoryDefaultArgs<ExtArgs>
+=======
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+    location?: boolean | LocationDefaultArgs<ExtArgs>
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     event_type?: boolean | EventTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["event"]>
 
@@ -8335,6 +9718,7 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     id_category?: boolean
+<<<<<<< HEAD
     address_name?: boolean
     lat?: boolean
     lng?: boolean
@@ -8342,6 +9726,13 @@ export namespace Prisma {
     place_id?: boolean
     startAt?: boolean
     endAt?: boolean
+=======
+    id_location?: boolean
+    data_start?: boolean
+    time_start?: boolean
+    date_end?: boolean
+    time_end?: boolean
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description?: boolean
     email?: boolean
     id_event_type?: boolean
@@ -8349,6 +9740,7 @@ export namespace Prisma {
     phone?: boolean
     price?: boolean
     website?: boolean
+<<<<<<< HEAD
     createdAt?: boolean
     updatedAt?: boolean
   }
@@ -8356,14 +9748,30 @@ export namespace Prisma {
   export type EventOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "id_category" | "address_name" | "lat" | "lng" | "age" | "place_id" | "startAt" | "endAt" | "description" | "email" | "id_event_type" | "image" | "phone" | "price" | "website" | "createdAt" | "updatedAt", ExtArgs["result"]["event"]>
   export type EventInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     category?: boolean | CategoryDefaultArgs<ExtArgs>
+=======
+  }
+
+  export type EventOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "id_category" | "id_location" | "data_start" | "time_start" | "date_end" | "time_end" | "description" | "email" | "id_event_type" | "image" | "phone" | "price" | "website", ExtArgs["result"]["event"]>
+  export type EventInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+    location?: boolean | LocationDefaultArgs<ExtArgs>
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     event_type?: boolean | EventTypeDefaultArgs<ExtArgs>
   }
   export type EventIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     category?: boolean | CategoryDefaultArgs<ExtArgs>
+<<<<<<< HEAD
+=======
+    location?: boolean | LocationDefaultArgs<ExtArgs>
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     event_type?: boolean | EventTypeDefaultArgs<ExtArgs>
   }
   export type EventIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     category?: boolean | CategoryDefaultArgs<ExtArgs>
+<<<<<<< HEAD
+=======
+    location?: boolean | LocationDefaultArgs<ExtArgs>
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     event_type?: boolean | EventTypeDefaultArgs<ExtArgs>
   }
 
@@ -8371,12 +9779,17 @@ export namespace Prisma {
     name: "Event"
     objects: {
       category: Prisma.$CategoryPayload<ExtArgs>
+<<<<<<< HEAD
+=======
+      location: Prisma.$LocationPayload<ExtArgs>
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
       event_type: Prisma.$EventTypePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       title: string
       id_category: string
+<<<<<<< HEAD
       address_name: string
       lat: number
       lng: number
@@ -8384,6 +9797,13 @@ export namespace Prisma {
       place_id: string
       startAt: Date
       endAt: Date
+=======
+      id_location: string
+      data_start: Date
+      time_start: Date
+      date_end: Date
+      time_end: Date
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
       description: string
       email: string | null
       id_event_type: string
@@ -8391,8 +9811,11 @@ export namespace Prisma {
       phone: string
       price: number
       website: string
+<<<<<<< HEAD
       createdAt: Date
       updatedAt: Date
+=======
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     }, ExtArgs["result"]["event"]>
     composites: {}
   }
@@ -8788,6 +10211,10 @@ export namespace Prisma {
   export interface Prisma__EventClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     category<T extends CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoryDefaultArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+<<<<<<< HEAD
+=======
+    location<T extends LocationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LocationDefaultArgs<ExtArgs>>): Prisma__LocationClient<$Result.GetResult<Prisma.$LocationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     event_type<T extends EventTypeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EventTypeDefaultArgs<ExtArgs>>): Prisma__EventTypeClient<$Result.GetResult<Prisma.$EventTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -8821,6 +10248,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Event", 'String'>
     readonly title: FieldRef<"Event", 'String'>
     readonly id_category: FieldRef<"Event", 'String'>
+<<<<<<< HEAD
     readonly address_name: FieldRef<"Event", 'String'>
     readonly lat: FieldRef<"Event", 'Float'>
     readonly lng: FieldRef<"Event", 'Float'>
@@ -8828,6 +10256,13 @@ export namespace Prisma {
     readonly place_id: FieldRef<"Event", 'String'>
     readonly startAt: FieldRef<"Event", 'DateTime'>
     readonly endAt: FieldRef<"Event", 'DateTime'>
+=======
+    readonly id_location: FieldRef<"Event", 'String'>
+    readonly data_start: FieldRef<"Event", 'DateTime'>
+    readonly time_start: FieldRef<"Event", 'DateTime'>
+    readonly date_end: FieldRef<"Event", 'DateTime'>
+    readonly time_end: FieldRef<"Event", 'DateTime'>
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     readonly description: FieldRef<"Event", 'String'>
     readonly email: FieldRef<"Event", 'String'>
     readonly id_event_type: FieldRef<"Event", 'String'>
@@ -8835,8 +10270,11 @@ export namespace Prisma {
     readonly phone: FieldRef<"Event", 'String'>
     readonly price: FieldRef<"Event", 'Float'>
     readonly website: FieldRef<"Event", 'String'>
+<<<<<<< HEAD
     readonly createdAt: FieldRef<"Event", 'DateTime'>
     readonly updatedAt: FieldRef<"Event", 'DateTime'>
+=======
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   }
     
 
@@ -9331,6 +10769,20 @@ export namespace Prisma {
   export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
 
 
+<<<<<<< HEAD
+=======
+  export const LocationScalarFieldEnum: {
+    id: 'id',
+    address_name: 'address_name',
+    lat: 'lat',
+    lng: 'lng',
+    place_id: 'place_id'
+  };
+
+  export type LocationScalarFieldEnum = (typeof LocationScalarFieldEnum)[keyof typeof LocationScalarFieldEnum]
+
+
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   export const EventTypeScalarFieldEnum: {
     id: 'id',
     description: 'description'
@@ -9343,6 +10795,7 @@ export namespace Prisma {
     id: 'id',
     title: 'title',
     id_category: 'id_category',
+<<<<<<< HEAD
     address_name: 'address_name',
     lat: 'lat',
     lng: 'lng',
@@ -9350,15 +10803,26 @@ export namespace Prisma {
     place_id: 'place_id',
     startAt: 'startAt',
     endAt: 'endAt',
+=======
+    id_location: 'id_location',
+    data_start: 'data_start',
+    time_start: 'time_start',
+    date_end: 'date_end',
+    time_end: 'time_end',
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description: 'description',
     email: 'email',
     id_event_type: 'id_event_type',
     image: 'image',
     phone: 'phone',
     price: 'price',
+<<<<<<< HEAD
     website: 'website',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
+=======
+    website: 'website'
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   };
 
   export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof EventScalarFieldEnum]
@@ -9789,6 +11253,66 @@ export namespace Prisma {
     description?: StringWithAggregatesFilter<"Category"> | string
   }
 
+<<<<<<< HEAD
+=======
+  export type LocationWhereInput = {
+    AND?: LocationWhereInput | LocationWhereInput[]
+    OR?: LocationWhereInput[]
+    NOT?: LocationWhereInput | LocationWhereInput[]
+    id?: StringFilter<"Location"> | string
+    address_name?: StringFilter<"Location"> | string
+    lat?: FloatFilter<"Location"> | number
+    lng?: FloatFilter<"Location"> | number
+    place_id?: StringFilter<"Location"> | string
+    events?: EventListRelationFilter
+  }
+
+  export type LocationOrderByWithRelationInput = {
+    id?: SortOrder
+    address_name?: SortOrder
+    lat?: SortOrder
+    lng?: SortOrder
+    place_id?: SortOrder
+    events?: EventOrderByRelationAggregateInput
+  }
+
+  export type LocationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: LocationWhereInput | LocationWhereInput[]
+    OR?: LocationWhereInput[]
+    NOT?: LocationWhereInput | LocationWhereInput[]
+    address_name?: StringFilter<"Location"> | string
+    lat?: FloatFilter<"Location"> | number
+    lng?: FloatFilter<"Location"> | number
+    place_id?: StringFilter<"Location"> | string
+    events?: EventListRelationFilter
+  }, "id">
+
+  export type LocationOrderByWithAggregationInput = {
+    id?: SortOrder
+    address_name?: SortOrder
+    lat?: SortOrder
+    lng?: SortOrder
+    place_id?: SortOrder
+    _count?: LocationCountOrderByAggregateInput
+    _avg?: LocationAvgOrderByAggregateInput
+    _max?: LocationMaxOrderByAggregateInput
+    _min?: LocationMinOrderByAggregateInput
+    _sum?: LocationSumOrderByAggregateInput
+  }
+
+  export type LocationScalarWhereWithAggregatesInput = {
+    AND?: LocationScalarWhereWithAggregatesInput | LocationScalarWhereWithAggregatesInput[]
+    OR?: LocationScalarWhereWithAggregatesInput[]
+    NOT?: LocationScalarWhereWithAggregatesInput | LocationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Location"> | string
+    address_name?: StringWithAggregatesFilter<"Location"> | string
+    lat?: FloatWithAggregatesFilter<"Location"> | number
+    lng?: FloatWithAggregatesFilter<"Location"> | number
+    place_id?: StringWithAggregatesFilter<"Location"> | string
+  }
+
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   export type EventTypeWhereInput = {
     AND?: EventTypeWhereInput | EventTypeWhereInput[]
     OR?: EventTypeWhereInput[]
@@ -9836,6 +11360,7 @@ export namespace Prisma {
     id?: StringFilter<"Event"> | string
     title?: StringFilter<"Event"> | string
     id_category?: StringFilter<"Event"> | string
+<<<<<<< HEAD
     address_name?: StringFilter<"Event"> | string
     lat?: FloatFilter<"Event"> | number
     lng?: FloatFilter<"Event"> | number
@@ -9843,6 +11368,13 @@ export namespace Prisma {
     place_id?: StringFilter<"Event"> | string
     startAt?: DateTimeFilter<"Event"> | Date | string
     endAt?: DateTimeFilter<"Event"> | Date | string
+=======
+    id_location?: StringFilter<"Event"> | string
+    data_start?: DateTimeFilter<"Event"> | Date | string
+    time_start?: DateTimeFilter<"Event"> | Date | string
+    date_end?: DateTimeFilter<"Event"> | Date | string
+    time_end?: DateTimeFilter<"Event"> | Date | string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description?: StringFilter<"Event"> | string
     email?: StringNullableFilter<"Event"> | string | null
     id_event_type?: StringFilter<"Event"> | string
@@ -9850,9 +11382,14 @@ export namespace Prisma {
     phone?: StringFilter<"Event"> | string
     price?: FloatFilter<"Event"> | number
     website?: StringFilter<"Event"> | string
+<<<<<<< HEAD
     createdAt?: DateTimeFilter<"Event"> | Date | string
     updatedAt?: DateTimeFilter<"Event"> | Date | string
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
+=======
+    category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
+    location?: XOR<LocationScalarRelationFilter, LocationWhereInput>
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     event_type?: XOR<EventTypeScalarRelationFilter, EventTypeWhereInput>
   }
 
@@ -9860,6 +11397,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     id_category?: SortOrder
+<<<<<<< HEAD
     address_name?: SortOrder
     lat?: SortOrder
     lng?: SortOrder
@@ -9867,6 +11405,13 @@ export namespace Prisma {
     place_id?: SortOrder
     startAt?: SortOrder
     endAt?: SortOrder
+=======
+    id_location?: SortOrder
+    data_start?: SortOrder
+    time_start?: SortOrder
+    date_end?: SortOrder
+    time_end?: SortOrder
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description?: SortOrder
     email?: SortOrderInput | SortOrder
     id_event_type?: SortOrder
@@ -9874,9 +11419,14 @@ export namespace Prisma {
     phone?: SortOrder
     price?: SortOrder
     website?: SortOrder
+<<<<<<< HEAD
     createdAt?: SortOrder
     updatedAt?: SortOrder
     category?: CategoryOrderByWithRelationInput
+=======
+    category?: CategoryOrderByWithRelationInput
+    location?: LocationOrderByWithRelationInput
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     event_type?: EventTypeOrderByWithRelationInput
   }
 
@@ -9887,6 +11437,7 @@ export namespace Prisma {
     NOT?: EventWhereInput | EventWhereInput[]
     title?: StringFilter<"Event"> | string
     id_category?: StringFilter<"Event"> | string
+<<<<<<< HEAD
     address_name?: StringFilter<"Event"> | string
     lat?: FloatFilter<"Event"> | number
     lng?: FloatFilter<"Event"> | number
@@ -9894,6 +11445,13 @@ export namespace Prisma {
     place_id?: StringFilter<"Event"> | string
     startAt?: DateTimeFilter<"Event"> | Date | string
     endAt?: DateTimeFilter<"Event"> | Date | string
+=======
+    id_location?: StringFilter<"Event"> | string
+    data_start?: DateTimeFilter<"Event"> | Date | string
+    time_start?: DateTimeFilter<"Event"> | Date | string
+    date_end?: DateTimeFilter<"Event"> | Date | string
+    time_end?: DateTimeFilter<"Event"> | Date | string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description?: StringFilter<"Event"> | string
     email?: StringNullableFilter<"Event"> | string | null
     id_event_type?: StringFilter<"Event"> | string
@@ -9901,9 +11459,14 @@ export namespace Prisma {
     phone?: StringFilter<"Event"> | string
     price?: FloatFilter<"Event"> | number
     website?: StringFilter<"Event"> | string
+<<<<<<< HEAD
     createdAt?: DateTimeFilter<"Event"> | Date | string
     updatedAt?: DateTimeFilter<"Event"> | Date | string
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
+=======
+    category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
+    location?: XOR<LocationScalarRelationFilter, LocationWhereInput>
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     event_type?: XOR<EventTypeScalarRelationFilter, EventTypeWhereInput>
   }, "id">
 
@@ -9911,6 +11474,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     id_category?: SortOrder
+<<<<<<< HEAD
     address_name?: SortOrder
     lat?: SortOrder
     lng?: SortOrder
@@ -9918,6 +11482,13 @@ export namespace Prisma {
     place_id?: SortOrder
     startAt?: SortOrder
     endAt?: SortOrder
+=======
+    id_location?: SortOrder
+    data_start?: SortOrder
+    time_start?: SortOrder
+    date_end?: SortOrder
+    time_end?: SortOrder
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description?: SortOrder
     email?: SortOrderInput | SortOrder
     id_event_type?: SortOrder
@@ -9925,8 +11496,11 @@ export namespace Prisma {
     phone?: SortOrder
     price?: SortOrder
     website?: SortOrder
+<<<<<<< HEAD
     createdAt?: SortOrder
     updatedAt?: SortOrder
+=======
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     _count?: EventCountOrderByAggregateInput
     _avg?: EventAvgOrderByAggregateInput
     _max?: EventMaxOrderByAggregateInput
@@ -9941,6 +11515,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Event"> | string
     title?: StringWithAggregatesFilter<"Event"> | string
     id_category?: StringWithAggregatesFilter<"Event"> | string
+<<<<<<< HEAD
     address_name?: StringWithAggregatesFilter<"Event"> | string
     lat?: FloatWithAggregatesFilter<"Event"> | number
     lng?: FloatWithAggregatesFilter<"Event"> | number
@@ -9948,6 +11523,13 @@ export namespace Prisma {
     place_id?: StringWithAggregatesFilter<"Event"> | string
     startAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
     endAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
+=======
+    id_location?: StringWithAggregatesFilter<"Event"> | string
+    data_start?: DateTimeWithAggregatesFilter<"Event"> | Date | string
+    time_start?: DateTimeWithAggregatesFilter<"Event"> | Date | string
+    date_end?: DateTimeWithAggregatesFilter<"Event"> | Date | string
+    time_end?: DateTimeWithAggregatesFilter<"Event"> | Date | string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description?: StringWithAggregatesFilter<"Event"> | string
     email?: StringNullableWithAggregatesFilter<"Event"> | string | null
     id_event_type?: StringWithAggregatesFilter<"Event"> | string
@@ -9955,8 +11537,11 @@ export namespace Prisma {
     phone?: StringWithAggregatesFilter<"Event"> | string
     price?: FloatWithAggregatesFilter<"Event"> | number
     website?: StringWithAggregatesFilter<"Event"> | string
+<<<<<<< HEAD
     createdAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
+=======
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   }
 
   export type UserCreateInput = {
@@ -10288,13 +11873,21 @@ export namespace Prisma {
   }
 
   export type CategoryCreateInput = {
+<<<<<<< HEAD
     id?: string
+=======
+    id: string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description: string
     events?: EventCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUncheckedCreateInput = {
+<<<<<<< HEAD
     id?: string
+=======
+    id: string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description: string
     events?: EventUncheckedCreateNestedManyWithoutCategoryInput
   }
@@ -10312,7 +11905,11 @@ export namespace Prisma {
   }
 
   export type CategoryCreateManyInput = {
+<<<<<<< HEAD
     id?: string
+=======
+    id: string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description: string
   }
 
@@ -10326,14 +11923,83 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
   }
 
+<<<<<<< HEAD
   export type EventTypeCreateInput = {
     id?: string
+=======
+  export type LocationCreateInput = {
+    id: string
+    address_name: string
+    lat: number
+    lng: number
+    place_id: string
+    events?: EventCreateNestedManyWithoutLocationInput
+  }
+
+  export type LocationUncheckedCreateInput = {
+    id: string
+    address_name: string
+    lat: number
+    lng: number
+    place_id: string
+    events?: EventUncheckedCreateNestedManyWithoutLocationInput
+  }
+
+  export type LocationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    address_name?: StringFieldUpdateOperationsInput | string
+    lat?: FloatFieldUpdateOperationsInput | number
+    lng?: FloatFieldUpdateOperationsInput | number
+    place_id?: StringFieldUpdateOperationsInput | string
+    events?: EventUpdateManyWithoutLocationNestedInput
+  }
+
+  export type LocationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    address_name?: StringFieldUpdateOperationsInput | string
+    lat?: FloatFieldUpdateOperationsInput | number
+    lng?: FloatFieldUpdateOperationsInput | number
+    place_id?: StringFieldUpdateOperationsInput | string
+    events?: EventUncheckedUpdateManyWithoutLocationNestedInput
+  }
+
+  export type LocationCreateManyInput = {
+    id: string
+    address_name: string
+    lat: number
+    lng: number
+    place_id: string
+  }
+
+  export type LocationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    address_name?: StringFieldUpdateOperationsInput | string
+    lat?: FloatFieldUpdateOperationsInput | number
+    lng?: FloatFieldUpdateOperationsInput | number
+    place_id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type LocationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    address_name?: StringFieldUpdateOperationsInput | string
+    lat?: FloatFieldUpdateOperationsInput | number
+    lng?: FloatFieldUpdateOperationsInput | number
+    place_id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type EventTypeCreateInput = {
+    id: string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description: string
     events?: EventCreateNestedManyWithoutEvent_typeInput
   }
 
   export type EventTypeUncheckedCreateInput = {
+<<<<<<< HEAD
     id?: string
+=======
+    id: string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description: string
     events?: EventUncheckedCreateNestedManyWithoutEvent_typeInput
   }
@@ -10351,7 +12017,11 @@ export namespace Prisma {
   }
 
   export type EventTypeCreateManyInput = {
+<<<<<<< HEAD
     id?: string
+=======
+    id: string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description: string
   }
 
@@ -10366,6 +12036,7 @@ export namespace Prisma {
   }
 
   export type EventCreateInput = {
+<<<<<<< HEAD
     id?: string
     title: string
     address_name: string
@@ -10375,19 +12046,33 @@ export namespace Prisma {
     place_id: string
     startAt?: Date | string
     endAt?: Date | string
+=======
+    id: string
+    title: string
+    data_start: Date | string
+    time_start: Date | string
+    date_end: Date | string
+    time_end: Date | string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description: string
     email?: string | null
     image: string
     phone: string
     price: number
     website: string
+<<<<<<< HEAD
     createdAt?: Date | string
     updatedAt?: Date | string
     category: CategoryCreateNestedOneWithoutEventsInput
+=======
+    category: CategoryCreateNestedOneWithoutEventsInput
+    location: LocationCreateNestedOneWithoutEventsInput
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     event_type: EventTypeCreateNestedOneWithoutEventsInput
   }
 
   export type EventUncheckedCreateInput = {
+<<<<<<< HEAD
     id?: string
     title: string
     id_category: string
@@ -10398,6 +12083,16 @@ export namespace Prisma {
     place_id: string
     startAt?: Date | string
     endAt?: Date | string
+=======
+    id: string
+    title: string
+    id_category: string
+    id_location: string
+    data_start: Date | string
+    time_start: Date | string
+    date_end: Date | string
+    time_end: Date | string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description: string
     email?: string | null
     id_event_type: string
@@ -10405,13 +12100,17 @@ export namespace Prisma {
     phone: string
     price: number
     website: string
+<<<<<<< HEAD
     createdAt?: Date | string
     updatedAt?: Date | string
+=======
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   }
 
   export type EventUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
     address_name?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
     lng?: FloatFieldUpdateOperationsInput | number
@@ -10419,15 +12118,26 @@ export namespace Prisma {
     place_id?: StringFieldUpdateOperationsInput | string
     startAt?: DateTimeFieldUpdateOperationsInput | Date | string
     endAt?: DateTimeFieldUpdateOperationsInput | Date | string
+=======
+    data_start?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_start?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_end?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_end?: DateTimeFieldUpdateOperationsInput | Date | string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     website?: StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: CategoryUpdateOneRequiredWithoutEventsNestedInput
+=======
+    category?: CategoryUpdateOneRequiredWithoutEventsNestedInput
+    location?: LocationUpdateOneRequiredWithoutEventsNestedInput
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     event_type?: EventTypeUpdateOneRequiredWithoutEventsNestedInput
   }
 
@@ -10435,6 +12145,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     id_category?: StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
     address_name?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
     lng?: FloatFieldUpdateOperationsInput | number
@@ -10442,6 +12153,13 @@ export namespace Prisma {
     place_id?: StringFieldUpdateOperationsInput | string
     startAt?: DateTimeFieldUpdateOperationsInput | Date | string
     endAt?: DateTimeFieldUpdateOperationsInput | Date | string
+=======
+    id_location?: StringFieldUpdateOperationsInput | string
+    data_start?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_start?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_end?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_end?: DateTimeFieldUpdateOperationsInput | Date | string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     id_event_type?: StringFieldUpdateOperationsInput | string
@@ -10449,6 +12167,7 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     website?: StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10464,6 +12183,19 @@ export namespace Prisma {
     place_id: string
     startAt?: Date | string
     endAt?: Date | string
+=======
+  }
+
+  export type EventCreateManyInput = {
+    id: string
+    title: string
+    id_category: string
+    id_location: string
+    data_start: Date | string
+    time_start: Date | string
+    date_end: Date | string
+    time_end: Date | string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description: string
     email?: string | null
     id_event_type: string
@@ -10471,13 +12203,17 @@ export namespace Prisma {
     phone: string
     price: number
     website: string
+<<<<<<< HEAD
     createdAt?: Date | string
     updatedAt?: Date | string
+=======
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   }
 
   export type EventUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
     address_name?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
     lng?: FloatFieldUpdateOperationsInput | number
@@ -10485,20 +12221,30 @@ export namespace Prisma {
     place_id?: StringFieldUpdateOperationsInput | string
     startAt?: DateTimeFieldUpdateOperationsInput | Date | string
     endAt?: DateTimeFieldUpdateOperationsInput | Date | string
+=======
+    data_start?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_start?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_end?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_end?: DateTimeFieldUpdateOperationsInput | Date | string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     website?: StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+=======
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   }
 
   export type EventUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     id_category?: StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
     address_name?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
     lng?: FloatFieldUpdateOperationsInput | number
@@ -10506,6 +12252,13 @@ export namespace Prisma {
     place_id?: StringFieldUpdateOperationsInput | string
     startAt?: DateTimeFieldUpdateOperationsInput | Date | string
     endAt?: DateTimeFieldUpdateOperationsInput | Date | string
+=======
+    id_location?: StringFieldUpdateOperationsInput | string
+    data_start?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_start?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_end?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_end?: DateTimeFieldUpdateOperationsInput | Date | string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     id_event_type?: StringFieldUpdateOperationsInput | string
@@ -10513,8 +12266,11 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     website?: StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+=======
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -10839,6 +12595,7 @@ export namespace Prisma {
     description?: SortOrder
   }
 
+<<<<<<< HEAD
   export type EventTypeCountOrderByAggregateInput = {
     id?: SortOrder
     description?: SortOrder
@@ -10854,6 +12611,8 @@ export namespace Prisma {
     description?: SortOrder
   }
 
+=======
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   export type FloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -10865,6 +12624,7 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
+<<<<<<< HEAD
   export type CategoryScalarRelationFilter = {
     is?: CategoryWhereInput
     isNot?: CategoryWhereInput
@@ -10951,6 +12711,40 @@ export namespace Prisma {
     lat?: SortOrder
     lng?: SortOrder
     price?: SortOrder
+=======
+  export type LocationCountOrderByAggregateInput = {
+    id?: SortOrder
+    address_name?: SortOrder
+    lat?: SortOrder
+    lng?: SortOrder
+    place_id?: SortOrder
+  }
+
+  export type LocationAvgOrderByAggregateInput = {
+    lat?: SortOrder
+    lng?: SortOrder
+  }
+
+  export type LocationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    address_name?: SortOrder
+    lat?: SortOrder
+    lng?: SortOrder
+    place_id?: SortOrder
+  }
+
+  export type LocationMinOrderByAggregateInput = {
+    id?: SortOrder
+    address_name?: SortOrder
+    lat?: SortOrder
+    lng?: SortOrder
+    place_id?: SortOrder
+  }
+
+  export type LocationSumOrderByAggregateInput = {
+    lat?: SortOrder
+    lng?: SortOrder
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   }
 
   export type FloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -10969,6 +12763,101 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
+<<<<<<< HEAD
+=======
+  export type EventTypeCountOrderByAggregateInput = {
+    id?: SortOrder
+    description?: SortOrder
+  }
+
+  export type EventTypeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    description?: SortOrder
+  }
+
+  export type EventTypeMinOrderByAggregateInput = {
+    id?: SortOrder
+    description?: SortOrder
+  }
+
+  export type CategoryScalarRelationFilter = {
+    is?: CategoryWhereInput
+    isNot?: CategoryWhereInput
+  }
+
+  export type LocationScalarRelationFilter = {
+    is?: LocationWhereInput
+    isNot?: LocationWhereInput
+  }
+
+  export type EventTypeScalarRelationFilter = {
+    is?: EventTypeWhereInput
+    isNot?: EventTypeWhereInput
+  }
+
+  export type EventCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    id_category?: SortOrder
+    id_location?: SortOrder
+    data_start?: SortOrder
+    time_start?: SortOrder
+    date_end?: SortOrder
+    time_end?: SortOrder
+    description?: SortOrder
+    email?: SortOrder
+    id_event_type?: SortOrder
+    image?: SortOrder
+    phone?: SortOrder
+    price?: SortOrder
+    website?: SortOrder
+  }
+
+  export type EventAvgOrderByAggregateInput = {
+    price?: SortOrder
+  }
+
+  export type EventMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    id_category?: SortOrder
+    id_location?: SortOrder
+    data_start?: SortOrder
+    time_start?: SortOrder
+    date_end?: SortOrder
+    time_end?: SortOrder
+    description?: SortOrder
+    email?: SortOrder
+    id_event_type?: SortOrder
+    image?: SortOrder
+    phone?: SortOrder
+    price?: SortOrder
+    website?: SortOrder
+  }
+
+  export type EventMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    id_category?: SortOrder
+    id_location?: SortOrder
+    data_start?: SortOrder
+    time_start?: SortOrder
+    date_end?: SortOrder
+    time_end?: SortOrder
+    description?: SortOrder
+    email?: SortOrder
+    id_event_type?: SortOrder
+    image?: SortOrder
+    phone?: SortOrder
+    price?: SortOrder
+    website?: SortOrder
+  }
+
+  export type EventSumOrderByAggregateInput = {
+    price?: SortOrder
+  }
+
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   export type SessionCreateNestedManyWithoutUserInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
@@ -11143,6 +13032,59 @@ export namespace Prisma {
     deleteMany?: EventScalarWhereInput | EventScalarWhereInput[]
   }
 
+<<<<<<< HEAD
+=======
+  export type EventCreateNestedManyWithoutLocationInput = {
+    create?: XOR<EventCreateWithoutLocationInput, EventUncheckedCreateWithoutLocationInput> | EventCreateWithoutLocationInput[] | EventUncheckedCreateWithoutLocationInput[]
+    connectOrCreate?: EventCreateOrConnectWithoutLocationInput | EventCreateOrConnectWithoutLocationInput[]
+    createMany?: EventCreateManyLocationInputEnvelope
+    connect?: EventWhereUniqueInput | EventWhereUniqueInput[]
+  }
+
+  export type EventUncheckedCreateNestedManyWithoutLocationInput = {
+    create?: XOR<EventCreateWithoutLocationInput, EventUncheckedCreateWithoutLocationInput> | EventCreateWithoutLocationInput[] | EventUncheckedCreateWithoutLocationInput[]
+    connectOrCreate?: EventCreateOrConnectWithoutLocationInput | EventCreateOrConnectWithoutLocationInput[]
+    createMany?: EventCreateManyLocationInputEnvelope
+    connect?: EventWhereUniqueInput | EventWhereUniqueInput[]
+  }
+
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type EventUpdateManyWithoutLocationNestedInput = {
+    create?: XOR<EventCreateWithoutLocationInput, EventUncheckedCreateWithoutLocationInput> | EventCreateWithoutLocationInput[] | EventUncheckedCreateWithoutLocationInput[]
+    connectOrCreate?: EventCreateOrConnectWithoutLocationInput | EventCreateOrConnectWithoutLocationInput[]
+    upsert?: EventUpsertWithWhereUniqueWithoutLocationInput | EventUpsertWithWhereUniqueWithoutLocationInput[]
+    createMany?: EventCreateManyLocationInputEnvelope
+    set?: EventWhereUniqueInput | EventWhereUniqueInput[]
+    disconnect?: EventWhereUniqueInput | EventWhereUniqueInput[]
+    delete?: EventWhereUniqueInput | EventWhereUniqueInput[]
+    connect?: EventWhereUniqueInput | EventWhereUniqueInput[]
+    update?: EventUpdateWithWhereUniqueWithoutLocationInput | EventUpdateWithWhereUniqueWithoutLocationInput[]
+    updateMany?: EventUpdateManyWithWhereWithoutLocationInput | EventUpdateManyWithWhereWithoutLocationInput[]
+    deleteMany?: EventScalarWhereInput | EventScalarWhereInput[]
+  }
+
+  export type EventUncheckedUpdateManyWithoutLocationNestedInput = {
+    create?: XOR<EventCreateWithoutLocationInput, EventUncheckedCreateWithoutLocationInput> | EventCreateWithoutLocationInput[] | EventUncheckedCreateWithoutLocationInput[]
+    connectOrCreate?: EventCreateOrConnectWithoutLocationInput | EventCreateOrConnectWithoutLocationInput[]
+    upsert?: EventUpsertWithWhereUniqueWithoutLocationInput | EventUpsertWithWhereUniqueWithoutLocationInput[]
+    createMany?: EventCreateManyLocationInputEnvelope
+    set?: EventWhereUniqueInput | EventWhereUniqueInput[]
+    disconnect?: EventWhereUniqueInput | EventWhereUniqueInput[]
+    delete?: EventWhereUniqueInput | EventWhereUniqueInput[]
+    connect?: EventWhereUniqueInput | EventWhereUniqueInput[]
+    update?: EventUpdateWithWhereUniqueWithoutLocationInput | EventUpdateWithWhereUniqueWithoutLocationInput[]
+    updateMany?: EventUpdateManyWithWhereWithoutLocationInput | EventUpdateManyWithWhereWithoutLocationInput[]
+    deleteMany?: EventScalarWhereInput | EventScalarWhereInput[]
+  }
+
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   export type EventCreateNestedManyWithoutEvent_typeInput = {
     create?: XOR<EventCreateWithoutEvent_typeInput, EventUncheckedCreateWithoutEvent_typeInput> | EventCreateWithoutEvent_typeInput[] | EventUncheckedCreateWithoutEvent_typeInput[]
     connectOrCreate?: EventCreateOrConnectWithoutEvent_typeInput | EventCreateOrConnectWithoutEvent_typeInput[]
@@ -11191,12 +13133,22 @@ export namespace Prisma {
     connect?: CategoryWhereUniqueInput
   }
 
+<<<<<<< HEAD
+=======
+  export type LocationCreateNestedOneWithoutEventsInput = {
+    create?: XOR<LocationCreateWithoutEventsInput, LocationUncheckedCreateWithoutEventsInput>
+    connectOrCreate?: LocationCreateOrConnectWithoutEventsInput
+    connect?: LocationWhereUniqueInput
+  }
+
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   export type EventTypeCreateNestedOneWithoutEventsInput = {
     create?: XOR<EventTypeCreateWithoutEventsInput, EventTypeUncheckedCreateWithoutEventsInput>
     connectOrCreate?: EventTypeCreateOrConnectWithoutEventsInput
     connect?: EventTypeWhereUniqueInput
   }
 
+<<<<<<< HEAD
   export type FloatFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -11205,6 +13157,8 @@ export namespace Prisma {
     divide?: number
   }
 
+=======
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   export type CategoryUpdateOneRequiredWithoutEventsNestedInput = {
     create?: XOR<CategoryCreateWithoutEventsInput, CategoryUncheckedCreateWithoutEventsInput>
     connectOrCreate?: CategoryCreateOrConnectWithoutEventsInput
@@ -11213,6 +13167,17 @@ export namespace Prisma {
     update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutEventsInput, CategoryUpdateWithoutEventsInput>, CategoryUncheckedUpdateWithoutEventsInput>
   }
 
+<<<<<<< HEAD
+=======
+  export type LocationUpdateOneRequiredWithoutEventsNestedInput = {
+    create?: XOR<LocationCreateWithoutEventsInput, LocationUncheckedCreateWithoutEventsInput>
+    connectOrCreate?: LocationCreateOrConnectWithoutEventsInput
+    upsert?: LocationUpsertWithoutEventsInput
+    connect?: LocationWhereUniqueInput
+    update?: XOR<XOR<LocationUpdateToOneWithWhereWithoutEventsInput, LocationUpdateWithoutEventsInput>, LocationUncheckedUpdateWithoutEventsInput>
+  }
+
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   export type EventTypeUpdateOneRequiredWithoutEventsNestedInput = {
     create?: XOR<EventTypeCreateWithoutEventsInput, EventTypeUncheckedCreateWithoutEventsInput>
     connectOrCreate?: EventTypeCreateOrConnectWithoutEventsInput
@@ -11651,6 +13616,7 @@ export namespace Prisma {
   }
 
   export type EventCreateWithoutCategoryInput = {
+<<<<<<< HEAD
     id?: string
     title: string
     address_name: string
@@ -11660,18 +13626,31 @@ export namespace Prisma {
     place_id: string
     startAt?: Date | string
     endAt?: Date | string
+=======
+    id: string
+    title: string
+    data_start: Date | string
+    time_start: Date | string
+    date_end: Date | string
+    time_end: Date | string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description: string
     email?: string | null
     image: string
     phone: string
     price: number
     website: string
+<<<<<<< HEAD
     createdAt?: Date | string
     updatedAt?: Date | string
+=======
+    location: LocationCreateNestedOneWithoutEventsInput
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     event_type: EventTypeCreateNestedOneWithoutEventsInput
   }
 
   export type EventUncheckedCreateWithoutCategoryInput = {
+<<<<<<< HEAD
     id?: string
     title: string
     address_name: string
@@ -11681,6 +13660,15 @@ export namespace Prisma {
     place_id: string
     startAt?: Date | string
     endAt?: Date | string
+=======
+    id: string
+    title: string
+    id_location: string
+    data_start: Date | string
+    time_start: Date | string
+    date_end: Date | string
+    time_end: Date | string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description: string
     email?: string | null
     id_event_type: string
@@ -11688,8 +13676,11 @@ export namespace Prisma {
     phone: string
     price: number
     website: string
+<<<<<<< HEAD
     createdAt?: Date | string
     updatedAt?: Date | string
+=======
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   }
 
   export type EventCreateOrConnectWithoutCategoryInput = {
@@ -11725,6 +13716,7 @@ export namespace Prisma {
     id?: StringFilter<"Event"> | string
     title?: StringFilter<"Event"> | string
     id_category?: StringFilter<"Event"> | string
+<<<<<<< HEAD
     address_name?: StringFilter<"Event"> | string
     lat?: FloatFilter<"Event"> | number
     lng?: FloatFilter<"Event"> | number
@@ -11732,6 +13724,13 @@ export namespace Prisma {
     place_id?: StringFilter<"Event"> | string
     startAt?: DateTimeFilter<"Event"> | Date | string
     endAt?: DateTimeFilter<"Event"> | Date | string
+=======
+    id_location?: StringFilter<"Event"> | string
+    data_start?: DateTimeFilter<"Event"> | Date | string
+    time_start?: DateTimeFilter<"Event"> | Date | string
+    date_end?: DateTimeFilter<"Event"> | Date | string
+    time_end?: DateTimeFilter<"Event"> | Date | string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description?: StringFilter<"Event"> | string
     email?: StringNullableFilter<"Event"> | string | null
     id_event_type?: StringFilter<"Event"> | string
@@ -11739,6 +13738,7 @@ export namespace Prisma {
     phone?: StringFilter<"Event"> | string
     price?: FloatFilter<"Event"> | number
     website?: StringFilter<"Event"> | string
+<<<<<<< HEAD
     createdAt?: DateTimeFilter<"Event"> | Date | string
     updatedAt?: DateTimeFilter<"Event"> | Date | string
   }
@@ -11753,12 +13753,84 @@ export namespace Prisma {
     place_id: string
     startAt?: Date | string
     endAt?: Date | string
+=======
+  }
+
+  export type EventCreateWithoutLocationInput = {
+    id: string
+    title: string
+    data_start: Date | string
+    time_start: Date | string
+    date_end: Date | string
+    time_end: Date | string
     description: string
     email?: string | null
     image: string
     phone: string
     price: number
     website: string
+    category: CategoryCreateNestedOneWithoutEventsInput
+    event_type: EventTypeCreateNestedOneWithoutEventsInput
+  }
+
+  export type EventUncheckedCreateWithoutLocationInput = {
+    id: string
+    title: string
+    id_category: string
+    data_start: Date | string
+    time_start: Date | string
+    date_end: Date | string
+    time_end: Date | string
+    description: string
+    email?: string | null
+    id_event_type: string
+    image: string
+    phone: string
+    price: number
+    website: string
+  }
+
+  export type EventCreateOrConnectWithoutLocationInput = {
+    where: EventWhereUniqueInput
+    create: XOR<EventCreateWithoutLocationInput, EventUncheckedCreateWithoutLocationInput>
+  }
+
+  export type EventCreateManyLocationInputEnvelope = {
+    data: EventCreateManyLocationInput | EventCreateManyLocationInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type EventUpsertWithWhereUniqueWithoutLocationInput = {
+    where: EventWhereUniqueInput
+    update: XOR<EventUpdateWithoutLocationInput, EventUncheckedUpdateWithoutLocationInput>
+    create: XOR<EventCreateWithoutLocationInput, EventUncheckedCreateWithoutLocationInput>
+  }
+
+  export type EventUpdateWithWhereUniqueWithoutLocationInput = {
+    where: EventWhereUniqueInput
+    data: XOR<EventUpdateWithoutLocationInput, EventUncheckedUpdateWithoutLocationInput>
+  }
+
+  export type EventUpdateManyWithWhereWithoutLocationInput = {
+    where: EventScalarWhereInput
+    data: XOR<EventUpdateManyMutationInput, EventUncheckedUpdateManyWithoutLocationInput>
+  }
+
+  export type EventCreateWithoutEvent_typeInput = {
+    id: string
+    title: string
+    data_start: Date | string
+    time_start: Date | string
+    date_end: Date | string
+    time_end: Date | string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
+    description: string
+    email?: string | null
+    image: string
+    phone: string
+    price: number
+    website: string
+<<<<<<< HEAD
     createdAt?: Date | string
     updatedAt?: Date | string
     category: CategoryCreateNestedOneWithoutEventsInput
@@ -11775,14 +13847,32 @@ export namespace Prisma {
     place_id: string
     startAt?: Date | string
     endAt?: Date | string
+=======
+    category: CategoryCreateNestedOneWithoutEventsInput
+    location: LocationCreateNestedOneWithoutEventsInput
+  }
+
+  export type EventUncheckedCreateWithoutEvent_typeInput = {
+    id: string
+    title: string
+    id_category: string
+    id_location: string
+    data_start: Date | string
+    time_start: Date | string
+    date_end: Date | string
+    time_end: Date | string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description: string
     email?: string | null
     image: string
     phone: string
     price: number
     website: string
+<<<<<<< HEAD
     createdAt?: Date | string
     updatedAt?: Date | string
+=======
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   }
 
   export type EventCreateOrConnectWithoutEvent_typeInput = {
@@ -11812,12 +13902,20 @@ export namespace Prisma {
   }
 
   export type CategoryCreateWithoutEventsInput = {
+<<<<<<< HEAD
     id?: string
+=======
+    id: string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description: string
   }
 
   export type CategoryUncheckedCreateWithoutEventsInput = {
+<<<<<<< HEAD
     id?: string
+=======
+    id: string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description: string
   }
 
@@ -11826,13 +13924,43 @@ export namespace Prisma {
     create: XOR<CategoryCreateWithoutEventsInput, CategoryUncheckedCreateWithoutEventsInput>
   }
 
+<<<<<<< HEAD
   export type EventTypeCreateWithoutEventsInput = {
     id?: string
+=======
+  export type LocationCreateWithoutEventsInput = {
+    id: string
+    address_name: string
+    lat: number
+    lng: number
+    place_id: string
+  }
+
+  export type LocationUncheckedCreateWithoutEventsInput = {
+    id: string
+    address_name: string
+    lat: number
+    lng: number
+    place_id: string
+  }
+
+  export type LocationCreateOrConnectWithoutEventsInput = {
+    where: LocationWhereUniqueInput
+    create: XOR<LocationCreateWithoutEventsInput, LocationUncheckedCreateWithoutEventsInput>
+  }
+
+  export type EventTypeCreateWithoutEventsInput = {
+    id: string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description: string
   }
 
   export type EventTypeUncheckedCreateWithoutEventsInput = {
+<<<<<<< HEAD
     id?: string
+=======
+    id: string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description: string
   }
 
@@ -11862,6 +13990,36 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
   }
 
+<<<<<<< HEAD
+=======
+  export type LocationUpsertWithoutEventsInput = {
+    update: XOR<LocationUpdateWithoutEventsInput, LocationUncheckedUpdateWithoutEventsInput>
+    create: XOR<LocationCreateWithoutEventsInput, LocationUncheckedCreateWithoutEventsInput>
+    where?: LocationWhereInput
+  }
+
+  export type LocationUpdateToOneWithWhereWithoutEventsInput = {
+    where?: LocationWhereInput
+    data: XOR<LocationUpdateWithoutEventsInput, LocationUncheckedUpdateWithoutEventsInput>
+  }
+
+  export type LocationUpdateWithoutEventsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    address_name?: StringFieldUpdateOperationsInput | string
+    lat?: FloatFieldUpdateOperationsInput | number
+    lng?: FloatFieldUpdateOperationsInput | number
+    place_id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type LocationUncheckedUpdateWithoutEventsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    address_name?: StringFieldUpdateOperationsInput | string
+    lat?: FloatFieldUpdateOperationsInput | number
+    lng?: FloatFieldUpdateOperationsInput | number
+    place_id?: StringFieldUpdateOperationsInput | string
+  }
+
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   export type EventTypeUpsertWithoutEventsInput = {
     update: XOR<EventTypeUpdateWithoutEventsInput, EventTypeUncheckedUpdateWithoutEventsInput>
     create: XOR<EventTypeCreateWithoutEventsInput, EventTypeUncheckedCreateWithoutEventsInput>
@@ -11984,6 +14142,7 @@ export namespace Prisma {
   }
 
   export type EventCreateManyCategoryInput = {
+<<<<<<< HEAD
     id?: string
     title: string
     address_name: string
@@ -11993,6 +14152,15 @@ export namespace Prisma {
     place_id: string
     startAt?: Date | string
     endAt?: Date | string
+=======
+    id: string
+    title: string
+    id_location: string
+    data_start: Date | string
+    time_start: Date | string
+    date_end: Date | string
+    time_end: Date | string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description: string
     email?: string | null
     id_event_type: string
@@ -12000,13 +14168,17 @@ export namespace Prisma {
     phone: string
     price: number
     website: string
+<<<<<<< HEAD
     createdAt?: Date | string
     updatedAt?: Date | string
+=======
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   }
 
   export type EventUpdateWithoutCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
     address_name?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
     lng?: FloatFieldUpdateOperationsInput | number
@@ -12014,20 +14186,31 @@ export namespace Prisma {
     place_id?: StringFieldUpdateOperationsInput | string
     startAt?: DateTimeFieldUpdateOperationsInput | Date | string
     endAt?: DateTimeFieldUpdateOperationsInput | Date | string
+=======
+    data_start?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_start?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_end?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_end?: DateTimeFieldUpdateOperationsInput | Date | string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     website?: StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+=======
+    location?: LocationUpdateOneRequiredWithoutEventsNestedInput
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     event_type?: EventTypeUpdateOneRequiredWithoutEventsNestedInput
   }
 
   export type EventUncheckedUpdateWithoutCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
     address_name?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
     lng?: FloatFieldUpdateOperationsInput | number
@@ -12035,6 +14218,13 @@ export namespace Prisma {
     place_id?: StringFieldUpdateOperationsInput | string
     startAt?: DateTimeFieldUpdateOperationsInput | Date | string
     endAt?: DateTimeFieldUpdateOperationsInput | Date | string
+=======
+    id_location?: StringFieldUpdateOperationsInput | string
+    data_start?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_start?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_end?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_end?: DateTimeFieldUpdateOperationsInput | Date | string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     id_event_type?: StringFieldUpdateOperationsInput | string
@@ -12042,13 +14232,17 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     website?: StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+=======
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   }
 
   export type EventUncheckedUpdateManyWithoutCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
     address_name?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
     lng?: FloatFieldUpdateOperationsInput | number
@@ -12056,6 +14250,12 @@ export namespace Prisma {
     place_id?: StringFieldUpdateOperationsInput | string
     startAt?: DateTimeFieldUpdateOperationsInput | Date | string
     endAt?: DateTimeFieldUpdateOperationsInput | Date | string
+=======
+    id_location?: StringFieldUpdateOperationsInput | string
+    data_start?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_start?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_end?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_end?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     id_event_type?: StringFieldUpdateOperationsInput | string
@@ -12063,6 +14263,76 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     website?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type EventCreateManyLocationInput = {
+    id: string
+    title: string
+    id_category: string
+    data_start: Date | string
+    time_start: Date | string
+    date_end: Date | string
+    time_end: Date | string
+    description: string
+    email?: string | null
+    id_event_type: string
+    image: string
+    phone: string
+    price: number
+    website: string
+  }
+
+  export type EventUpdateWithoutLocationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    data_start?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_start?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_end?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_end?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    website?: StringFieldUpdateOperationsInput | string
+    category?: CategoryUpdateOneRequiredWithoutEventsNestedInput
+    event_type?: EventTypeUpdateOneRequiredWithoutEventsNestedInput
+  }
+
+  export type EventUncheckedUpdateWithoutLocationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    id_category?: StringFieldUpdateOperationsInput | string
+    data_start?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_start?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_end?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_end?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    id_event_type?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    website?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type EventUncheckedUpdateManyWithoutLocationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    id_category?: StringFieldUpdateOperationsInput | string
+    data_start?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_start?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_end?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_end?: DateTimeFieldUpdateOperationsInput | Date | string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
+    description?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    id_event_type?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    website?: StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -12078,19 +14348,36 @@ export namespace Prisma {
     place_id: string
     startAt?: Date | string
     endAt?: Date | string
+=======
+  }
+
+  export type EventCreateManyEvent_typeInput = {
+    id: string
+    title: string
+    id_category: string
+    id_location: string
+    data_start: Date | string
+    time_start: Date | string
+    date_end: Date | string
+    time_end: Date | string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description: string
     email?: string | null
     image: string
     phone: string
     price: number
     website: string
+<<<<<<< HEAD
     createdAt?: Date | string
     updatedAt?: Date | string
+=======
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   }
 
   export type EventUpdateWithoutEvent_typeInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
     address_name?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
     lng?: FloatFieldUpdateOperationsInput | number
@@ -12098,21 +14385,33 @@ export namespace Prisma {
     place_id?: StringFieldUpdateOperationsInput | string
     startAt?: DateTimeFieldUpdateOperationsInput | Date | string
     endAt?: DateTimeFieldUpdateOperationsInput | Date | string
+=======
+    data_start?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_start?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_end?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_end?: DateTimeFieldUpdateOperationsInput | Date | string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     website?: StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: CategoryUpdateOneRequiredWithoutEventsNestedInput
+=======
+    category?: CategoryUpdateOneRequiredWithoutEventsNestedInput
+    location?: LocationUpdateOneRequiredWithoutEventsNestedInput
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   }
 
   export type EventUncheckedUpdateWithoutEvent_typeInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     id_category?: StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
     address_name?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
     lng?: FloatFieldUpdateOperationsInput | number
@@ -12120,20 +14419,31 @@ export namespace Prisma {
     place_id?: StringFieldUpdateOperationsInput | string
     startAt?: DateTimeFieldUpdateOperationsInput | Date | string
     endAt?: DateTimeFieldUpdateOperationsInput | Date | string
+=======
+    id_location?: StringFieldUpdateOperationsInput | string
+    data_start?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_start?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_end?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_end?: DateTimeFieldUpdateOperationsInput | Date | string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     website?: StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+=======
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   }
 
   export type EventUncheckedUpdateManyWithoutEvent_typeInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     id_category?: StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
     address_name?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
     lng?: FloatFieldUpdateOperationsInput | number
@@ -12141,14 +14451,24 @@ export namespace Prisma {
     place_id?: StringFieldUpdateOperationsInput | string
     startAt?: DateTimeFieldUpdateOperationsInput | Date | string
     endAt?: DateTimeFieldUpdateOperationsInput | Date | string
+=======
+    id_location?: StringFieldUpdateOperationsInput | string
+    data_start?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_start?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_end?: DateTimeFieldUpdateOperationsInput | Date | string
+    time_end?: DateTimeFieldUpdateOperationsInput | Date | string
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
     description?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     website?: StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+=======
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   }
 
 

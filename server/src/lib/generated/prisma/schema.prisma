@@ -74,19 +74,64 @@ model Verification {
   @@map("verification")
 }
 
+<<<<<<< HEAD
 model Category {
   id          String  @id @default(uuid())
+=======
+/**
+ * age: "",
+ * category: "",
+ * location: {
+ * address_name: "",
+ * coords: {
+ * lat: 0,
+ * lng: 0
+ * },
+ * place_id: ""
+ * },
+ * date_start: "",
+ * time_start: "",
+ * date_end: "",
+ * time_end: "",
+ * description: "",
+ * email: "",
+ * event_type: "",
+ * image: "",
+ * phone: "",
+ * price: "",
+ * title: "",
+ * website: ""
+ */
+
+model Category {
+  id          String  @id
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   description String
   events      Event[]
 }
 
+<<<<<<< HEAD
 model EventType {
   id          String  @id @default(uuid())
+=======
+model Location {
+  id           String  @id
+  address_name String
+  lat          Float
+  lng          Float
+  place_id     String
+  events       Event[]
+}
+
+model EventType {
+  id          String  @id
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   description String
   events      Event[]
 }
 
 model Event {
+<<<<<<< HEAD
   id            String    @id @default(uuid())
   title         String
   id_category   String
@@ -98,6 +143,18 @@ model Event {
   place_id      String
   startAt       DateTime  @default(now())
   endAt         DateTime  @default(now())
+=======
+  id            String    @id
+  title         String
+  id_category   String
+  category      Category  @relation(fields: [id_category], references: [id], onDelete: NoAction)
+  id_location   String
+  location      Location  @relation(fields: [id_location], references: [id], onDelete: NoAction)
+  data_start    DateTime
+  time_start    DateTime
+  date_end      DateTime
+  time_end      DateTime
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
   description   String
   email         String?
   id_event_type String
@@ -106,6 +163,9 @@ model Event {
   phone         String
   price         Float
   website       String
+<<<<<<< HEAD
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
+=======
+>>>>>>> d82192afc1660c7c11837a0655144e306ee00905
 }
