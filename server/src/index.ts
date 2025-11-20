@@ -10,6 +10,8 @@ import cors from "cors";
 
 import googleRouter from "@routes/google.route";
 import eventRouter from "@routes/event.route";
+import categoryRouter from '@/routes/category.route'
+
 import { authMiddelware } from "@middelwares/authMiddelware";
 
 const app: Application = express();
@@ -25,6 +27,8 @@ app.all("/api/auth/*", toNodeHandler(auth.handler));
 app.use(express.json());
 app.use("/api/google", authMiddelware, googleRouter);
 app.use("/api/event",eventRouter);
+app.use("/api/category",categoryRouter)
+
 app.get("/", (req: Request, res: Response) => {
   res.send("hello world");
 });

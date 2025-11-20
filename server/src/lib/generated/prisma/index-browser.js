@@ -184,18 +184,19 @@ exports.Prisma.EventScalarFieldEnum = {
   address_name: 'address_name',
   lat: 'lat',
   lng: 'lng',
+  age: 'age',
   place_id: 'place_id',
-  date_start: 'date_start',
-  time_start: 'time_start',
-  date_end: 'date_end',
-  time_end: 'time_end',
+  startAt: 'startAt',
+  endAt: 'endAt',
   description: 'description',
   email: 'email',
   id_event_type: 'id_event_type',
   image: 'image',
   phone: 'phone',
   price: 'price',
-  website: 'website'
+  website: 'website',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.SortOrder = {

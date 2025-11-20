@@ -15,12 +15,13 @@ export class EventService {
           ...this.event,
           image: "",
           phone: "",
-          date_start: new Date(this.event.date_start),
-          date_end: new Date(this.event.date_end),
+          id_category:"1",
+          id_event_type:"1"
         },
       });
     } catch (error) {
-      throw new Error("Qualcosa è andato storto nella creazione dell'evento")
+      console.log(error);
+      throw new Error("Qualcosa è andato storto nella creazione dell'evento");
     }
   }
 }
