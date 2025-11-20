@@ -232,7 +232,7 @@ export function Uploader() {
             <p className="text-center">Drop the files here ...</p>
           ) : (
             <div className="flex flex-col items-center gap-y-1">
-              <p>Trascina o seleziona un'immagine</p>
+              <p>{"Trascina o seleziona un'immagine"}</p>
               <span className=" text-sm text-slate-500">{"(Es. Locandina o foto della location)"}</span>
               <Button className=" mt-5">Seleziona</Button>
             </div>
