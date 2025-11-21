@@ -4,11 +4,10 @@ import { success } from "@/lib/send-success";
 import { NextFunction, Request, Response } from "express";
 
 export class CategoryController {
-
-  private categoryService : CategoryService
+  private categoryService: CategoryService;
 
   constructor() {
-    this.categoryService = new CategoryService()
+    this.categoryService = new CategoryService();
   }
   async creteCategory(req: Request, res: Response, next: NextFunction) {
     const { description }: Category = req.body;
@@ -16,10 +15,8 @@ export class CategoryController {
     try {
       const newCategory = await categoryService.create();
 
-      return res.status(201).json({
-        data: {
-          category: newCategory,
-        },
+      success(res, {
+        category: newCategory,
       });
     } catch (error) {
       next(error);
@@ -30,7 +27,7 @@ export class CategoryController {
 
     try {
       const categories = await categoryService.getAll();
-      return success(res, categories);
+      return success(res, { categories });
     } catch (error) {
       next(error);
     }

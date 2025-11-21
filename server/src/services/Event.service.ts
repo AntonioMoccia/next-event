@@ -14,9 +14,8 @@ export class EventService {
         data: {
           ...this.event,
           image: "",
-          phone: "",
-          id_category:"1",
-          id_event_type:"1"
+/*           id_category:"1",
+          id_event_type:"1" */
         },
       });
     } catch (error) {

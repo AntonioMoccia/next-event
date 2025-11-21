@@ -1,6 +1,4 @@
-import { Users } from 'lucide-react'
-
-import FormCard from '@/components/FormCard'
+import { useEffect, useState } from 'react'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Select, SelectItem, SelectTrigger, SelectValue, SelectContent } from '@/components/ui/select'
@@ -8,6 +6,17 @@ import { CreateEventFormType } from '../CreateEventForm'
 import Age from './Age'
 
 function Partecipations({ form }: { form: CreateEventFormType }) {
+
+    const [eventTypes, setEventTypes] = useState<{ id: string, description: string }[]>([])
+    useEffect(() => {
+        const getEventTypes = async () => {
+            const request = await fetch('http://localhost:3001/api/event_type')
+            const response = await request.json()
+            setEventTypes(response.data.event_types)
+        }
+        getEventTypes()
+    }, [])
+
     return (
         <div className="grid md:grid-cols-3 gap-10 py-5 w-full">
             <div className="space-y-2 col-span-1">
@@ -19,9 +28,11 @@ function Partecipations({ form }: { form: CreateEventFormType }) {
                         <SelectValue placeholder="Seleziona tipo" />
                     </SelectTrigger>
                     <SelectContent>
-                        <SelectItem value="free">Gratuito</SelectItem>
-                        <SelectItem value="paid">A pagamento</SelectItem>
-                        <SelectItem value="donation">Offerta libera</SelectItem>
+                        {
+                            eventTypes.map(eventType =>(
+                                <SelectItem key={eventType.id} value={eventType.id}>{eventType.description}</SelectItem>
+                            ))
+                        }
                     </SelectContent>
                 </Select>
             </div>

@@ -1,8 +1,8 @@
 import S3 from "@services/S3.service";
-import { Request, Response } from "express";
-import {EventService} from '@services/Event.service'
+import { NextFunction, Request, Response } from "express";
+import { EventService } from "@services/Event.service";
 import { Event } from "../types";
-
+import { success } from "@/lib/send-success";
 
 export class EventController {
   constructor() {}
@@ -23,21 +23,17 @@ export class EventController {
     }
   }
 
-  async createEvent(req:Request, res:Response){
-    const event : Event = req.body
-    const newEventClass = new EventService(event)
+  async createEvent(req: Request, res: Response, next: NextFunction) {
+    const event: Event = req.body;
+    const newEventClass = new EventService(event);
 
-    
     try {
-      const newEvent = await newEventClass.createEvent()
-      res.json({
-        newEvent
-      })
+      const newEvent = await newEventClass.createEvent();
+      success(res, {
+        event: newEvent,
+      });
     } catch (error) {
-      res.json(error)
+      next(error)
     }
-
   }
-
-
 }

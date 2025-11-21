@@ -56,6 +56,10 @@ class S3 {
       console.log(error);
     }
   }
+
+  async remove(){
+    
+  }
 }
 
 export default S3;

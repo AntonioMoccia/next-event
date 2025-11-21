@@ -8233,9 +8233,9 @@ export namespace Prisma {
     email: string | null
     id_event_type: string
     image: string
-    phone: string
+    phone: string | null
     price: number
-    website: string
+    website: string | null
     createdAt: Date
     updatedAt: Date
     _count: EventCountAggregateOutputType | null
@@ -8388,9 +8388,9 @@ export namespace Prisma {
       email: string | null
       id_event_type: string
       image: string
-      phone: string
+      phone: string | null
       price: number
-      website: string
+      website: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["event"]>
@@ -9847,9 +9847,9 @@ export namespace Prisma {
     email?: StringNullableFilter<"Event"> | string | null
     id_event_type?: StringFilter<"Event"> | string
     image?: StringFilter<"Event"> | string
-    phone?: StringFilter<"Event"> | string
+    phone?: StringNullableFilter<"Event"> | string | null
     price?: FloatFilter<"Event"> | number
-    website?: StringFilter<"Event"> | string
+    website?: StringNullableFilter<"Event"> | string | null
     createdAt?: DateTimeFilter<"Event"> | Date | string
     updatedAt?: DateTimeFilter<"Event"> | Date | string
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
@@ -9871,9 +9871,9 @@ export namespace Prisma {
     email?: SortOrderInput | SortOrder
     id_event_type?: SortOrder
     image?: SortOrder
-    phone?: SortOrder
+    phone?: SortOrderInput | SortOrder
     price?: SortOrder
-    website?: SortOrder
+    website?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     category?: CategoryOrderByWithRelationInput
@@ -9898,9 +9898,9 @@ export namespace Prisma {
     email?: StringNullableFilter<"Event"> | string | null
     id_event_type?: StringFilter<"Event"> | string
     image?: StringFilter<"Event"> | string
-    phone?: StringFilter<"Event"> | string
+    phone?: StringNullableFilter<"Event"> | string | null
     price?: FloatFilter<"Event"> | number
-    website?: StringFilter<"Event"> | string
+    website?: StringNullableFilter<"Event"> | string | null
     createdAt?: DateTimeFilter<"Event"> | Date | string
     updatedAt?: DateTimeFilter<"Event"> | Date | string
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
@@ -9922,9 +9922,9 @@ export namespace Prisma {
     email?: SortOrderInput | SortOrder
     id_event_type?: SortOrder
     image?: SortOrder
-    phone?: SortOrder
+    phone?: SortOrderInput | SortOrder
     price?: SortOrder
-    website?: SortOrder
+    website?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: EventCountOrderByAggregateInput
@@ -9952,9 +9952,9 @@ export namespace Prisma {
     email?: StringNullableWithAggregatesFilter<"Event"> | string | null
     id_event_type?: StringWithAggregatesFilter<"Event"> | string
     image?: StringWithAggregatesFilter<"Event"> | string
-    phone?: StringWithAggregatesFilter<"Event"> | string
+    phone?: StringNullableWithAggregatesFilter<"Event"> | string | null
     price?: FloatWithAggregatesFilter<"Event"> | number
-    website?: StringWithAggregatesFilter<"Event"> | string
+    website?: StringNullableWithAggregatesFilter<"Event"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
   }
@@ -10378,9 +10378,9 @@ export namespace Prisma {
     description: string
     email?: string | null
     image: string
-    phone: string
+    phone?: string | null
     price: number
-    website: string
+    website?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     category: CategoryCreateNestedOneWithoutEventsInput
@@ -10402,9 +10402,9 @@ export namespace Prisma {
     email?: string | null
     id_event_type: string
     image: string
-    phone: string
+    phone?: string | null
     price: number
-    website: string
+    website?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -10422,9 +10422,9 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
-    website?: StringFieldUpdateOperationsInput | string
+    website?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: CategoryUpdateOneRequiredWithoutEventsNestedInput
@@ -10446,9 +10446,9 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     id_event_type?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
-    website?: StringFieldUpdateOperationsInput | string
+    website?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10468,9 +10468,9 @@ export namespace Prisma {
     email?: string | null
     id_event_type: string
     image: string
-    phone: string
+    phone?: string | null
     price: number
-    website: string
+    website?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -10488,9 +10488,9 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
-    website?: StringFieldUpdateOperationsInput | string
+    website?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10510,9 +10510,9 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     id_event_type?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
-    website?: StringFieldUpdateOperationsInput | string
+    website?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -11663,9 +11663,9 @@ export namespace Prisma {
     description: string
     email?: string | null
     image: string
-    phone: string
+    phone?: string | null
     price: number
-    website: string
+    website?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     event_type: EventTypeCreateNestedOneWithoutEventsInput
@@ -11685,9 +11685,9 @@ export namespace Prisma {
     email?: string | null
     id_event_type: string
     image: string
-    phone: string
+    phone?: string | null
     price: number
-    website: string
+    website?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -11736,9 +11736,9 @@ export namespace Prisma {
     email?: StringNullableFilter<"Event"> | string | null
     id_event_type?: StringFilter<"Event"> | string
     image?: StringFilter<"Event"> | string
-    phone?: StringFilter<"Event"> | string
+    phone?: StringNullableFilter<"Event"> | string | null
     price?: FloatFilter<"Event"> | number
-    website?: StringFilter<"Event"> | string
+    website?: StringNullableFilter<"Event"> | string | null
     createdAt?: DateTimeFilter<"Event"> | Date | string
     updatedAt?: DateTimeFilter<"Event"> | Date | string
   }
@@ -11756,9 +11756,9 @@ export namespace Prisma {
     description: string
     email?: string | null
     image: string
-    phone: string
+    phone?: string | null
     price: number
-    website: string
+    website?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     category: CategoryCreateNestedOneWithoutEventsInput
@@ -11778,9 +11778,9 @@ export namespace Prisma {
     description: string
     email?: string | null
     image: string
-    phone: string
+    phone?: string | null
     price: number
-    website: string
+    website?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -11997,9 +11997,9 @@ export namespace Prisma {
     email?: string | null
     id_event_type: string
     image: string
-    phone: string
+    phone?: string | null
     price: number
-    website: string
+    website?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -12017,9 +12017,9 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
-    website?: StringFieldUpdateOperationsInput | string
+    website?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     event_type?: EventTypeUpdateOneRequiredWithoutEventsNestedInput
@@ -12039,9 +12039,9 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     id_event_type?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
-    website?: StringFieldUpdateOperationsInput | string
+    website?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -12060,9 +12060,9 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     id_event_type?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
-    website?: StringFieldUpdateOperationsInput | string
+    website?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -12081,9 +12081,9 @@ export namespace Prisma {
     description: string
     email?: string | null
     image: string
-    phone: string
+    phone?: string | null
     price: number
-    website: string
+    website?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -12101,9 +12101,9 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
-    website?: StringFieldUpdateOperationsInput | string
+    website?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: CategoryUpdateOneRequiredWithoutEventsNestedInput
@@ -12123,9 +12123,9 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
-    website?: StringFieldUpdateOperationsInput | string
+    website?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -12144,9 +12144,9 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
-    website?: StringFieldUpdateOperationsInput | string
+    website?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

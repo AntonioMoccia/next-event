@@ -104,9 +104,9 @@ model Event {
   id_event_type String
   event_type    EventType @relation(fields: [id_event_type], references: [id], onDelete: NoAction)
   image         String
-  phone         String
+  phone         String?
   price         Float
-  website       String
+  website       String?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   @@map("event")

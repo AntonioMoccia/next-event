@@ -1,16 +1,24 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
 import { CreateEventFormType } from '../CreateEventForm'
-import FormCard from '@/components/FormCard'
-import { Clock, ImageIcon, Info, MapPin, Users } from 'lucide-react'
+
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
 import { Uploader } from '@/components/Uploader'
-import Age from './Age'
+
 
 function BaseInfo({ form }: { form: CreateEventFormType }) {
-
+    const [categories, setCategories] = useState<{ id: string, description: string }[]>([])
+    useEffect(() => {
+        const getCategories = async () => {
+            const request = await fetch('http://localhost:3001/api/category')
+            const response = await request.json()
+            console.log(response)
+            setCategories(response.data.categories)
+        }
+        getCategories()
+    }, [])
 
     return (
 
@@ -24,16 +32,16 @@ function BaseInfo({ form }: { form: CreateEventFormType }) {
                     <Label> Categoria </Label>
                     <Select>
                         <SelectTrigger className=" w-full">
-                            <SelectValue placeholder="Select a fruit" />
+                            <SelectValue placeholder="Seleziona la categoria" />
                         </SelectTrigger>
                         <SelectContent>
                             <SelectGroup>
-                                <SelectLabel>Fruits</SelectLabel>
-                                <SelectItem value="apple">Apple</SelectItem>
-                                <SelectItem value="banana">Banana</SelectItem>
-                                <SelectItem value="blueberry">Blueberry</SelectItem>
-                                <SelectItem value="grapes">Grapes</SelectItem>
-                                <SelectItem value="pineapple">Altro</SelectItem>
+                                <SelectLabel>Categoria</SelectLabel>
+                                {
+                                    categories.map(category=>(
+                                            <SelectItem key={category.id} value={category.id}>{category.description}</SelectItem>
+                                    ))
+                                }
                             </SelectGroup>
                         </SelectContent>
                     </Select>
@@ -48,7 +56,7 @@ function BaseInfo({ form }: { form: CreateEventFormType }) {
                     <Textarea className=' h-full' />
                 </div>
                 <div className='space-y-2 col-span-2 md:col-span-1'>
-                       <Label>
+                    <Label>
                         Immagine
                     </Label>
                     <Uploader />
