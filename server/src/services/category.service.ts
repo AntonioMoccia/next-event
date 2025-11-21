@@ -14,7 +14,7 @@ export class CategoryService {
     } catch (error) {
       if (error instanceof Error) throw Error(error.message);
     }
-  }
+  } 
 
   async create() {
     if (!this.category) throw Error("Category undefined");

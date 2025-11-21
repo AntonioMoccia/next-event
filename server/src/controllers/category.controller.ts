@@ -1,11 +1,16 @@
 import { CategoryService } from "@/services/category.service";
 import { Category } from "@/types/index";
-import { Request, Response } from "express";
-import { REPLCommand } from "repl";
+import { success } from "@/lib/send-success";
+import { NextFunction, Request, Response } from "express";
 
 export class CategoryController {
-  constructor() {}
-  async creteCategory(req: Request, res: Response) {
+
+  private categoryService : CategoryService
+
+  constructor() {
+    this.categoryService = new CategoryService()
+  }
+  async creteCategory(req: Request, res: Response, next: NextFunction) {
     const { description }: Category = req.body;
     const categoryService = new CategoryService({ description });
     try {
@@ -17,24 +22,17 @@ export class CategoryController {
         },
       });
     } catch (error) {
-      if (error instanceof Error) throw Error(error.message);
-
-      throw Error(
-        "Qualcosa è andato storto nel chiamare il servizio di creazione della cateogoria"
-      );
+      next(error);
     }
   }
-  async getCategories(req: Request, res: Response) {
+  async getCategories(req: Request, res: Response, next: NextFunction) {
     const categoryService = new CategoryService();
 
     try {
       const categories = await categoryService.getAll();
-      return res.json({ data: categories });
+      return success(res, categories);
     } catch (error) {
-
-      return res.json({
-        message:"Qualcosa è andato storto"
-      })
+      next(error);
     }
   }
 }

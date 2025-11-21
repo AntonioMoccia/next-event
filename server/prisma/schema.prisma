@@ -73,18 +73,18 @@ model Verification {
 
   @@map("verification")
 }
-
-<<<<<<< HEAD
 model Category {
   id          String  @id @default(uuid())
   description String
   events      Event[]
+  @@map("category")
 }
 
 model EventType {
   id          String  @id @default(uuid())
   description String
   events      Event[]
+  @@map("event_type")
 }
 
 model Event {
@@ -109,69 +109,5 @@ model Event {
   website       String
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
-=======
-
-/*
-            age: "",
-            category: "",
-            location: {
-                address_name: "",
-                coords: {
-                    lat: 0,
-                    lng: 0
-                },
-                place_id: ""
-            },
-            date_start: "",
-            time_start: "",
-            date_end: "",
-            time_end: "",
-            description: "",
-            email: "",
-            event_type: "",
-            image: "",
-            phone: "",
-            price: "",
-            title: "",
-            website: ""
-*/
-
-model Category{
-  id String @id
-  description String
-  events Event[] 
-}
-model Location{
-  id String @id
-  address_name String
-  lat Float
-  lng Float
-  place_id String
-  events Event[]
-}
-model EventType{
-  id String @id
-  description String
-  events Event[]
-}
-model Event{
-  id String @id
-  title String
-  id_category String
-  category Category @relation(fields: [id_category],references: [id], onDelete: NoAction)
-  id_location String
-  location Location @relation(fields: [id_location], references: [id], onDelete: NoAction)
-  data_start DateTime
-  time_start DateTime
-  date_end DateTime
-  time_end DateTime
-  description String
-  email String?
-  id_event_type String
-  event_type EventType @relation(fields: [id_event_type], references: [id], onDelete: NoAction)
-  image String
-  phone String
-  price Float
-  website String
->>>>>>> d82192afc1660c7c11837a0655144e306ee00905
+  @@map("event")
 }

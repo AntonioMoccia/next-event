@@ -19,3 +19,6 @@ export type Event = {
 export type Category = {
   description:string
 }
+export type EventType = {
+  description: string
+}
