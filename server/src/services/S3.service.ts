@@ -1,4 +1,8 @@
-import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
+import {
+  PutObjectCommand,
+  S3Client,
+  DeleteObjectCommand,
+} from "@aws-sdk/client-s3";
 import { v4 as uuidv4 } from "uuid";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
@@ -32,9 +36,9 @@ class S3 {
     return this.s3Client;
   }
 
-  public async getSignedUrl(file:GetSignedUrlParamsType) {
+  public async getSignedUrl(file: GetSignedUrlParamsType) {
     try {
-      const {contentType,filename,size} = file
+      const { contentType, filename, size } = file;
       const s3Client = this.getS3Client();
 
       const uniqueKey = `${uuidv4()}-${filename}`;
@@ -50,15 +54,26 @@ class S3 {
       });
       return {
         presignedUrl,
-        key: uniqueKey
+        key: uniqueKey,
       };
     } catch (error) {
       console.log(error);
     }
   }
 
-  async remove(){
-    
+  async remove(key: string) {
+    try {      
+      const command = new DeleteObjectCommand({
+        Bucket: process.env.BUCKET_NAME,
+        Key: key,
+      });
+      const deletedUrl = await this.getS3Client().send(command)
+      return deletedUrl
+    } catch (error) {
+      if(error instanceof Error) throw Error(error.message)
+        throw Error("Errore nell'eliminazione dell'immagine")
+    }
+
   }
 }
 

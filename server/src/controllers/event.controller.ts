@@ -22,7 +22,17 @@ export class EventController {
       console.log(error);
     }
   }
+  async removeImageFromCloud(req: Request, res: Response, next: NextFunction) {
+    const { key }: { key: string } = req.body;
 
+    try {
+      const result = await S3.getInstance().remove(key);
+      
+      console.log(result);
+      success(res,{result})
+
+    } catch (error) {}
+  }
   async createEvent(req: Request, res: Response, next: NextFunction) {
     const event: Event = req.body;
     const newEventClass = new EventService(event);
@@ -33,7 +43,7 @@ export class EventController {
         event: newEvent,
       });
     } catch (error) {
-      next(error)
+      next(error);
     }
   }
 }

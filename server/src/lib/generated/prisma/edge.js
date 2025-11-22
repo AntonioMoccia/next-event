@@ -207,7 +207,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\antonio.moccia\\Desktop\\next-event\\server\\src\\lib\\generated\\prisma",
+      "value": "/Users/antoniomoccia/Desktop/next-event/server/src/lib/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -216,12 +216,12 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "darwin-arm64",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\antonio.moccia\\Desktop\\next-event\\server\\prisma\\schema.prisma",
+    "sourceFilePath": "/Users/antoniomoccia/Desktop/next-event/server/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {

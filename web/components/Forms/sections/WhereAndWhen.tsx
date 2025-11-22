@@ -5,6 +5,8 @@ import { Clock } from 'lucide-react'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import Address from './Address'
+import { DateTimePicker } from '@/components/DataTimePicker'
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 
 
 //da aggiungere inizio e fine
@@ -14,58 +16,47 @@ function WhereAndWhen({ form }: { form: CreateEventFormType }) {
 
         <div className="grid grid-cols-12 w-full gap-6">
             <div className='grid grid-cols-2 col-span-12 gap-5 md:col-span-6'>
-                <div className="space-y-2 col-span-1 ">
-                    <Label htmlFor="startDate" className="text-gray-700">
-                        Data inizio *
-                    </Label>
-                    <Input
-                        id="startDate"
-                        type="date"
-                        required
-                        onChange={() => { }}
-                        className="border-gray-300 focus:border-gray-900 focus:ring-gray-900"
+                <div className="space-y-2 col-span-2 ">
+                    <FormField
+                        control={form.control}
+                        name='startAt'
+                        render={({ field }) => (
+                            <DateTimePicker
+                                dataLabel="Data inizio"
+                                label="Data/ora inizio"
+                                value={form.watch("startAt")}
+                                onChange={(d) => form.setValue("startAt", d)}
+                            />
+                        )}
                     />
                 </div>
-                <div className="space-y-2 col-span-1">
-                    <Label htmlFor="startTime" className="text-gray-700">
-                        Ora Inizio *
-                    </Label>
-                    <Input
-                        id="startTime"
-                        type="time"
-                        required
-                        onChange={() => { }}
-                        className="border-gray-300 focus:border-gray-900 focus:ring-gray-900"
-                    />
-                </div>
+
             </div>
 
 
 
-         <div className='grid grid-cols-2 col-span-12 gap-5 md:col-span-6'>
-                <div className="space-y-2 col-span-1 ">
-                    <Label htmlFor="startDate" className="text-gray-700">
-                        Data fine *
-                    </Label>
-                    <Input
-                        id="endDate"
-                        type="date"
-                        required
-                        onChange={() => { }}
-                        className="border-gray-300 focus:border-gray-900 focus:ring-gray-900"
+            <div className='grid grid-cols-2 col-span-12 gap-5 md:col-span-6'>
+                <div className="space-y-2 col-span-2 ">
+                    <FormField
+                        control={form.control}
+                        name='endAt'
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormControl>
+
+                                    <DateTimePicker
+                                        dataLabel="Data fine"
+                                        label="Data/ora fine"
+                                        value={form.watch("endAt")}
+                                        onChange={(d) => form.setValue("endAt", d)}
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+
+                        )}
                     />
-                </div>
-                <div className="space-y-2 col-span-1">
-                    <Label htmlFor="startTime" className="text-gray-700">
-                        Ora fine *
-                    </Label>
-                    <Input
-                        id="endTime"
-                        type="time"
-                        required
-                        onChange={() => { }}
-                        className="border-gray-300 focus:border-gray-900 focus:ring-gray-900"
-                    />
+
                 </div>
             </div>
 

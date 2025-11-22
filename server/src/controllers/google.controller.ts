@@ -25,7 +25,7 @@ export class GoogleController {
     if (place_id == "") return res.send("");
 
     const coords = await this.googleService.getCoords(place_id);
-    console.log(coords)
+
     return res.json({
       coords
     });

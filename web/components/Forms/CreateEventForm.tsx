@@ -12,33 +12,70 @@ import z from 'zod'
 
 import BaseInfo from './sections/BaseInfo'
 import WhereAndWhen from './sections/WhereAndWhen'
-import Address from './sections/Address'
 import Partecipations from './sections/Partecipations'
-
 import Contacts from './sections/Contacts'
-import Age from './sections/Age'
+
+import { useEffect } from 'react'
 
 const formSchema = z.object({
-    title: z.string("canno't be empty").min(2, "The title must be min 2 chars"),
+    title: z.string("canno't be empty").min(3, "The title must be min 3 chars"),
     category: z.string(),
     description: z.string(),
-    data_inizio: z.string(),
-    ora_inizio: z.string(),
-    data_fine: z.string(),
-    ora_fine: z.string(),
-    address_name: z.string()
+    image: z.string().optional(),
+    event_type: z.string(),
+    price: z.coerce.number().min(0).optional(),
+    age: z.string(),
+    startAt: z.date(),
+    endAt: z.date().optional(),
+    address_name: z.string(),
+    lat: z.number(),
+    lng: z.number(),
+    place_id: z.string(),
+    email: z.string().optional(),
+    phone: z.string(),
+    website: z.string()
+
 })
 
 type FormType = z.infer<typeof formSchema>
 export type CreateEventFormType = UseFormReturn<FormType>
 function CreateEventForm() {
-
     const form = useForm({
-        resolver: zodResolver(formSchema)
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+            category: "",
+            description: "",
+            image: "",
+            event_type: "",
+            price: 0,
+            age: "",
+            title: "",
+            startAt: new Date(),
+            endAt: new Date(),
+            address_name: "",
+            lat: 0,
+            lng: 0,
+            place_id: "",
+            email: "",
+            phone: "",
+            website: ""
+        }
     })
+    useEffect(() => {
+        console.log(form)
+        console.log('form')
+    }, [form])
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log(values)
+    async function onSubmit(values: z.infer<typeof formSchema>) {
+        const payload = {
+            ...values,
+            startAt: values.startAt.toISOString(),
+            endAt: values.endAt?.toISOString(),
+        }
+        const request = await fetch('http://localhost:3001/api/event', {
+
+        })
+        console.log("Payload finale:", payload)
     }
 
     return (

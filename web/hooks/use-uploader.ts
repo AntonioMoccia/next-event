@@ -14,6 +14,7 @@ export interface UploadFile {
   isDeleting: boolean;
   error: boolean;
   objectUrl?: string;
+  url?: string;
 }
 
 export function useUpload() {
@@ -75,7 +76,13 @@ export function useUpload() {
             setFiles((prev) =>
               prev.map((f) =>
                 f.file === file
-                  ? { ...f, uploading: false, progress: 100, error: false }
+                  ? {
+                      ...f,
+                      uploading: false,
+                      progress: 100,
+                      error: false,
+                      url: presignedUrl,
+                    }
                   : f
               )
             );
@@ -115,9 +122,7 @@ export function useUpload() {
     if (fileToRemove.objectUrl) URL.revokeObjectURL(fileToRemove.objectUrl);
 
     setFiles((prev) =>
-      prev.map((f) =>
-        f.id === fileId ? { ...f, isDeleting: true } : f
-      )
+      prev.map((f) => (f.id === fileId ? { ...f, isDeleting: true } : f))
     );
 
     try {
@@ -167,8 +172,12 @@ export function useUpload() {
   // Handle rejected files
   // -----------------------------
   const handleRejected = useCallback((rejections: FileRejection[]) => {
-    const tooMany = rejections.find((r) => r.errors[0].code === "too-many-files");
-    const tooBig = rejections.find((r) => r.errors[0].code === "file-too-large");
+    const tooMany = rejections.find(
+      (r) => r.errors[0].code === "too-many-files"
+    );
+    const tooBig = rejections.find(
+      (r) => r.errors[0].code === "file-too-large"
+    );
 
     if (tooMany) toast.error("Troppi file");
     if (tooBig) toast.error("File troppo grande");
