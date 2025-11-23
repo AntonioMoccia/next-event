@@ -1,7 +1,8 @@
 import { Label } from '@/components/ui/label'
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectLabel, SelectItem, SelectGroup } from '@/components/ui/select'
 import { CreateEventFormType } from '../CreateEventForm'
-import { FormControl, FormField, FormItem, FormLabel } from '@/components/ui/form'
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+
 
 function Age({ form }: { form: CreateEventFormType }) {
     return (
@@ -33,6 +34,7 @@ function Age({ form }: { form: CreateEventFormType }) {
                                 </SelectContent>
                             </Select>
                         </FormControl>
+                        <FormMessage />
                     </FormItem>
                 )}
             />

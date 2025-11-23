@@ -36,15 +36,15 @@ export const createEventZodSchema = z.object({
     email: z.string().optional(),
     phone: z.string(),
     website: z.string(),
-    capacity:z.number(),
-    organizer:z.string()
+    capacity: z.number(),
+    organizer: z.string()
 })
 
 type FormType = z.infer<typeof createEventZodSchema>
 export type CreateEventFormType = UseFormReturn<FormType>
 
 function CreateEventForm() {
-    const form = useForm<FormType>({
+    const form = useForm({
         resolver: zodResolver(createEventZodSchema),
         defaultValues: {
             id_category: "",
@@ -53,7 +53,7 @@ function CreateEventForm() {
             id_event_type: "",
             price: 0,
             title: "",
-            capacity:0,
+            capacity: 0,
             startAt: new Date(),
             endAt: new Date(),
             address_name: "",
@@ -63,21 +63,21 @@ function CreateEventForm() {
             email: "",
             phone: "",
             website: "",
-            organizer:""
+            organizer: ""
         }
     })
     useEffect(() => {
-        console.log(form)
-        console.log('form')
+        console.log(form.getValues())
     }, [form])
 
     async function onSubmit(values: z.infer<typeof createEventZodSchema>) {
+
         const payload = {
             ...values,
-            price: typeof Number(values.price) == 'number' ? Number(values.price) : 0,
             startAt: values.startAt.toISOString(),
             endAt: values.endAt?.toISOString(),
         }
+        console.log(payload)
         const request = await fetch('http://localhost:3001/api/event', {
             method: 'POST',
             headers: {
@@ -102,9 +102,9 @@ function CreateEventForm() {
                         description=""
                         content={
                             <div className=' flex flex-col justify-start items-center gap-5'>
-                                <BaseInfo form={form} />
-                                <WhereAndWhen form={form} />
-                                <Partecipations form={form} />
+                                <BaseInfo />
+                                <WhereAndWhen />
+                                <Partecipations />
                             </div>
                         }
                     />
@@ -113,7 +113,7 @@ function CreateEventForm() {
                         title="Dove possono contattarti?"
                         description="Questi contatti saranno resi pubblici"
                         content={
-                            <Contacts form={form} />
+                            <Contacts />
                         }
                     />
                     <div className=' w-full flex items-center justify-center'>

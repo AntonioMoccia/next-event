@@ -8,11 +8,12 @@ import { Loader2, Trash2 } from "lucide-react";
 import { useUpload } from "@/hooks/use-uploader";
 import { useEffect } from "react";
 import { CreateEventFormType } from "./Forms/CreateEventForm";
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "./ui/form";
+import { useFormContext } from "react-hook-form";
 
-export function Uploader({ form }: { form: CreateEventFormType }) {
+
+export function Uploader() {
   const { files, handleFiles, handleRejected, removeFile } = useUpload();
-
+  const form = useFormContext()
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop: handleFiles,
     onDropRejected: handleRejected,

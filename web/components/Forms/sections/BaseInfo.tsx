@@ -7,21 +7,27 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrig
 import { Textarea } from '@/components/ui/textarea'
 import { Uploader } from '@/components/Uploader'
 import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
-import { UseFormReturn } from 'react-hook-form'
+import { useFormContext } from 'react-hook-form'
 
 
 
-function BaseInfo({ form }: { form:CreateEventFormType }) {
+function BaseInfo() {
     const [categories, setCategories] = useState<{ id: string, description: string }[]>([])
+    const form = useFormContext()
+
     useEffect(() => {
         const getCategories = async () => {
             const request = await fetch('http://localhost:3001/api/category')
             const response = await request.json()
-
+            console.log(response)
             setCategories(response.data.categories)
         }
         getCategories()
     }, [])
+
+    useEffect(()=>{
+        console.log("valori: ",form.getValues())
+    },[form])
 
     return (
 
@@ -108,7 +114,7 @@ function BaseInfo({ form }: { form:CreateEventFormType }) {
             </div>
             <div className=' col-span-1'>
                 <div className=' w-full md:col-span-1'>
-                    <Uploader form={form} />
+                    <Uploader />
                 </div>
             </div>
         </div>

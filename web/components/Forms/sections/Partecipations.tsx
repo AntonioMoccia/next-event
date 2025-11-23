@@ -5,10 +5,9 @@ import { Select, SelectItem, SelectTrigger, SelectValue, SelectContent, SelectGr
 import { CreateEventFormType } from '../CreateEventForm'
 import { FormControl, FormItem, FormMessage, FormLabel, FormField } from '@/components/ui/form'
 import Age from './Age'
-import { UseFormReturn } from 'react-hook-form'
-
-function Partecipations({ form }: { form: CreateEventFormType }) {
-
+import { useFormContext } from 'react-hook-form'
+function Partecipations() {
+    const form = useFormContext()
     return (
         <div className="grid md:grid-cols-3 gap-10 py-5 w-full">
 
@@ -23,7 +22,7 @@ function Partecipations({ form }: { form: CreateEventFormType }) {
                             </FormLabel>
                             <FormControl>
                                 <Input
-                                    {...field}
+                                    onChange={(e) => field.onChange(e.target.value === "" ? undefined : Number(e.target.value))}
                                     id="price"
                                     type="number"
                                     placeholder="0.00"
@@ -36,7 +35,7 @@ function Partecipations({ form }: { form: CreateEventFormType }) {
                     )}
                 />
             </div>
-{/*             <Age form={form} /> */}
+            {/*             <Age form={form} /> */}
         </div>
 
     )

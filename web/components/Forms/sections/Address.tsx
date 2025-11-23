@@ -7,14 +7,14 @@ import { Command, CommandItem, CommandList, CommandEmpty, CommandGroup, CommandI
 import { CreateEventFormType } from '../CreateEventForm'
 import { useEffect, useEffectEvent, useState } from 'react'
 import { PlaceAutocompleteResult } from '@googlemaps/google-maps-services-js'
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
-
+import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import { useFormContext } from 'react-hook-form'
 export type AddressType = {
     address: string
     place_id: string
 }
 
-function Address({ form }: { form: CreateEventFormType }) {
+function Address() {
 
     const [suggestions, setSuggestions] = useState<PlaceAutocompleteResult[]>([])
     const [locationString, setLocationString] = useState("")
@@ -26,7 +26,7 @@ function Address({ form }: { form: CreateEventFormType }) {
         lat: 0,
         lng: 0
     })
-
+    const form = useFormContext()
 
     useEffect(() => {
         const searchSuggetions = async () => {
@@ -64,6 +64,7 @@ function Address({ form }: { form: CreateEventFormType }) {
                             <FormLabel>
                                 Organizzatore
                             </FormLabel>
+                    
                             <FormControl>
                                 <Input
                                     placeholder='es. associazione.. o Bar..'

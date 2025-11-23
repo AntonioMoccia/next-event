@@ -3,11 +3,11 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { CreateEventFormType } from '../CreateEventForm'
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import { useFormContext } from 'react-hook-form'
 
-
-function Contacts({ form }: { form: CreateEventFormType }) {
+function Contacts() {
+    const form = useFormContext()
     return (
-
         <div className="grid md:grid-cols-3 w-full gap-6">
             <div className="space-y-2 col-span-1">
                 <FormField

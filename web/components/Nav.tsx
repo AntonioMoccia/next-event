@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuItem } from './ui/dropdown-menu'
-
+import { Plus } from 'lucide-react'
 
 
 function Nav() {
@@ -28,12 +28,20 @@ function Nav() {
 
     return (
         <header>
-            <nav className='flex px-5 py-4 items-center bg-slate-100 justify-between'>
-                <div>
-                    <h1>Logo</h1>
-                </div>
+            <nav className='flex px-5 py-4 items-center bg-white justify-between'>
+                <Link href={'/'}>
+                    <div>
+                        <h1>Logo</h1>
+                    </div>
+                </Link>
 
-                <div>
+                <div className='flex justify-center items-center gap-2'>
+                    <Link href={'/events/create'}>
+                        <Button className=''>
+                            <Plus />
+                            Aggiungi evento
+                        </Button>
+                    </Link>
                     {
                         session ? (
                             <DropdownMenu>

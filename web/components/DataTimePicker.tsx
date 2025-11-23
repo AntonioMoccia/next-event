@@ -61,12 +61,11 @@ export function DateTimePicker({ label, value, onChange, dataLabel }: {
               selected={date}
               captionLayout="dropdown"
               onSelect={(d) => {
-                setOpen(false)
                 handleDateChange(d!)
               }}
             />
             <Separator />
-            <div className=" items-center px-2 flex">
+            <div className=" items-center justify-center px-2 flex">
               <div>
                 <p className=" text-sm">
                   Ora:
@@ -81,9 +80,17 @@ export function DateTimePicker({ label, value, onChange, dataLabel }: {
               />
 
             </div>
+              <div className="py-2 px-5">
+                <Button className=" w-full" size={'lg'} onClick={()=>{
+                  setOpen(false)
+                }}>
+                  Imposta
+                </Button>
+              </div>
+          
           </PopoverContent>
         </Popover>
-
+          
         {/* TIME PICKER */}
 
       </div>

@@ -7,13 +7,13 @@ import { Input } from '@/components/ui/input'
 import Address from './Address'
 import { DateTimePicker } from '@/components/DataTimePicker'
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
-
+import { useFormContext } from 'react-hook-form'
 
 //da aggiungere inizio e fine
 
-function WhereAndWhen({ form }: { form: CreateEventFormType }) {
+function WhereAndWhen() {
+    const form = useFormContext()
     return (
-
         <div className="grid grid-cols-12 w-full gap-6">
             <div className='grid grid-cols-2 col-span-12 gap-5 md:col-span-6'>
                 <div className="space-y-2 col-span-2">
@@ -21,12 +21,17 @@ function WhereAndWhen({ form }: { form: CreateEventFormType }) {
                         control={form.control}
                         name='startAt'
                         render={({ field }) => (
-                            <DateTimePicker
-                                dataLabel="Data inizio"
-                                label="Data/ora inizio"
-                                value={form.watch("startAt")}
-                                onChange={(d) => form.setValue("startAt", d)}
-                            />
+                            <FormItem>
+                                <FormControl>
+                                    <DateTimePicker
+                                        dataLabel="Data inizio"
+                                        label="Data/ora inizio"
+                                        value={form.watch("startAt")}
+                                        onChange={(d) => form.setValue("startAt", d)}
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
                         )}
                     />
                 </div>
@@ -43,7 +48,6 @@ function WhereAndWhen({ form }: { form: CreateEventFormType }) {
                         render={({ field }) => (
                             <FormItem>
                                 <FormControl>
-
                                     <DateTimePicker
                                         dataLabel="Data fine"
                                         label="Data/ora fine"
@@ -62,7 +66,7 @@ function WhereAndWhen({ form }: { form: CreateEventFormType }) {
 
 
 
-            <Address form={form} />
+            <Address />
 
         </div>
 
