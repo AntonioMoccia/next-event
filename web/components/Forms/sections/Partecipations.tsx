@@ -7,58 +7,11 @@ import { FormControl, FormItem, FormMessage, FormLabel, FormField } from '@/comp
 import Age from './Age'
 import { UseFormReturn } from 'react-hook-form'
 
-function Partecipations({ form }: { form: UseFormReturn<CreateEventFormType> }) {
-
-    const [eventTypes, setEventTypes] = useState<{ id: string, description: string }[]>([])
-    useEffect(() => {
-        const getEventTypes = async () => {
-            const request = await fetch('http://localhost:3001/api/event_type')
-            const response = await request.json()
-            setEventTypes(response.data.event_types)
-        }
-        getEventTypes()
-    }, [])
+function Partecipations({ form }: { form: CreateEventFormType }) {
 
     return (
         <div className="grid md:grid-cols-3 gap-10 py-5 w-full">
-            <div className="space-y-2 col-span-1">
 
-                <FormField
-                    control={form.control}
-                    name='event_type'
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel> Tipo Evento *</FormLabel>
-
-                            <FormControl>
-                                <Select
-                                    onValueChange={field.onChange}
-                                    defaultValue={field.value}  // o value={field.value}
-                                >
-                                    <SelectTrigger className="w-full">
-                                        <SelectValue placeholder="Seleziona la tipologia" />
-                                    </SelectTrigger>
-
-                                    <SelectContent>
-                                        <SelectGroup>
-                                            <SelectLabel>Tipologia</SelectLabel>
-
-                                            {
-                                                eventTypes.map(eventType => (
-                                                    <SelectItem key={eventType.id} value={eventType.id}>{eventType.description}</SelectItem>
-                                                ))
-                                            }
-                                        </SelectGroup>
-                                    </SelectContent>
-                                </Select>
-                            </FormControl>
-
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-
-            </div>
             <div className="space-y-2 col-span-1">
                 <FormField
                     name='price'
@@ -83,7 +36,7 @@ function Partecipations({ form }: { form: UseFormReturn<CreateEventFormType> }) 
                     )}
                 />
             </div>
-            <Age form={form} />
+{/*             <Age form={form} /> */}
         </div>
 
     )

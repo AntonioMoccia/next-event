@@ -4,7 +4,7 @@ import { Request, Response, NextFunction } from "express";
 export class EventTypeController {
   constructor() {}
 
-  async getAll(req: Request, res: Response, next: NextFunction) {
+/*   async getAll(req: Request, res: Response, next: NextFunction) {
     const eventTypeService = new EventTypeService();
     try {
       const eventTypes = await eventTypeService.getAll();
@@ -29,5 +29,5 @@ export class EventTypeController {
     } catch (error) {
       next(error);
     }
-  }
+  } */
 }

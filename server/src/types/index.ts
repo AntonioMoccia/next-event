@@ -5,7 +5,6 @@ export type Event = {
   startAt?: Date;
   endAt?: Date;
   image?: string;
-  id_event_type: string;
   price: number;
   age: string;
   email?: string;
@@ -15,6 +14,8 @@ export type Event = {
   lat: number;
   lng: number;
   place_id: string;
+  place_name:string;
+  organizer:string
 };
 export type Category = {
   description:string

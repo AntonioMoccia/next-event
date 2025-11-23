@@ -27,14 +27,42 @@ export class EventController {
 
     try {
       const result = await S3.getInstance().remove(key);
-      
-      console.log(result);
-      success(res,{result})
 
+      console.log(result);
+      success(res, { result });
     } catch (error) {}
   }
+
+  async getEvents(req: Request, res: Response, next: NextFunction) {
+    const eventClass = new EventService();
+
+    try {
+      const events = await eventClass.getEvents()
+
+      success(res,{events})
+
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async getEventById(req: Request, res: Response, next: NextFunction) {
+    const id = req.params.id
+    console.log(id)
+    const eventClass = new EventService();
+    try {
+      const event = await eventClass.getEventById(id)
+
+      success(res,{event})
+
+    } catch (error) {
+      next(error);
+    }
+  }
+
   async createEvent(req: Request, res: Response, next: NextFunction) {
     const event: Event = req.body;
+
     const newEventClass = new EventService(event);
 
     try {

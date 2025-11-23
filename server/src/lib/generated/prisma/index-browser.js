@@ -172,11 +172,6 @@ exports.Prisma.CategoryScalarFieldEnum = {
   description: 'description'
 };
 
-exports.Prisma.EventTypeScalarFieldEnum = {
-  id: 'id',
-  description: 'description'
-};
-
 exports.Prisma.EventScalarFieldEnum = {
   id: 'id',
   title: 'title',
@@ -184,13 +179,13 @@ exports.Prisma.EventScalarFieldEnum = {
   address_name: 'address_name',
   lat: 'lat',
   lng: 'lng',
-  age: 'age',
   place_id: 'place_id',
+  organizer: 'organizer',
+  age: 'age',
   startAt: 'startAt',
   endAt: 'endAt',
   description: 'description',
   email: 'email',
-  id_event_type: 'id_event_type',
   image: 'image',
   phone: 'phone',
   price: 'price',
@@ -221,7 +216,6 @@ exports.Prisma.ModelName = {
   Account: 'Account',
   Verification: 'Verification',
   Category: 'Category',
-  EventType: 'EventType',
   Event: 'Event'
 };
 

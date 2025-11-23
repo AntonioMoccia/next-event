@@ -16,7 +16,7 @@ function WhereAndWhen({ form }: { form: CreateEventFormType }) {
 
         <div className="grid grid-cols-12 w-full gap-6">
             <div className='grid grid-cols-2 col-span-12 gap-5 md:col-span-6'>
-                <div className="space-y-2 col-span-2 ">
+                <div className="space-y-2 col-span-2">
                     <FormField
                         control={form.control}
                         name='startAt'

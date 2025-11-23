@@ -11,7 +11,7 @@ import { UseFormReturn } from 'react-hook-form'
 
 
 
-function BaseInfo({ form }: { form: UseFormReturn<CreateEventFormType> }) {
+function BaseInfo({ form }: { form:CreateEventFormType }) {
     const [categories, setCategories] = useState<{ id: string, description: string }[]>([])
     useEffect(() => {
         const getCategories = async () => {
@@ -47,7 +47,7 @@ function BaseInfo({ form }: { form: UseFormReturn<CreateEventFormType> }) {
                 <div className='space-y-2 col-span-2 md:col-span-1'>
                     <FormField
                         control={form.control}
-                        name="category"
+                        name="id_category"
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel>Categoria</FormLabel>
@@ -86,8 +86,8 @@ function BaseInfo({ form }: { form: UseFormReturn<CreateEventFormType> }) {
                 </div>
 
             </div>
-            <div className=' col-span-1 grid gap-10 grid-cols-2'>
-                <div className='space-y-2 col-span-2 md:col-span-1'>
+            <div className=' col-span-1'>
+                <div className=' w-full'>
                     <FormField
                         name='description'
                         control={form.control}
@@ -97,14 +97,17 @@ function BaseInfo({ form }: { form: UseFormReturn<CreateEventFormType> }) {
                                     Descrizione
                                 </FormLabel>
                                 <FormControl>
-                                    <Textarea {...field} className=' h-full' />
+                                    <Textarea {...field} className=' h-40' />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
                         )}
                     />
                 </div>
-                <div className='space-y-2 col-span-2 md:col-span-1'>
+
+            </div>
+            <div className=' col-span-1'>
+                <div className=' w-full md:col-span-1'>
                     <Uploader form={form} />
                 </div>
             </div>

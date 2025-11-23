@@ -7,14 +7,14 @@ import { Command, CommandItem, CommandList, CommandEmpty, CommandGroup, CommandI
 import { CreateEventFormType } from '../CreateEventForm'
 import { useEffect, useEffectEvent, useState } from 'react'
 import { PlaceAutocompleteResult } from '@googlemaps/google-maps-services-js'
-import { FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form'
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 
 export type AddressType = {
     address: string
     place_id: string
 }
 
-function Address({ form }: { form: UseFormReturn<CreateEventFormType>}) {
+function Address({ form }: { form: CreateEventFormType }) {
 
     const [suggestions, setSuggestions] = useState<PlaceAutocompleteResult[]>([])
     const [locationString, setLocationString] = useState("")
@@ -53,50 +53,77 @@ function Address({ form }: { form: UseFormReturn<CreateEventFormType>}) {
     }, [location])
 
     return (
+        <>
 
-        <div className="grid  col-span-12 gap-6">
-            <FormField
-                control={form.control}
-                name='address_name'
-                render={({ field }) => (
-                    <FormItem>
-
-                        <Command className="rounded-lg border w-full shadow-md md:min-w-[450px]">
+            <div className=' col-span-12 md:col-span-6'>
+                <FormField
+                    control={form.control}
+                    name='organizer'
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>
+                                Organizzatore
+                            </FormLabel>
                             <FormControl>
-                                <CommandInput {...field} value={locationString} onValueChange={setLocationString} placeholder="Type a command or search..." />
+                                <Input
+                                    placeholder='es. associazione.. o Bar..'
+                                    {...field}
+                                    type='text'
+                                />
                             </FormControl>
-                            {suggestions?.length > 0 && (
-                                <CommandList>
-                                    <CommandEmpty>No results found.</CommandEmpty>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+            </div>
+            <div className=' col-span-12 md:col-span-6'>
 
-                                    <CommandGroup heading="Suggestions">
-                                        {suggestions.map((locationAddress) => (
-                                            <CommandItem
-                                                key={locationAddress.place_id}
-                                                value={locationAddress.description}
-                                                onSelect={() => {
-                                                    console.log(locationAddress)
-                                                    form.setValue('address_name', locationAddress.description)
-                                                    form.setValue('place_id', locationAddress.place_id)
-                                                    setLocationString(locationAddress.description)
-                                                    setLocation(locationAddress.place_id)
-                                                    setSuggestions([]) // chiude la lista
-                                                }}
-                                            >
-                                                {locationAddress.description}
-                                            </CommandItem>
-                                        ))}
-                                    </CommandGroup>
-                                </CommandList>
-                            )}
+                <FormField
+                    control={form.control}
+                    name='address_name'
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>
+                                Indirizzo
+                            </FormLabel>
+                            <Command className="rounded-lg border w-full shadow-md ">
+                                <FormControl>
+                                    <CommandInput {...field} value={locationString} onValueChange={setLocationString} placeholder="Type a command or search..." />
+                                </FormControl>
+                                {suggestions?.length > 0 && (
+                                    <CommandList>
+                                        <CommandEmpty>No results found.</CommandEmpty>
 
-                        </Command>
-                        <FormMessage />
-                    </FormItem>
-                )}
-            />
+                                        <CommandGroup heading="Suggestions">
+                                            {suggestions.map((locationAddress) => (
+                                                <CommandItem
+                                                    key={locationAddress.place_id}
+                                                    value={locationAddress.description}
+                                                    onSelect={() => {
+                                                        console.log(locationAddress)
+                                                        form.setValue('address_name', locationAddress.description)
+                                                        form.setValue('place_id', locationAddress.place_id)
+                                                        setLocationString(locationAddress.description)
+                                                        setLocation(locationAddress.place_id)
+                                                        setSuggestions([]) // chiude la lista
+                                                    }}
+                                                >
+                                                    {locationAddress.description}
+                                                </CommandItem>
+                                            ))}
+                                        </CommandGroup>
+                                    </CommandList>
+                                )}
 
-        </div>
+                            </Command>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+            </div>
+        </>
+
+
 
     )
 }
