@@ -26,7 +26,7 @@ function Contacts() {
                                     id="contactEmail"
                                     type="email"
                                     placeholder="info@tuoevento.it"
-                                    className="border-gray-300 focus:border-gray-900 focus:ring-gray-900"
+                                    className=" border border-black rounded-md"
                                 />
                             </FormControl>
                             <FormMessage />
@@ -49,7 +49,7 @@ function Contacts() {
                                     id="contactPhone"
                                     type="tel"
                                     placeholder="+39 123 456 7890"
-                                    className="border-gray-300 focus:border-gray-900 focus:ring-gray-900"
+                                    className=" border border-black rounded-md"
                                 />
                             </FormControl>
                             <FormMessage />
@@ -73,7 +73,7 @@ function Contacts() {
                                     id="website"
                                     type="url"
                                     placeholder="https://www.tuoevento.it"
-                                    className="border-gray-300  focus:border-gray-900 focus:ring-gray-900"
+                                    className=" border border-black rounded-md"
                                 />
                             </FormControl>
                             <FormMessage />

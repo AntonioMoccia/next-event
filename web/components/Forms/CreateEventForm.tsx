@@ -5,7 +5,8 @@ import { useForm, UseFormReturn } from 'react-hook-form'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Form } from '@/components/ui/form'
 import FormCard from '@/components/FormCard'
-import { Button } from '../ui/button'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
 
 
 import z from 'zod'
@@ -15,47 +16,45 @@ import WhereAndWhen from './sections/WhereAndWhen'
 import Partecipations from './sections/Partecipations'
 import Contacts from './sections/Contacts'
 
-import { useEffect } from 'react'
-import { Event } from '@/types'
-
+import { useEffect, useState } from 'react'
 
 export const createEventZodSchema = z.object({
-    title: z.string("canno't be empty").min(3, "The title must be min 3 chars"),
-    id_category: z.string(),
-    description: z.string(),
-    image: z.string().optional(),
-    id_event_type: z.string(),
-    price: z.number(),
-    age: z.string(),
-    startAt: z.date(),
+    title: z.string().min(3, "The title must be min 3 chars"),
+    id_category: z.string().min(1, "Campo obbligatorio"),
+    description: z.string().min(1, "Campo obbligatorio"),
+    image: z.string().min(1, "Campo obbligatorio"),
+    startAt: z.date("Campo obbligatorio"),
     endAt: z.date().optional(),
-    address_name: z.string(),
+    capacity: z.number().optional(),
+    address_name: z.string().min(1, "Campo obbligatorio"),
     lat: z.number(),
     lng: z.number(),
-    place_id: z.string(),
+    place_id: z.string().min(1, "Campo obbligatorio"),
+    price: z.number().optional(),
     email: z.string().optional(),
-    phone: z.string(),
-    website: z.string(),
-    capacity: z.number(),
-    organizer: z.string()
+    phone: z.string().optional(),
+    website: z.string().optional(),
+    organizer: z.string().optional()
 })
 
 type FormType = z.infer<typeof createEventZodSchema>
 export type CreateEventFormType = UseFormReturn<FormType>
 
 function CreateEventForm() {
+
+    const [successSubmit, setSuccessSubmit] = useState<boolean | undefined>(undefined)
+
     const form = useForm({
         resolver: zodResolver(createEventZodSchema),
         defaultValues: {
             id_category: "",
             description: "",
             image: "",
-            id_event_type: "",
             price: 0,
             title: "",
             capacity: 0,
-            startAt: new Date(),
-            endAt: new Date(),
+            startAt: undefined,
+            endAt: undefined,
             address_name: "",
             lat: 0,
             lng: 0,
@@ -66,9 +65,6 @@ function CreateEventForm() {
             organizer: ""
         }
     })
-    useEffect(() => {
-        console.log(form.getValues())
-    }, [form])
 
     async function onSubmit(values: z.infer<typeof createEventZodSchema>) {
 
@@ -78,7 +74,7 @@ function CreateEventForm() {
             endAt: values.endAt?.toISOString(),
         }
         console.log(payload)
-        const request = await fetch('http://localhost:3001/api/event', {
+        const request = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/event`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
@@ -90,39 +86,48 @@ function CreateEventForm() {
         const newEvent = await request.json()
         console.log("Payload finale:", payload)
         console.log("Payload finale:", newEvent)
+        if (!newEvent.success) {
+            setSuccessSubmit(false)
+            return
+        }
+        setSuccessSubmit(true)
+
     }
 
     return (
-        <div className=' p-2 w-full max-w-3xl'>
+        <div className=' p-2 py-10 w-full max-w-3xl'>
             <Form {...form}>
                 <form className='flex flex-col gap-5' onSubmit={form.handleSubmit(onSubmit)}>
-                    <FormCard
-                        withTitle={false}
-                        title=""
-                        description=""
-                        content={
-                            <div className=' flex flex-col justify-start items-center gap-5'>
-                                <BaseInfo />
-                                <WhereAndWhen />
-                                <Partecipations />
-                            </div>
-                        }
-                    />
+                    <div className=' flex flex-col justify-start items-center gap-5'>
+                        <BaseInfo />
+                        <WhereAndWhen />    
+                        <Partecipations />
+                    </div>
 
-                    <FormCard
-                        title="Dove possono contattarti?"
-                        description="Questi contatti saranno resi pubblici"
-                        content={
-                            <Contacts />
-                        }
-                    />
+                    <div className=' gap-4 flex flex-col'>   
+                        <p className=' text-sm font-extrabold'>
+                            Questi contatti saranno resi pubblici
+                        </p>
+                        <Contacts />
+                    </div>
                     <div className=' w-full flex items-center justify-center'>
-                        <Button size={'lg'} type={'submit'}>
+                        <Button className='border border-black rounded-md ' size={'lg'} type={'submit'}>
                             Pubblica evento
                         </Button>
                     </div>
                 </form>
             </Form>
+            {/*  {
+                !successSubmit && successSubmit ? (
+                    <Card>
+                        <CardContent>Richiesta inviata con successo</CardContent>
+                    </Card>
+                ) : (
+                    <Card>
+                        <CardContent>Richiesta non inviata</CardContent>
+                    </Card>
+                )
+            } */}
         </div >
     )
 }

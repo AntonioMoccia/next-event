@@ -121,6 +121,12 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.TempImageScalarFieldEnum = {
+  id: 'id',
+  key: 'key',
+  expireAt: 'expireAt'
+};
+
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -189,6 +195,7 @@ exports.Prisma.EventScalarFieldEnum = {
   image: 'image',
   phone: 'phone',
   price: 'price',
+  capacity: 'capacity',
   website: 'website',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -211,6 +218,7 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
+  TempImage: 'TempImage',
   User: 'User',
   Session: 'Session',
   Account: 'Account',

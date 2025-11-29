@@ -17,7 +17,7 @@ function BaseInfo() {
 
     useEffect(() => {
         const getCategories = async () => {
-            const request = await fetch('http://localhost:3001/api/category')
+            const request = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/category`)
             const response = await request.json()
             console.log(response)
             setCategories(response.data.categories)
@@ -25,9 +25,9 @@ function BaseInfo() {
         getCategories()
     }, [])
 
-    useEffect(()=>{
-        console.log("valori: ",form.getValues())
-    },[form])
+    useEffect(() => {
+        console.log("valori: ", form.getValues())
+    }, [form])
 
     return (
 
@@ -42,7 +42,7 @@ function BaseInfo() {
                                 <FormItem>
                                     <FormLabel>Titolo *</FormLabel>
                                     <FormControl>
-                                        <Input type='text' {...field} />
+                                        <Input className=' border border-black rounded-md rounded-md' type='text' {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -62,15 +62,14 @@ function BaseInfo() {
                                     <Select
                                         onValueChange={field.onChange}
                                         defaultValue={field.value}  // o value={field.value}
+
                                     >
-                                        <SelectTrigger className="w-full">
+                                        <SelectTrigger className=" border border-black rounded-md w-full">
                                             <SelectValue placeholder="Seleziona la categoria" />
                                         </SelectTrigger>
 
                                         <SelectContent>
                                             <SelectGroup>
-                                                <SelectLabel>Categoria</SelectLabel>
-
                                                 {categories.map(category => (
                                                     <SelectItem
                                                         key={category.id}
@@ -103,7 +102,7 @@ function BaseInfo() {
                                     Descrizione
                                 </FormLabel>
                                 <FormControl>
-                                    <Textarea {...field} className=' h-40' />
+                                    <Textarea {...field} className=' border border-black rounded-md h-40' />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>

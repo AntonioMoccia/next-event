@@ -14,7 +14,7 @@ export class GoogleService {
         language,
       },
     });
-
+    
     return suggestions.data.predictions;
   }
 
@@ -26,7 +26,7 @@ export class GoogleService {
       },
     });
 
-
+    console.log(JSON.stringify(response.data))
 
     const coords = response.data.results[0].geometry.location;
 

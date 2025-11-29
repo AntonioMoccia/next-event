@@ -25,7 +25,7 @@ export function useUpload() {
   // -----------------------------
   async function getPresignedUrl(file: File) {
     try {
-      const res = await fetch("http://localhost:3001/api/event/upload", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/event/upload`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -126,7 +126,7 @@ export function useUpload() {
     );
 
     try {
-      const res = await fetch("http://localhost:3001/api/event/upload", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/event/upload`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ key: fileToRemove.key }),

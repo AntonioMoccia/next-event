@@ -9,7 +9,7 @@ import { useFormContext } from 'react-hook-form'
 function Partecipations() {
     const form = useFormContext()
     return (
-        <div className="grid md:grid-cols-3 gap-10 py-5 w-full">
+        <div className="grid  md:grid-cols-3 gap-10  w-full">
 
             <div className="space-y-2 col-span-1">
                 <FormField
@@ -22,12 +22,12 @@ function Partecipations() {
                             </FormLabel>
                             <FormControl>
                                 <Input
-                                    onChange={(e) => field.onChange(e.target.value === "" ? undefined : Number(e.target.value))}
+                                    onChange={(e) => field.onChange(e.target.value === "" ? 0 : Number(e.target.value))}
                                     id="price"
                                     type="number"
                                     placeholder="0.00"
                                     step="0.01"
-                                    className="border-gray-300 focus:border-gray-900 focus:ring-gray-900"
+                                    className="  border border-black rounded-md  focus:border-gray-900 focus:ring-gray-900"
                                 />
                             </FormControl>
                             <FormMessage />

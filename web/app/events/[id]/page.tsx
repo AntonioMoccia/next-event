@@ -8,7 +8,7 @@ import { ArrowLeft, Calendar, Clock, MapPin, Navigation, Users } from "lucide-re
 import Image from "next/image"
 import { useParams } from "next/navigation"
 import { useEffect, useState } from "react"
-import {formatDate} from '@/lib/format-date'
+import { formatDate } from '@/lib/format-date'
 
 function EventDetail() {
 
@@ -17,7 +17,7 @@ function EventDetail() {
     useEffect(() => {
 
         const getEvent = async () => {
-            const request = await fetch(`http://localhost:3001/api/event/${id}`)
+            const request = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/event/${id}`)
             const response = await request.json()
             console.log(response.data.event)
             setEvent(response.data.event)
@@ -28,17 +28,23 @@ function EventDetail() {
     if (!event) return (<></>)
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen ">
             {/* Header */}
 
 
-            <main className="max-w-4xl mx-auto px-4 py-8">
+            <div className="max-w-4xl mx-auto px-4 py-8">
+                <div className="  mb-5 ">
+                    <h1 className="text-3xl font-bold">{event.title}</h1>
+                    <p >
+                        {event.organizer}
+                    </p>
+                </div>
                 {/* Hero Image */}
                 {event.image && (
 
-                    <div className="relative aspect-[21/9] overflow-hidden rounded-lg bg-gray-200 mb-8">
+                    <div className="relative aspect-video overflow-hidden rounded-lg mb-8">
                         <Image
-                            src="https://picsum.photos/800"
+                            src={event.image}
                             alt="cover"
                             fill
                             className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
@@ -47,89 +53,61 @@ function EventDetail() {
                     </div>
                 )}
                 {/* Title and Badge */}
-                <div className="mb-6">
-                    <div className="flex items-center gap-3 mb-3">
-                        <Badge variant="secondary" className="text-base px-3 py-1">
-                            {event.category.description}
-                        </Badge>
-                        <span className="text-blue-600">{event.price} €</span>
+                <div className="mb-6 text-[#222]">
+                    <div className="flex justify-between items-center gap-3 mb-3">
+                        <div className=" border border-[#222222] text-[#222222] text-xs px-2 py-1 rounded-md">{event.category.description}</div>
+                        {event.price && event.price > 0 ? (<span className="text-blue-600">{event.price} €</span>) : (<span className="text-blue-600">Gratis</span>)}
                     </div>
-                    <h1 className="text-gray-900 mb-2">{event.title}</h1>
-                    <p className="text-gray-600">
-                        Organizzato da {event.organizer}
-                    </p>
+
+
                 </div>
-
-                {/* Key Info Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                    <Card>
-                        <CardContent>
-                            <div className="flex items-start gap-4 h-full  ">
-                                <div className="bg-blue-100 p-3  rounded-lg">
-                                    <Calendar className="size-6 text-blue-600" />
-                                </div>
-                                <div className=" h-full flex justin items-center">
-                                    <p className="text-gray-900 capitalize">{formatDate(event.startAt.toString())}<br />{event.endAt && ` ${formatDate(event.endAt.toString())}`}</p>
-                                </div>
-                            </div>
-                        </CardContent>
-                    </Card>
-
-
-
-                    <Card>
-                        <CardContent>
-                            <div className="flex items-start gap-4">
-                                <div className="bg-purple-100 p-3 rounded-lg">
-                                    <MapPin className="size-6 text-purple-600" />
-                                </div>
-                                <div className="flex-1">
-                                    <p className="text-gray-500 mb-1">Luogo</p>
-                                    <p className="text-gray-900">{event.address_name}</p>
-                                    <p className="text-gray-600">{event.organizer}</p>
-                                </div>
-                            </div>
-                        </CardContent>
-                    </Card>
-
-                    {event.capacity && (
-                        <Card>
-                            <CardContent className="pt-6">
-                                <div className="flex items-start gap-4">
-                                    <div className="bg-orange-100 p-3 rounded-lg">
-                                        <Users className="size-6 text-orange-600" />
-                                    </div>
-                                    <div>
-                                        <p className="text-gray-500 mb-1">Capacità</p>
-                                        <p className="text-gray-900">Massimo {event.capacity} persone</p>
-                                    </div>
-                                </div>
-                            </CardContent>
-                        </Card>
-                    )}
-                </div>
-
-                {/* Description */}
-                <Card className="mb-8">
-                    <CardContent className="pt-6">
-                        <h2 className="text-gray-900 mb-4">Descrizione</h2>
-                        <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+                 {/* Description */}
+                <div className="mb-4 text-[#222222]">
+                    <div className="pt-2">
+                        <p className=" leading-relaxed whitespace-pre-line">
                             {event.description}
                         </p>
-                    </CardContent>
-                </Card>
+                    </div>
+                </div>
+                {/* Key Info Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                    <div className=" border rounded-md  border-[#222222] bg-white text-[#222]">
+                        <div>
+                            <div className="flex items-center gap-2 py-5 px-2">
+                                <Calendar className="size-6" />
+                                <span className="text-sm">
+                                    {formatDate(event.startAt.toString())}
+                                    {event.endAt && ` - ${formatDate(event.endAt.toString())}`}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className=" border rounded-md  border-[#222222] bg-white text-[#222]">
+                    <div>
+                        <div className="flex items-center gap-2 py-5 px-2">
+                            <MapPin className="size-6" />
+                            <div className="flex-1">
+                                <p>{event.address_name}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                
+
+               
 
                 {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4">
-                    <Button size="lg" className=" min-h-10 flex-1" onClick={() => console.log('directions')}>
+                    <Button size="lg" className=' cursor-pointer  bg-[#222222] text-[#F9F9F9] rounded-md ' onClick={() => console.log('directions')}>
                         <Navigation className="size-5 mr-2" />
                         Ottieni Indicazioni
                     </Button>
-                    <Button size="lg" variant="outline" className=" min-h-10 flex-1">
+                    <Button size="lg" variant="outline"  className=' bg-transparent text-[#222222] border border-[#222222] rounded-md '>
                         Condividi Evento
                     </Button>
                 </div>
-            </main>
+            </div>
         </div>
     )
 }

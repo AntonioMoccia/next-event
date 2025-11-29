@@ -67,7 +67,29 @@ function WhereAndWhen() {
 
 
             <Address />
+            <div className=' col-span-12 md:col-span-6'>
+                <FormField
+                    control={form.control}
+                    name='organizer'
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>
+                                Organizzatore
+                            </FormLabel>
 
+                            <FormControl>
+                                <Input
+                                    className=' border border-black rounded-md'
+                                    placeholder='es. associazione.. o Bar..'
+                                    {...field}
+                                    type='text'
+                                />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+            </div>
         </div>
 
     )

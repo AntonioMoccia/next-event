@@ -14,6 +14,11 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
+ * Model TempImage
+ * 
+ */
+export type TempImage = $Result.DefaultSelection<Prisma.$TempImagePayload>
+/**
  * Model User
  * 
  */
@@ -51,8 +56,8 @@ export type Event = $Result.DefaultSelection<Prisma.$EventPayload>
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Users
- * const users = await prisma.user.findMany()
+ * // Fetch zero or more TempImages
+ * const tempImages = await prisma.tempImage.findMany()
  * ```
  *
  *
@@ -72,8 +77,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Users
-   * const users = await prisma.user.findMany()
+   * // Fetch zero or more TempImages
+   * const tempImages = await prisma.tempImage.findMany()
    * ```
    *
    *
@@ -163,6 +168,16 @@ export class PrismaClient<
   }>>
 
       /**
+   * `prisma.tempImage`: Exposes CRUD operations for the **TempImage** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TempImages
+    * const tempImages = await prisma.tempImage.findMany()
+    * ```
+    */
+  get tempImage(): Prisma.TempImageDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.user`: Exposes CRUD operations for the **User** model.
     * Example usage:
     * ```ts
@@ -662,6 +677,7 @@ export namespace Prisma {
 
 
   export const ModelName: {
+    TempImage: 'TempImage',
     User: 'User',
     Session: 'Session',
     Account: 'Account',
@@ -686,10 +702,84 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "session" | "account" | "verification" | "category" | "event"
+      modelProps: "tempImage" | "user" | "session" | "account" | "verification" | "category" | "event"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
+      TempImage: {
+        payload: Prisma.$TempImagePayload<ExtArgs>
+        fields: Prisma.TempImageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TempImageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempImagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TempImageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempImagePayload>
+          }
+          findFirst: {
+            args: Prisma.TempImageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempImagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TempImageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempImagePayload>
+          }
+          findMany: {
+            args: Prisma.TempImageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempImagePayload>[]
+          }
+          create: {
+            args: Prisma.TempImageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempImagePayload>
+          }
+          createMany: {
+            args: Prisma.TempImageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TempImageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempImagePayload>[]
+          }
+          delete: {
+            args: Prisma.TempImageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempImagePayload>
+          }
+          update: {
+            args: Prisma.TempImageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempImagePayload>
+          }
+          deleteMany: {
+            args: Prisma.TempImageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TempImageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TempImageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempImagePayload>[]
+          }
+          upsert: {
+            args: Prisma.TempImageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempImagePayload>
+          }
+          aggregate: {
+            args: Prisma.TempImageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTempImage>
+          }
+          groupBy: {
+            args: Prisma.TempImageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TempImageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TempImageCountArgs<ExtArgs>
+            result: $Utils.Optional<TempImageCountAggregateOutputType> | number
+          }
+        }
+      }
       User: {
         payload: Prisma.$UserPayload<ExtArgs>
         fields: Prisma.UserFieldRefs
@@ -1230,6 +1320,7 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
+    tempImage?: TempImageOmit
     user?: UserOmit
     session?: SessionOmit
     account?: AccountOmit
@@ -1385,6 +1476,975 @@ export namespace Prisma {
   /**
    * Models
    */
+
+  /**
+   * Model TempImage
+   */
+
+  export type AggregateTempImage = {
+    _count: TempImageCountAggregateOutputType | null
+    _min: TempImageMinAggregateOutputType | null
+    _max: TempImageMaxAggregateOutputType | null
+  }
+
+  export type TempImageMinAggregateOutputType = {
+    id: string | null
+    key: string | null
+    expireAt: Date | null
+  }
+
+  export type TempImageMaxAggregateOutputType = {
+    id: string | null
+    key: string | null
+    expireAt: Date | null
+  }
+
+  export type TempImageCountAggregateOutputType = {
+    id: number
+    key: number
+    expireAt: number
+    _all: number
+  }
+
+
+  export type TempImageMinAggregateInputType = {
+    id?: true
+    key?: true
+    expireAt?: true
+  }
+
+  export type TempImageMaxAggregateInputType = {
+    id?: true
+    key?: true
+    expireAt?: true
+  }
+
+  export type TempImageCountAggregateInputType = {
+    id?: true
+    key?: true
+    expireAt?: true
+    _all?: true
+  }
+
+  export type TempImageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TempImage to aggregate.
+     */
+    where?: TempImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TempImages to fetch.
+     */
+    orderBy?: TempImageOrderByWithRelationInput | TempImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TempImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TempImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TempImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TempImages
+    **/
+    _count?: true | TempImageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TempImageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TempImageMaxAggregateInputType
+  }
+
+  export type GetTempImageAggregateType<T extends TempImageAggregateArgs> = {
+        [P in keyof T & keyof AggregateTempImage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTempImage[P]>
+      : GetScalarType<T[P], AggregateTempImage[P]>
+  }
+
+
+
+
+  export type TempImageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TempImageWhereInput
+    orderBy?: TempImageOrderByWithAggregationInput | TempImageOrderByWithAggregationInput[]
+    by: TempImageScalarFieldEnum[] | TempImageScalarFieldEnum
+    having?: TempImageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TempImageCountAggregateInputType | true
+    _min?: TempImageMinAggregateInputType
+    _max?: TempImageMaxAggregateInputType
+  }
+
+  export type TempImageGroupByOutputType = {
+    id: string
+    key: string
+    expireAt: Date
+    _count: TempImageCountAggregateOutputType | null
+    _min: TempImageMinAggregateOutputType | null
+    _max: TempImageMaxAggregateOutputType | null
+  }
+
+  type GetTempImageGroupByPayload<T extends TempImageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TempImageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TempImageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TempImageGroupByOutputType[P]>
+            : GetScalarType<T[P], TempImageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TempImageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    key?: boolean
+    expireAt?: boolean
+  }, ExtArgs["result"]["tempImage"]>
+
+  export type TempImageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    key?: boolean
+    expireAt?: boolean
+  }, ExtArgs["result"]["tempImage"]>
+
+  export type TempImageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    key?: boolean
+    expireAt?: boolean
+  }, ExtArgs["result"]["tempImage"]>
+
+  export type TempImageSelectScalar = {
+    id?: boolean
+    key?: boolean
+    expireAt?: boolean
+  }
+
+  export type TempImageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "key" | "expireAt", ExtArgs["result"]["tempImage"]>
+
+  export type $TempImagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TempImage"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      key: string
+      expireAt: Date
+    }, ExtArgs["result"]["tempImage"]>
+    composites: {}
+  }
+
+  type TempImageGetPayload<S extends boolean | null | undefined | TempImageDefaultArgs> = $Result.GetResult<Prisma.$TempImagePayload, S>
+
+  type TempImageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TempImageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TempImageCountAggregateInputType | true
+    }
+
+  export interface TempImageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TempImage'], meta: { name: 'TempImage' } }
+    /**
+     * Find zero or one TempImage that matches the filter.
+     * @param {TempImageFindUniqueArgs} args - Arguments to find a TempImage
+     * @example
+     * // Get one TempImage
+     * const tempImage = await prisma.tempImage.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TempImageFindUniqueArgs>(args: SelectSubset<T, TempImageFindUniqueArgs<ExtArgs>>): Prisma__TempImageClient<$Result.GetResult<Prisma.$TempImagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TempImage that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TempImageFindUniqueOrThrowArgs} args - Arguments to find a TempImage
+     * @example
+     * // Get one TempImage
+     * const tempImage = await prisma.tempImage.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TempImageFindUniqueOrThrowArgs>(args: SelectSubset<T, TempImageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TempImageClient<$Result.GetResult<Prisma.$TempImagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TempImage that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TempImageFindFirstArgs} args - Arguments to find a TempImage
+     * @example
+     * // Get one TempImage
+     * const tempImage = await prisma.tempImage.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TempImageFindFirstArgs>(args?: SelectSubset<T, TempImageFindFirstArgs<ExtArgs>>): Prisma__TempImageClient<$Result.GetResult<Prisma.$TempImagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TempImage that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TempImageFindFirstOrThrowArgs} args - Arguments to find a TempImage
+     * @example
+     * // Get one TempImage
+     * const tempImage = await prisma.tempImage.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TempImageFindFirstOrThrowArgs>(args?: SelectSubset<T, TempImageFindFirstOrThrowArgs<ExtArgs>>): Prisma__TempImageClient<$Result.GetResult<Prisma.$TempImagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TempImages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TempImageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TempImages
+     * const tempImages = await prisma.tempImage.findMany()
+     * 
+     * // Get first 10 TempImages
+     * const tempImages = await prisma.tempImage.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tempImageWithIdOnly = await prisma.tempImage.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TempImageFindManyArgs>(args?: SelectSubset<T, TempImageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TempImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TempImage.
+     * @param {TempImageCreateArgs} args - Arguments to create a TempImage.
+     * @example
+     * // Create one TempImage
+     * const TempImage = await prisma.tempImage.create({
+     *   data: {
+     *     // ... data to create a TempImage
+     *   }
+     * })
+     * 
+     */
+    create<T extends TempImageCreateArgs>(args: SelectSubset<T, TempImageCreateArgs<ExtArgs>>): Prisma__TempImageClient<$Result.GetResult<Prisma.$TempImagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TempImages.
+     * @param {TempImageCreateManyArgs} args - Arguments to create many TempImages.
+     * @example
+     * // Create many TempImages
+     * const tempImage = await prisma.tempImage.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TempImageCreateManyArgs>(args?: SelectSubset<T, TempImageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TempImages and returns the data saved in the database.
+     * @param {TempImageCreateManyAndReturnArgs} args - Arguments to create many TempImages.
+     * @example
+     * // Create many TempImages
+     * const tempImage = await prisma.tempImage.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TempImages and only return the `id`
+     * const tempImageWithIdOnly = await prisma.tempImage.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TempImageCreateManyAndReturnArgs>(args?: SelectSubset<T, TempImageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TempImagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TempImage.
+     * @param {TempImageDeleteArgs} args - Arguments to delete one TempImage.
+     * @example
+     * // Delete one TempImage
+     * const TempImage = await prisma.tempImage.delete({
+     *   where: {
+     *     // ... filter to delete one TempImage
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TempImageDeleteArgs>(args: SelectSubset<T, TempImageDeleteArgs<ExtArgs>>): Prisma__TempImageClient<$Result.GetResult<Prisma.$TempImagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TempImage.
+     * @param {TempImageUpdateArgs} args - Arguments to update one TempImage.
+     * @example
+     * // Update one TempImage
+     * const tempImage = await prisma.tempImage.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TempImageUpdateArgs>(args: SelectSubset<T, TempImageUpdateArgs<ExtArgs>>): Prisma__TempImageClient<$Result.GetResult<Prisma.$TempImagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TempImages.
+     * @param {TempImageDeleteManyArgs} args - Arguments to filter TempImages to delete.
+     * @example
+     * // Delete a few TempImages
+     * const { count } = await prisma.tempImage.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TempImageDeleteManyArgs>(args?: SelectSubset<T, TempImageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TempImages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TempImageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TempImages
+     * const tempImage = await prisma.tempImage.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TempImageUpdateManyArgs>(args: SelectSubset<T, TempImageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TempImages and returns the data updated in the database.
+     * @param {TempImageUpdateManyAndReturnArgs} args - Arguments to update many TempImages.
+     * @example
+     * // Update many TempImages
+     * const tempImage = await prisma.tempImage.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TempImages and only return the `id`
+     * const tempImageWithIdOnly = await prisma.tempImage.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TempImageUpdateManyAndReturnArgs>(args: SelectSubset<T, TempImageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TempImagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TempImage.
+     * @param {TempImageUpsertArgs} args - Arguments to update or create a TempImage.
+     * @example
+     * // Update or create a TempImage
+     * const tempImage = await prisma.tempImage.upsert({
+     *   create: {
+     *     // ... data to create a TempImage
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TempImage we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TempImageUpsertArgs>(args: SelectSubset<T, TempImageUpsertArgs<ExtArgs>>): Prisma__TempImageClient<$Result.GetResult<Prisma.$TempImagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TempImages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TempImageCountArgs} args - Arguments to filter TempImages to count.
+     * @example
+     * // Count the number of TempImages
+     * const count = await prisma.tempImage.count({
+     *   where: {
+     *     // ... the filter for the TempImages we want to count
+     *   }
+     * })
+    **/
+    count<T extends TempImageCountArgs>(
+      args?: Subset<T, TempImageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TempImageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TempImage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TempImageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TempImageAggregateArgs>(args: Subset<T, TempImageAggregateArgs>): Prisma.PrismaPromise<GetTempImageAggregateType<T>>
+
+    /**
+     * Group by TempImage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TempImageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TempImageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TempImageGroupByArgs['orderBy'] }
+        : { orderBy?: TempImageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TempImageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTempImageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TempImage model
+   */
+  readonly fields: TempImageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TempImage.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TempImageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TempImage model
+   */
+  interface TempImageFieldRefs {
+    readonly id: FieldRef<"TempImage", 'String'>
+    readonly key: FieldRef<"TempImage", 'String'>
+    readonly expireAt: FieldRef<"TempImage", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TempImage findUnique
+   */
+  export type TempImageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TempImage
+     */
+    select?: TempImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TempImage
+     */
+    omit?: TempImageOmit<ExtArgs> | null
+    /**
+     * Filter, which TempImage to fetch.
+     */
+    where: TempImageWhereUniqueInput
+  }
+
+  /**
+   * TempImage findUniqueOrThrow
+   */
+  export type TempImageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TempImage
+     */
+    select?: TempImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TempImage
+     */
+    omit?: TempImageOmit<ExtArgs> | null
+    /**
+     * Filter, which TempImage to fetch.
+     */
+    where: TempImageWhereUniqueInput
+  }
+
+  /**
+   * TempImage findFirst
+   */
+  export type TempImageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TempImage
+     */
+    select?: TempImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TempImage
+     */
+    omit?: TempImageOmit<ExtArgs> | null
+    /**
+     * Filter, which TempImage to fetch.
+     */
+    where?: TempImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TempImages to fetch.
+     */
+    orderBy?: TempImageOrderByWithRelationInput | TempImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TempImages.
+     */
+    cursor?: TempImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TempImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TempImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TempImages.
+     */
+    distinct?: TempImageScalarFieldEnum | TempImageScalarFieldEnum[]
+  }
+
+  /**
+   * TempImage findFirstOrThrow
+   */
+  export type TempImageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TempImage
+     */
+    select?: TempImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TempImage
+     */
+    omit?: TempImageOmit<ExtArgs> | null
+    /**
+     * Filter, which TempImage to fetch.
+     */
+    where?: TempImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TempImages to fetch.
+     */
+    orderBy?: TempImageOrderByWithRelationInput | TempImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TempImages.
+     */
+    cursor?: TempImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TempImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TempImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TempImages.
+     */
+    distinct?: TempImageScalarFieldEnum | TempImageScalarFieldEnum[]
+  }
+
+  /**
+   * TempImage findMany
+   */
+  export type TempImageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TempImage
+     */
+    select?: TempImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TempImage
+     */
+    omit?: TempImageOmit<ExtArgs> | null
+    /**
+     * Filter, which TempImages to fetch.
+     */
+    where?: TempImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TempImages to fetch.
+     */
+    orderBy?: TempImageOrderByWithRelationInput | TempImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TempImages.
+     */
+    cursor?: TempImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TempImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TempImages.
+     */
+    skip?: number
+    distinct?: TempImageScalarFieldEnum | TempImageScalarFieldEnum[]
+  }
+
+  /**
+   * TempImage create
+   */
+  export type TempImageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TempImage
+     */
+    select?: TempImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TempImage
+     */
+    omit?: TempImageOmit<ExtArgs> | null
+    /**
+     * The data needed to create a TempImage.
+     */
+    data: XOR<TempImageCreateInput, TempImageUncheckedCreateInput>
+  }
+
+  /**
+   * TempImage createMany
+   */
+  export type TempImageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TempImages.
+     */
+    data: TempImageCreateManyInput | TempImageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TempImage createManyAndReturn
+   */
+  export type TempImageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TempImage
+     */
+    select?: TempImageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TempImage
+     */
+    omit?: TempImageOmit<ExtArgs> | null
+    /**
+     * The data used to create many TempImages.
+     */
+    data: TempImageCreateManyInput | TempImageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TempImage update
+   */
+  export type TempImageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TempImage
+     */
+    select?: TempImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TempImage
+     */
+    omit?: TempImageOmit<ExtArgs> | null
+    /**
+     * The data needed to update a TempImage.
+     */
+    data: XOR<TempImageUpdateInput, TempImageUncheckedUpdateInput>
+    /**
+     * Choose, which TempImage to update.
+     */
+    where: TempImageWhereUniqueInput
+  }
+
+  /**
+   * TempImage updateMany
+   */
+  export type TempImageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TempImages.
+     */
+    data: XOR<TempImageUpdateManyMutationInput, TempImageUncheckedUpdateManyInput>
+    /**
+     * Filter which TempImages to update
+     */
+    where?: TempImageWhereInput
+    /**
+     * Limit how many TempImages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TempImage updateManyAndReturn
+   */
+  export type TempImageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TempImage
+     */
+    select?: TempImageSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TempImage
+     */
+    omit?: TempImageOmit<ExtArgs> | null
+    /**
+     * The data used to update TempImages.
+     */
+    data: XOR<TempImageUpdateManyMutationInput, TempImageUncheckedUpdateManyInput>
+    /**
+     * Filter which TempImages to update
+     */
+    where?: TempImageWhereInput
+    /**
+     * Limit how many TempImages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TempImage upsert
+   */
+  export type TempImageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TempImage
+     */
+    select?: TempImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TempImage
+     */
+    omit?: TempImageOmit<ExtArgs> | null
+    /**
+     * The filter to search for the TempImage to update in case it exists.
+     */
+    where: TempImageWhereUniqueInput
+    /**
+     * In case the TempImage found by the `where` argument doesn't exist, create a new TempImage with this data.
+     */
+    create: XOR<TempImageCreateInput, TempImageUncheckedCreateInput>
+    /**
+     * In case the TempImage was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TempImageUpdateInput, TempImageUncheckedUpdateInput>
+  }
+
+  /**
+   * TempImage delete
+   */
+  export type TempImageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TempImage
+     */
+    select?: TempImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TempImage
+     */
+    omit?: TempImageOmit<ExtArgs> | null
+    /**
+     * Filter which TempImage to delete.
+     */
+    where: TempImageWhereUniqueInput
+  }
+
+  /**
+   * TempImage deleteMany
+   */
+  export type TempImageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TempImages to delete
+     */
+    where?: TempImageWhereInput
+    /**
+     * Limit how many TempImages to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TempImage without action
+   */
+  export type TempImageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TempImage
+     */
+    select?: TempImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TempImage
+     */
+    omit?: TempImageOmit<ExtArgs> | null
+  }
+
 
   /**
    * Model User
@@ -6824,12 +7884,14 @@ export namespace Prisma {
     lat: number | null
     lng: number | null
     price: number | null
+    capacity: number | null
   }
 
   export type EventSumAggregateOutputType = {
     lat: number | null
     lng: number | null
     price: number | null
+    capacity: number | null
   }
 
   export type EventMinAggregateOutputType = {
@@ -6849,6 +7911,7 @@ export namespace Prisma {
     image: string | null
     phone: string | null
     price: number | null
+    capacity: number | null
     website: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -6871,6 +7934,7 @@ export namespace Prisma {
     image: string | null
     phone: string | null
     price: number | null
+    capacity: number | null
     website: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -6893,6 +7957,7 @@ export namespace Prisma {
     image: number
     phone: number
     price: number
+    capacity: number
     website: number
     createdAt: number
     updatedAt: number
@@ -6904,12 +7969,14 @@ export namespace Prisma {
     lat?: true
     lng?: true
     price?: true
+    capacity?: true
   }
 
   export type EventSumAggregateInputType = {
     lat?: true
     lng?: true
     price?: true
+    capacity?: true
   }
 
   export type EventMinAggregateInputType = {
@@ -6929,6 +7996,7 @@ export namespace Prisma {
     image?: true
     phone?: true
     price?: true
+    capacity?: true
     website?: true
     createdAt?: true
     updatedAt?: true
@@ -6951,6 +8019,7 @@ export namespace Prisma {
     image?: true
     phone?: true
     price?: true
+    capacity?: true
     website?: true
     createdAt?: true
     updatedAt?: true
@@ -6973,6 +8042,7 @@ export namespace Prisma {
     image?: true
     phone?: true
     price?: true
+    capacity?: true
     website?: true
     createdAt?: true
     updatedAt?: true
@@ -7074,7 +8144,7 @@ export namespace Prisma {
     lng: number
     place_id: string
     organizer: string
-    age: string
+    age: string | null
     startAt: Date
     endAt: Date
     description: string
@@ -7082,6 +8152,7 @@ export namespace Prisma {
     image: string
     phone: string | null
     price: number
+    capacity: number | null
     website: string | null
     createdAt: Date
     updatedAt: Date
@@ -7123,6 +8194,7 @@ export namespace Prisma {
     image?: boolean
     phone?: boolean
     price?: boolean
+    capacity?: boolean
     website?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -7146,6 +8218,7 @@ export namespace Prisma {
     image?: boolean
     phone?: boolean
     price?: boolean
+    capacity?: boolean
     website?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -7169,6 +8242,7 @@ export namespace Prisma {
     image?: boolean
     phone?: boolean
     price?: boolean
+    capacity?: boolean
     website?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -7192,12 +8266,13 @@ export namespace Prisma {
     image?: boolean
     phone?: boolean
     price?: boolean
+    capacity?: boolean
     website?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type EventOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "id_category" | "address_name" | "lat" | "lng" | "place_id" | "organizer" | "age" | "startAt" | "endAt" | "description" | "email" | "image" | "phone" | "price" | "website" | "createdAt" | "updatedAt", ExtArgs["result"]["event"]>
+  export type EventOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "id_category" | "address_name" | "lat" | "lng" | "place_id" | "organizer" | "age" | "startAt" | "endAt" | "description" | "email" | "image" | "phone" | "price" | "capacity" | "website" | "createdAt" | "updatedAt", ExtArgs["result"]["event"]>
   export type EventInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     category?: boolean | CategoryDefaultArgs<ExtArgs>
   }
@@ -7222,7 +8297,7 @@ export namespace Prisma {
       lng: number
       place_id: string
       organizer: string
-      age: string
+      age: string | null
       startAt: Date
       endAt: Date
       description: string
@@ -7230,6 +8305,7 @@ export namespace Prisma {
       image: string
       phone: string | null
       price: number
+      capacity: number | null
       website: string | null
       createdAt: Date
       updatedAt: Date
@@ -7673,6 +8749,7 @@ export namespace Prisma {
     readonly image: FieldRef<"Event", 'String'>
     readonly phone: FieldRef<"Event", 'String'>
     readonly price: FieldRef<"Event", 'Float'>
+    readonly capacity: FieldRef<"Event", 'Int'>
     readonly website: FieldRef<"Event", 'String'>
     readonly createdAt: FieldRef<"Event", 'DateTime'>
     readonly updatedAt: FieldRef<"Event", 'DateTime'>
@@ -8104,6 +9181,15 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+  export const TempImageScalarFieldEnum: {
+    id: 'id',
+    key: 'key',
+    expireAt: 'expireAt'
+  };
+
+  export type TempImageScalarFieldEnum = (typeof TempImageScalarFieldEnum)[keyof typeof TempImageScalarFieldEnum]
+
+
   export const UserScalarFieldEnum: {
     id: 'id',
     name: 'name',
@@ -8187,6 +9273,7 @@ export namespace Prisma {
     image: 'image',
     phone: 'phone',
     price: 'price',
+    capacity: 'capacity',
     website: 'website',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -8239,13 +9326,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Boolean'
-   */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
-    
-
-
-  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -8256,6 +9336,13 @@ export namespace Prisma {
    * Reference to a field of type 'DateTime[]'
    */
   export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -8289,6 +9376,48 @@ export namespace Prisma {
    * Deep Input Types
    */
 
+
+  export type TempImageWhereInput = {
+    AND?: TempImageWhereInput | TempImageWhereInput[]
+    OR?: TempImageWhereInput[]
+    NOT?: TempImageWhereInput | TempImageWhereInput[]
+    id?: StringFilter<"TempImage"> | string
+    key?: StringFilter<"TempImage"> | string
+    expireAt?: DateTimeFilter<"TempImage"> | Date | string
+  }
+
+  export type TempImageOrderByWithRelationInput = {
+    id?: SortOrder
+    key?: SortOrder
+    expireAt?: SortOrder
+  }
+
+  export type TempImageWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: TempImageWhereInput | TempImageWhereInput[]
+    OR?: TempImageWhereInput[]
+    NOT?: TempImageWhereInput | TempImageWhereInput[]
+    key?: StringFilter<"TempImage"> | string
+    expireAt?: DateTimeFilter<"TempImage"> | Date | string
+  }, "id">
+
+  export type TempImageOrderByWithAggregationInput = {
+    id?: SortOrder
+    key?: SortOrder
+    expireAt?: SortOrder
+    _count?: TempImageCountOrderByAggregateInput
+    _max?: TempImageMaxOrderByAggregateInput
+    _min?: TempImageMinOrderByAggregateInput
+  }
+
+  export type TempImageScalarWhereWithAggregatesInput = {
+    AND?: TempImageScalarWhereWithAggregatesInput | TempImageScalarWhereWithAggregatesInput[]
+    OR?: TempImageScalarWhereWithAggregatesInput[]
+    NOT?: TempImageScalarWhereWithAggregatesInput | TempImageScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TempImage"> | string
+    key?: StringWithAggregatesFilter<"TempImage"> | string
+    expireAt?: DateTimeWithAggregatesFilter<"TempImage"> | Date | string
+  }
 
   export type UserWhereInput = {
     AND?: UserWhereInput | UserWhereInput[]
@@ -8632,7 +9761,7 @@ export namespace Prisma {
     lng?: FloatFilter<"Event"> | number
     place_id?: StringFilter<"Event"> | string
     organizer?: StringFilter<"Event"> | string
-    age?: StringFilter<"Event"> | string
+    age?: StringNullableFilter<"Event"> | string | null
     startAt?: DateTimeFilter<"Event"> | Date | string
     endAt?: DateTimeFilter<"Event"> | Date | string
     description?: StringFilter<"Event"> | string
@@ -8640,6 +9769,7 @@ export namespace Prisma {
     image?: StringFilter<"Event"> | string
     phone?: StringNullableFilter<"Event"> | string | null
     price?: FloatFilter<"Event"> | number
+    capacity?: IntNullableFilter<"Event"> | number | null
     website?: StringNullableFilter<"Event"> | string | null
     createdAt?: DateTimeFilter<"Event"> | Date | string
     updatedAt?: DateTimeFilter<"Event"> | Date | string
@@ -8655,7 +9785,7 @@ export namespace Prisma {
     lng?: SortOrder
     place_id?: SortOrder
     organizer?: SortOrder
-    age?: SortOrder
+    age?: SortOrderInput | SortOrder
     startAt?: SortOrder
     endAt?: SortOrder
     description?: SortOrder
@@ -8663,6 +9793,7 @@ export namespace Prisma {
     image?: SortOrder
     phone?: SortOrderInput | SortOrder
     price?: SortOrder
+    capacity?: SortOrderInput | SortOrder
     website?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -8681,7 +9812,7 @@ export namespace Prisma {
     lng?: FloatFilter<"Event"> | number
     place_id?: StringFilter<"Event"> | string
     organizer?: StringFilter<"Event"> | string
-    age?: StringFilter<"Event"> | string
+    age?: StringNullableFilter<"Event"> | string | null
     startAt?: DateTimeFilter<"Event"> | Date | string
     endAt?: DateTimeFilter<"Event"> | Date | string
     description?: StringFilter<"Event"> | string
@@ -8689,6 +9820,7 @@ export namespace Prisma {
     image?: StringFilter<"Event"> | string
     phone?: StringNullableFilter<"Event"> | string | null
     price?: FloatFilter<"Event"> | number
+    capacity?: IntNullableFilter<"Event"> | number | null
     website?: StringNullableFilter<"Event"> | string | null
     createdAt?: DateTimeFilter<"Event"> | Date | string
     updatedAt?: DateTimeFilter<"Event"> | Date | string
@@ -8704,7 +9836,7 @@ export namespace Prisma {
     lng?: SortOrder
     place_id?: SortOrder
     organizer?: SortOrder
-    age?: SortOrder
+    age?: SortOrderInput | SortOrder
     startAt?: SortOrder
     endAt?: SortOrder
     description?: SortOrder
@@ -8712,6 +9844,7 @@ export namespace Prisma {
     image?: SortOrder
     phone?: SortOrderInput | SortOrder
     price?: SortOrder
+    capacity?: SortOrderInput | SortOrder
     website?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -8734,7 +9867,7 @@ export namespace Prisma {
     lng?: FloatWithAggregatesFilter<"Event"> | number
     place_id?: StringWithAggregatesFilter<"Event"> | string
     organizer?: StringWithAggregatesFilter<"Event"> | string
-    age?: StringWithAggregatesFilter<"Event"> | string
+    age?: StringNullableWithAggregatesFilter<"Event"> | string | null
     startAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
     endAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
     description?: StringWithAggregatesFilter<"Event"> | string
@@ -8742,9 +9875,52 @@ export namespace Prisma {
     image?: StringWithAggregatesFilter<"Event"> | string
     phone?: StringNullableWithAggregatesFilter<"Event"> | string | null
     price?: FloatWithAggregatesFilter<"Event"> | number
+    capacity?: IntNullableWithAggregatesFilter<"Event"> | number | null
     website?: StringNullableWithAggregatesFilter<"Event"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
+  }
+
+  export type TempImageCreateInput = {
+    id: string
+    key: string
+    expireAt: Date | string
+  }
+
+  export type TempImageUncheckedCreateInput = {
+    id: string
+    key: string
+    expireAt: Date | string
+  }
+
+  export type TempImageUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    key?: StringFieldUpdateOperationsInput | string
+    expireAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TempImageUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    key?: StringFieldUpdateOperationsInput | string
+    expireAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TempImageCreateManyInput = {
+    id: string
+    key: string
+    expireAt: Date | string
+  }
+
+  export type TempImageUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    key?: StringFieldUpdateOperationsInput | string
+    expireAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TempImageUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    key?: StringFieldUpdateOperationsInput | string
+    expireAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserCreateInput = {
@@ -9122,7 +10298,7 @@ export namespace Prisma {
     lng: number
     place_id: string
     organizer: string
-    age: string
+    age?: string | null
     startAt?: Date | string
     endAt?: Date | string
     description: string
@@ -9130,6 +10306,7 @@ export namespace Prisma {
     image: string
     phone?: string | null
     price: number
+    capacity?: number | null
     website?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -9145,7 +10322,7 @@ export namespace Prisma {
     lng: number
     place_id: string
     organizer: string
-    age: string
+    age?: string | null
     startAt?: Date | string
     endAt?: Date | string
     description: string
@@ -9153,6 +10330,7 @@ export namespace Prisma {
     image: string
     phone?: string | null
     price: number
+    capacity?: number | null
     website?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -9166,7 +10344,7 @@ export namespace Prisma {
     lng?: FloatFieldUpdateOperationsInput | number
     place_id?: StringFieldUpdateOperationsInput | string
     organizer?: StringFieldUpdateOperationsInput | string
-    age?: StringFieldUpdateOperationsInput | string
+    age?: NullableStringFieldUpdateOperationsInput | string | null
     startAt?: DateTimeFieldUpdateOperationsInput | Date | string
     endAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
@@ -9174,6 +10352,7 @@ export namespace Prisma {
     image?: StringFieldUpdateOperationsInput | string
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
+    capacity?: NullableIntFieldUpdateOperationsInput | number | null
     website?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9189,7 +10368,7 @@ export namespace Prisma {
     lng?: FloatFieldUpdateOperationsInput | number
     place_id?: StringFieldUpdateOperationsInput | string
     organizer?: StringFieldUpdateOperationsInput | string
-    age?: StringFieldUpdateOperationsInput | string
+    age?: NullableStringFieldUpdateOperationsInput | string | null
     startAt?: DateTimeFieldUpdateOperationsInput | Date | string
     endAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
@@ -9197,6 +10376,7 @@ export namespace Prisma {
     image?: StringFieldUpdateOperationsInput | string
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
+    capacity?: NullableIntFieldUpdateOperationsInput | number | null
     website?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9211,7 +10391,7 @@ export namespace Prisma {
     lng: number
     place_id: string
     organizer: string
-    age: string
+    age?: string | null
     startAt?: Date | string
     endAt?: Date | string
     description: string
@@ -9219,6 +10399,7 @@ export namespace Prisma {
     image: string
     phone?: string | null
     price: number
+    capacity?: number | null
     website?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -9232,7 +10413,7 @@ export namespace Prisma {
     lng?: FloatFieldUpdateOperationsInput | number
     place_id?: StringFieldUpdateOperationsInput | string
     organizer?: StringFieldUpdateOperationsInput | string
-    age?: StringFieldUpdateOperationsInput | string
+    age?: NullableStringFieldUpdateOperationsInput | string | null
     startAt?: DateTimeFieldUpdateOperationsInput | Date | string
     endAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
@@ -9240,6 +10421,7 @@ export namespace Prisma {
     image?: StringFieldUpdateOperationsInput | string
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
+    capacity?: NullableIntFieldUpdateOperationsInput | number | null
     website?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9254,7 +10436,7 @@ export namespace Prisma {
     lng?: FloatFieldUpdateOperationsInput | number
     place_id?: StringFieldUpdateOperationsInput | string
     organizer?: StringFieldUpdateOperationsInput | string
-    age?: StringFieldUpdateOperationsInput | string
+    age?: NullableStringFieldUpdateOperationsInput | string | null
     startAt?: DateTimeFieldUpdateOperationsInput | Date | string
     endAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
@@ -9262,6 +10444,7 @@ export namespace Prisma {
     image?: StringFieldUpdateOperationsInput | string
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
+    capacity?: NullableIntFieldUpdateOperationsInput | number | null
     website?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9282,6 +10465,67 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type TempImageCountOrderByAggregateInput = {
+    id?: SortOrder
+    key?: SortOrder
+    expireAt?: SortOrder
+  }
+
+  export type TempImageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    key?: SortOrder
+    expireAt?: SortOrder
+  }
+
+  export type TempImageMinOrderByAggregateInput = {
+    id?: SortOrder
+    key?: SortOrder
+    expireAt?: SortOrder
+  }
+
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
   export type BoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
@@ -9300,17 +10544,6 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type SessionListRelationFilter = {
@@ -9368,24 +10601,6 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type StringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
-  }
-
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
@@ -9410,20 +10625,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type UserScalarRelationFilter = {
@@ -9600,6 +10801,17 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type CategoryScalarRelationFilter = {
     is?: CategoryWhereInput
     isNot?: CategoryWhereInput
@@ -9622,6 +10834,7 @@ export namespace Prisma {
     image?: SortOrder
     phone?: SortOrder
     price?: SortOrder
+    capacity?: SortOrder
     website?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -9631,6 +10844,7 @@ export namespace Prisma {
     lat?: SortOrder
     lng?: SortOrder
     price?: SortOrder
+    capacity?: SortOrder
   }
 
   export type EventMaxOrderByAggregateInput = {
@@ -9650,6 +10864,7 @@ export namespace Prisma {
     image?: SortOrder
     phone?: SortOrder
     price?: SortOrder
+    capacity?: SortOrder
     website?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -9672,6 +10887,7 @@ export namespace Prisma {
     image?: SortOrder
     phone?: SortOrder
     price?: SortOrder
+    capacity?: SortOrder
     website?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -9681,6 +10897,7 @@ export namespace Prisma {
     lat?: SortOrder
     lng?: SortOrder
     price?: SortOrder
+    capacity?: SortOrder
   }
 
   export type FloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -9697,6 +10914,30 @@ export namespace Prisma {
     _sum?: NestedFloatFilter<$PrismaModel>
     _min?: NestedFloatFilter<$PrismaModel>
     _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
   }
 
   export type SessionCreateNestedManyWithoutUserInput = {
@@ -9727,20 +10968,12 @@ export namespace Prisma {
     connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
   }
 
-  export type StringFieldUpdateOperationsInput = {
-    set?: string
-  }
-
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
-  }
-
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
   }
 
   export type SessionUpdateManyWithoutUserNestedInput = {
@@ -9887,6 +11120,14 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type CategoryUpdateOneRequiredWithoutEventsNestedInput = {
     create?: XOR<CategoryCreateWithoutEventsInput, CategoryUncheckedCreateWithoutEventsInput>
     connectOrCreate?: CategoryCreateOrConnectWithoutEventsInput
@@ -9907,25 +11148,6 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
-  }
-
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
@@ -9967,6 +11189,39 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
@@ -10001,20 +11256,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
@@ -10067,6 +11308,33 @@ export namespace Prisma {
     _sum?: NestedFloatFilter<$PrismaModel>
     _min?: NestedFloatFilter<$PrismaModel>
     _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
   export type SessionCreateWithoutUserInput = {
@@ -10332,7 +11600,7 @@ export namespace Prisma {
     lng: number
     place_id: string
     organizer: string
-    age: string
+    age?: string | null
     startAt?: Date | string
     endAt?: Date | string
     description: string
@@ -10340,6 +11608,7 @@ export namespace Prisma {
     image: string
     phone?: string | null
     price: number
+    capacity?: number | null
     website?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -10353,7 +11622,7 @@ export namespace Prisma {
     lng: number
     place_id: string
     organizer: string
-    age: string
+    age?: string | null
     startAt?: Date | string
     endAt?: Date | string
     description: string
@@ -10361,6 +11630,7 @@ export namespace Prisma {
     image: string
     phone?: string | null
     price: number
+    capacity?: number | null
     website?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -10404,7 +11674,7 @@ export namespace Prisma {
     lng?: FloatFilter<"Event"> | number
     place_id?: StringFilter<"Event"> | string
     organizer?: StringFilter<"Event"> | string
-    age?: StringFilter<"Event"> | string
+    age?: StringNullableFilter<"Event"> | string | null
     startAt?: DateTimeFilter<"Event"> | Date | string
     endAt?: DateTimeFilter<"Event"> | Date | string
     description?: StringFilter<"Event"> | string
@@ -10412,6 +11682,7 @@ export namespace Prisma {
     image?: StringFilter<"Event"> | string
     phone?: StringNullableFilter<"Event"> | string | null
     price?: FloatFilter<"Event"> | number
+    capacity?: IntNullableFilter<"Event"> | number | null
     website?: StringNullableFilter<"Event"> | string | null
     createdAt?: DateTimeFilter<"Event"> | Date | string
     updatedAt?: DateTimeFilter<"Event"> | Date | string
@@ -10561,7 +11832,7 @@ export namespace Prisma {
     lng: number
     place_id: string
     organizer: string
-    age: string
+    age?: string | null
     startAt?: Date | string
     endAt?: Date | string
     description: string
@@ -10569,6 +11840,7 @@ export namespace Prisma {
     image: string
     phone?: string | null
     price: number
+    capacity?: number | null
     website?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -10582,7 +11854,7 @@ export namespace Prisma {
     lng?: FloatFieldUpdateOperationsInput | number
     place_id?: StringFieldUpdateOperationsInput | string
     organizer?: StringFieldUpdateOperationsInput | string
-    age?: StringFieldUpdateOperationsInput | string
+    age?: NullableStringFieldUpdateOperationsInput | string | null
     startAt?: DateTimeFieldUpdateOperationsInput | Date | string
     endAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
@@ -10590,6 +11862,7 @@ export namespace Prisma {
     image?: StringFieldUpdateOperationsInput | string
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
+    capacity?: NullableIntFieldUpdateOperationsInput | number | null
     website?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10603,7 +11876,7 @@ export namespace Prisma {
     lng?: FloatFieldUpdateOperationsInput | number
     place_id?: StringFieldUpdateOperationsInput | string
     organizer?: StringFieldUpdateOperationsInput | string
-    age?: StringFieldUpdateOperationsInput | string
+    age?: NullableStringFieldUpdateOperationsInput | string | null
     startAt?: DateTimeFieldUpdateOperationsInput | Date | string
     endAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
@@ -10611,6 +11884,7 @@ export namespace Prisma {
     image?: StringFieldUpdateOperationsInput | string
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
+    capacity?: NullableIntFieldUpdateOperationsInput | number | null
     website?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10624,7 +11898,7 @@ export namespace Prisma {
     lng?: FloatFieldUpdateOperationsInput | number
     place_id?: StringFieldUpdateOperationsInput | string
     organizer?: StringFieldUpdateOperationsInput | string
-    age?: StringFieldUpdateOperationsInput | string
+    age?: NullableStringFieldUpdateOperationsInput | string | null
     startAt?: DateTimeFieldUpdateOperationsInput | Date | string
     endAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: StringFieldUpdateOperationsInput | string
@@ -10632,6 +11906,7 @@ export namespace Prisma {
     image?: StringFieldUpdateOperationsInput | string
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
+    capacity?: NullableIntFieldUpdateOperationsInput | number | null
     website?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

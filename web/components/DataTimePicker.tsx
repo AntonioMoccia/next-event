@@ -15,7 +15,7 @@ export function DateTimePicker({ label, value, onChange, dataLabel }: {
   onChange: (date: Date) => void
 }) {
   const [open, setOpen] = useState(false)
-  const [date, setDate] = useState<Date | undefined>(value)
+  const [date, setDate] = useState<Date | undefined>()
   const [time, setTime] = useState("00:00:00")
   const [full, setFull] = useState<Date | undefined>()
   const combine = (d: Date | undefined, timeString: string) => {
@@ -49,7 +49,7 @@ export function DateTimePicker({ label, value, onChange, dataLabel }: {
         {/* DATE PICKER */}
         <Popover open={open} onOpenChange={setOpen}>
           <PopoverTrigger asChild>
-            <Button variant="outline" className=" w-full justify-between font-normal">
+            <Button variant="outline" className="  border border-black d w-full justify-between font-normal">
               {full ? `${full?.toLocaleDateString()} ${full?.toLocaleTimeString()}` : dataLabel}
               <ChevronDownIcon />
             </Button>

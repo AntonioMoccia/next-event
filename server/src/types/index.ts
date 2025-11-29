@@ -6,7 +6,7 @@ export type Event = {
   endAt?: Date;
   image?: string;
   price: number;
-  age: string;
+  age?: string;
   email?: string;
   phone?: string;
   website: string;
