@@ -1,31 +1,71 @@
-'use client'
-import EventCard from '@/components/EventCard'
-import { useEffect, useState } from 'react'
-import { Event } from '@/types'
-import Filters from '@/components/Filters'
+"use client"
+import EventCard from "@/components/EventCard";
+import { Filters } from "@/components/Filters";
+import { Pagination } from "@/components/Pagination";
+import { useEvents } from "@/hooks/use-events";
+import { FilterType } from "@/types";
+import { useSearchParams, useRouter } from "next/navigation";
 
 function SearchEventPage() {
-    const [events, setEvents] = useState<Event[]>([])
-    useEffect(() => {
-        const getAllEvents = async () => {
-            const request = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/event`)
-            const response = await request.json()
+    const searchParams = useSearchParams();
+    const router = useRouter();
 
-            setEvents(response.data.events)
+    const filters: FilterType = {
+        address_name: searchParams.get("address_name") || undefined,
+        category: searchParams.get("category") || undefined,
+        startDate: searchParams.get("startDate") || undefined,
+        lat: searchParams.get("lat") ? Number(searchParams.get("lat")) : undefined,
+        lng: searchParams.get("lng") ? Number(searchParams.get("lng")) : undefined,
+        radius: searchParams.get("radius") ? Number(searchParams.get("radius")) : undefined,
+        page: Number(searchParams.get("page") ?? 1),
+        limit: Number(searchParams.get("limit") ?? 6),
+    };
 
-        }
-        getAllEvents()
-    }, [])
+ const updateFilters = (newValues: Partial<FilterType>) => {
+  const params = new URLSearchParams(searchParams.toString());
+
+  for (const key in newValues) {
+    const value = newValues[key as keyof FilterType];
+
+    if (value === undefined || value === null || value === "") {
+      params.delete(key);
+    } else {
+      params.set(key, String(value));
+    }
+
+    if (key !== "page") {
+      params.set("page", "1");
+    }
+  }
+
+  router.push(`?${params.toString()}`);
+};
+    const handlePageChange = (newPage: number) => {
+        updateFilters({ page: newPage });
+    };
+    const { isLoading, events, isError, limit, page, total } = useEvents(filters);
+
+    /*     const handlePageChange = (newPage: number) => {
+            setFilters((prev) => ({
+                ...prev,
+                page: newPage,
+            }));
+        };
+     */
 
     return (
         <div className='flex flex-col justify-center'>
             {/**FILTERS */}
             <div className=' w-full flex  justify-center py-5'>
                 <div className='max-w-7xl w-full px-5'>
-                    <Filters />
+                    <Filters updateFilter={updateFilters} filters={filters} />
                 </div>
             </div>
-
+            <div className=' w-full flex  justify-center'>
+                <div className='max-w-7xl w-full px-5'>
+                    total events: {total}
+                </div>
+            </div>
 
             {/** CARDS */}
             <div className=' w-full flex  justify-center py-5'>
@@ -37,6 +77,18 @@ function SearchEventPage() {
                             </div>
                         ))
                     }
+                </div>
+            </div>
+
+            {/** PAGINATION */}
+            <div className=' w-full flex  justify-center py-5'>
+                <div className=' max-w-7xl px-5 w-full'>
+                    <Pagination
+                        page={page}
+                        total={total}
+                        limit={limit}
+                        onPageChange={handlePageChange}
+                    />
                 </div>
             </div>
         </div>

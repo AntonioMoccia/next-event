@@ -124,7 +124,8 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 exports.Prisma.TempImageScalarFieldEnum = {
   id: 'id',
   key: 'key',
-  expireAt: 'expireAt'
+  expireAt: 'expireAt',
+  url: 'url'
 };
 
 exports.Prisma.UserScalarFieldEnum = {
@@ -182,10 +183,6 @@ exports.Prisma.EventScalarFieldEnum = {
   id: 'id',
   title: 'title',
   id_category: 'id_category',
-  address_name: 'address_name',
-  lat: 'lat',
-  lng: 'lng',
-  place_id: 'place_id',
   organizer: 'organizer',
   age: 'age',
   startAt: 'startAt',
@@ -197,6 +194,25 @@ exports.Prisma.EventScalarFieldEnum = {
   price: 'price',
   capacity: 'capacity',
   website: 'website',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.EventLocationScalarFieldEnum = {
+  id: 'id',
+  eventId: 'eventId',
+  lat: 'lat',
+  lng: 'lng',
+  address_name: 'address_name',
+  street: 'street',
+  city: 'city',
+  state: 'state',
+  postalCode: 'postalCode',
+  country: 'country',
+  countryCode: 'countryCode',
+  place_id: 'place_id',
+  mapUrl: 'mapUrl',
+  locationNotes: 'locationNotes',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -224,7 +240,8 @@ exports.Prisma.ModelName = {
   Account: 'Account',
   Verification: 'Verification',
   Category: 'Category',
-  Event: 'Event'
+  Event: 'Event',
+  EventLocation: 'EventLocation'
 };
 
 /**

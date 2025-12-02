@@ -49,7 +49,7 @@ export function DateTimePicker({ label, value, onChange, dataLabel }: {
         {/* DATE PICKER */}
         <Popover open={open} onOpenChange={setOpen}>
           <PopoverTrigger asChild>
-            <Button variant="outline" className="  border border-black d w-full justify-between font-normal">
+            <Button variant="outline" className=" bg-[#F9F9F9]   border border-black d w-full justify-between font-normal">
               {full ? `${full?.toLocaleDateString()} ${full?.toLocaleTimeString()}` : dataLabel}
               <ChevronDownIcon />
             </Button>

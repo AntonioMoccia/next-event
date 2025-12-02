@@ -4,7 +4,7 @@ import FormCard from '@/components/FormCard'
 import { Clock } from 'lucide-react'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
-import Address from './Address'
+import AddressSection from './AddressSection'
 import { DateTimePicker } from '@/components/DataTimePicker'
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { useFormContext } from 'react-hook-form'
@@ -66,7 +66,7 @@ function WhereAndWhen() {
 
 
 
-            <Address />
+            <AddressSection />
             <div className=' col-span-12 md:col-span-6'>
                 <FormField
                     control={form.control}

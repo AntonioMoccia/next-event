@@ -14,7 +14,7 @@ export class GoogleService {
         language,
       },
     });
-    
+        console.log(suggestions)
     return suggestions.data.predictions;
   }
 
@@ -29,10 +29,12 @@ export class GoogleService {
     console.log(JSON.stringify(response.data))
 
     const coords = response.data.results[0].geometry.location;
+    const coords_last = response.data;
 
     return {
       lat: coords.lat,
       lng: coords.lng,
+      coords_last
     };
   }
 }

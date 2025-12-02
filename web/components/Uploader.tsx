@@ -9,13 +9,13 @@ import { useUpload } from "@/hooks/use-uploader";
 import { useEffect } from "react";
 import { CreateEventFormType } from "./Forms/CreateEventForm";
 import { useFormContext } from "react-hook-form";
-import { FormControl, FormField, FormItem, FormMessage } from "./ui/form";
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "./ui/form";
 
 
 export function Uploader() {
-  const { files, handleFiles, handleRejected, removeFile } = useUpload();
   const form = useFormContext()
-  
+  const { files, handleFiles, handleRejected, removeFile } = useUpload({form});
+
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop: handleFiles,
     onDropRejected: handleRejected,
@@ -28,6 +28,9 @@ export function Uploader() {
 
   useEffect(() => {
     const file = files[0]
+    if (files.length === 0) {
+      form.setValue('image', "")
+    }
     if (file) {
       if (!file.uploading && !file.error && file.url) {
         form.setValue('image', file.url)
@@ -40,18 +43,20 @@ export function Uploader() {
     <>
       <FormField
         control={form.control}
-        name="address_name"
+        name="image"
         render={({ field }) => (
           <FormItem>
+            <FormLabel>
+              Immagine
+            </FormLabel>
             <FormControl>
-
               <Card
                 {...getRootProps()}
                 className={cn(
-                  "relative border-black border border-dashed transition-colors duration-200 ease-in-out w-full h-full",
+                  "relative border-[#222222] bg-[#F9F9F9]   border border-dashed transition-colors duration-200 ease-in-out w-full h-full",
                   isDragActive
                     ? "border-primary bg-primary/10 border-solid"
-                    : "border-black hover:border-border",
+                    : "border-[#222222] hover:border-border",
                   files.length > 0 && "hidden h-0"
                 )}
               >
@@ -97,8 +102,8 @@ export function Uploader() {
                     className="absolute top-2 right-2"
                     onClick={(e) => {
                       e.stopPropagation()
-                      removeFile(fileObj.id)
                       form.setValue('image', "")
+                      removeFile(fileObj.id)
                     }}
                     disabled={fileObj.isDeleting}
                   >

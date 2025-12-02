@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
-import { CreateEventFormType } from '../CreateEventForm'
 
-import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'

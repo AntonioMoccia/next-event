@@ -10,16 +10,20 @@ export type Event = {
   email?: string;
   phone?: string;
   website: string;
+  organizer: string;
+  location: Location;
+  capacity?: number;
+};
+
+export type Location = {
   address_name: string;
   lat: number;
   lng: number;
-  place_id: string;
-  place_name:string;
-  organizer:string
+  place_id?: string;
 };
 export type Category = {
-  description:string
-}
+  description: string;
+};
 export type EventType = {
-  description: string
-}
+  description: string;
+};
