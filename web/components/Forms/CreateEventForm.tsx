@@ -17,6 +17,7 @@ import Partecipations from './sections/Partecipations'
 import Contacts from './sections/Contacts'
 
 import { useEffect, useState } from 'react'
+import { toast } from 'sonner'
 
 export const createEventZodSchema = z.object({
     title: z.string().min(3, "The title must be min 3 chars"),
@@ -26,15 +27,17 @@ export const createEventZodSchema = z.object({
     startAt: z.date("Campo obbligatorio"),
     endAt: z.date().optional(),
     capacity: z.number().optional(),
-    address_name: z.string().min(1, "Campo obbligatorio"),
-    lat: z.number(),
-    lng: z.number(),
-    place_id: z.string().min(1, "Campo obbligatorio"),
+    location: z.object({
+        address_name: z.string().min(1, "Campo obbligatorio"),
+        lat: z.number(),
+        lng: z.number(),
+        place_id: z.string().optional()
+    }),
     price: z.number().optional(),
     email: z.string().optional(),
     phone: z.string().optional(),
     website: z.string().optional(),
-    organizer: z.string().optional()
+    organizer: z.string().min(1, "Campo obbligatorio"),
 })
 
 type FormType = z.infer<typeof createEventZodSchema>
@@ -55,10 +58,12 @@ function CreateEventForm() {
             capacity: 0,
             startAt: undefined,
             endAt: undefined,
-            address_name: "",
-            lat: 0,
-            lng: 0,
-            place_id: "",
+            location:{
+                address_name:"",
+                lat: 0,
+                lng: 0,
+                place_id: "",
+            },
             email: "",
             phone: "",
             website: "",
@@ -73,7 +78,7 @@ function CreateEventForm() {
             startAt: values.startAt.toISOString(),
             endAt: values.endAt?.toISOString(),
         }
-        console.log(payload)
+
         const request = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/event`, {
             method: 'POST',
             headers: {
@@ -84,27 +89,34 @@ function CreateEventForm() {
 
 
         const newEvent = await request.json()
-        console.log("Payload finale:", payload)
-        console.log("Payload finale:", newEvent)
+
         if (!newEvent.success) {
             setSuccessSubmit(false)
+            toast.success("Evento creato!")
+            form.reset()
             return
         }
+
         setSuccessSubmit(true)
+        toast.error("Qualcosa è andato storto! ")
+        form.reset()
 
     }
-
+    useEffect(()=>{
+        console.log(form.getValues())
+    },[form.watch()])
+    
     return (
         <div className=' p-2 py-10 w-full max-w-3xl'>
             <Form {...form}>
                 <form className='flex flex-col gap-5' onSubmit={form.handleSubmit(onSubmit)}>
                     <div className=' flex flex-col justify-start items-center gap-5'>
                         <BaseInfo />
-                        <WhereAndWhen />    
+                        <WhereAndWhen />
                         <Partecipations />
                     </div>
 
-                    <div className=' gap-4 flex flex-col'>   
+                    <div className=' gap-4 flex flex-col'>
                         <p className=' text-sm font-extrabold'>
                             Questi contatti saranno resi pubblici
                         </p>

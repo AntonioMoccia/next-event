@@ -2,23 +2,20 @@ import { Event } from "../types/index";
 import { prisma } from "@lib/prisma-client";
 
 export class EventService {
-  private event: Event | undefined;
-  constructor(event?: Event | undefined) {
-    this.event = event;
-  }
+  constructor() {}
 
-    async getEventById(id:string) {
+  async getEventById(id: string) {
     try {
       const event = await prisma.event.findUnique({
-        where:{
-          id
+        where: {
+          id,
         },
-        include:{
-          category:true
-        }
-      })
-      return event
-
+        include: {
+          category: true,
+          location: true,
+        },
+      });
+      return event;
     } catch (error) {
       console.log(error);
       throw new Error("Qualcosa è andato storto nell'estrazione dell'evento");
@@ -28,29 +25,43 @@ export class EventService {
   async getEvents() {
     try {
       const events = await prisma.event.findMany({
-        include:{
-          category:true
-        }
-      })
-      return events
-
+        include: {
+          category: true,
+          location: true,
+        },
+      });
+      return events;
     } catch (error) {
       console.log(error);
       throw new Error("Qualcosa è andato storto nell'estrazione degli eventi");
     }
   }
-  async createEvent() {
-    if (!this.event) throw new Error("l'oggetto event non puo essere vuoto");
+  async createEvent(event: Event) {
+    if (!event) throw new Error("l'oggetto event non puo essere vuoto");
     try {
-      console.log(this.event);
       const newEvent = await prisma.event.create({
         data: {
-          ...this.event,
-          title: this.event.title,
-          image: this.event.image!,
+          ...event,
+          title: event.title,
+          image: event.image!,
+          location: {
+            create: {
+              address_name: event.location.address_name,
+              place_id: event.location.place_id,
+              lat: event.location.lat,
+              lng: event.location.lng,
+            },
+          },
         },
       });
-      return newEvent
+
+      await prisma.tempImage.delete({
+        where: {
+          url: event.image,
+        },
+      });
+
+      return newEvent;
     } catch (error) {
       console.log(error);
       throw new Error("Qualcosa è andato storto nella creazione dell'evento");

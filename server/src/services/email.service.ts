@@ -3,8 +3,8 @@ class EmailService{
 
     
 
-    sendResetPasswordEmail(email:string,url){
+/*     sendResetPasswordEmail(email:string,url){
 
-    }
+    } */
 
 }

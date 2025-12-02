@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react'
-import { CreateEventFormType } from '../CreateEventForm'
 
-import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
 import { Uploader } from '@/components/Uploader'
-import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { useFormContext } from 'react-hook-form'
 
 
@@ -42,7 +40,7 @@ function BaseInfo() {
                                 <FormItem>
                                     <FormLabel>Titolo *</FormLabel>
                                     <FormControl>
-                                        <Input className=' border border-black rounded-md rounded-md' type='text' {...field} />
+                                        <Input className=' border border-black rounded-md' type='text' {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>

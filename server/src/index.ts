@@ -20,7 +20,7 @@ import { errorHandler } from "@/middelwares/error-handler";
 const app: Application = express();
 app.use(
   cors({
-    //  origin: "http://localhost:3000", // il tuo frontend
+    // origin: "http://localhost:3000", // il tuo frontend
     origin: "*",
     credentials: true, // necessario per cookie / Authorization headers
     methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed HTTP methods

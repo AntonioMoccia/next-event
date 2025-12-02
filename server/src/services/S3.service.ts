@@ -5,6 +5,7 @@ import {
 } from "@aws-sdk/client-s3";
 import { v4 as uuidv4 } from "uuid";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+import { prisma } from "@lib/prisma-client";
 
 export type GetSignedUrlParamsType = {
   size: number;
@@ -52,6 +53,16 @@ class S3 {
       const presignedUrl = await getSignedUrl(s3Client, command, {
         expiresIn: 360,
       });
+      const expireDate = new Date(Date.now() + 5 * 60 * 1000);
+
+      await prisma.tempImage.create({
+        data: {
+          expireAt: expireDate,
+          key: uniqueKey,
+          url: presignedUrl,
+        },
+      });
+
       return {
         presignedUrl,
         key: uniqueKey,
@@ -62,18 +73,24 @@ class S3 {
   }
 
   async remove(key: string) {
-    try {      
+    try {
       const command = new DeleteObjectCommand({
         Bucket: process.env.BUCKET_NAME,
         Key: key,
       });
-      const deletedUrl = await this.getS3Client().send(command)
-      return deletedUrl
+      const deletedUrl = await this.getS3Client().send(command);
+      if (key) {
+        await prisma.tempImage.delete({
+          where: {
+            key: key,
+          },
+        });
+      }
+      return deletedUrl;
     } catch (error) {
-      if(error instanceof Error) throw Error(error.message)
-        throw Error("Errore nell'eliminazione dell'immagine")
+      if (error instanceof Error) throw Error(error.message);
+      throw Error("Errore nell'eliminazione dell'immagine");
     }
-
   }
 }
 

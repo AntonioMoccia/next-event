@@ -9,29 +9,53 @@ import Image from "next/image"
 import { useParams } from "next/navigation"
 import { useEffect, useState } from "react"
 import { formatDate } from '@/lib/format-date'
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
+import { useClickOutside } from "@/hooks/use-clickoutside"
 
 function EventDetail() {
 
     const { id } = useParams()
     const [event, setEvent] = useState<Event | null>(null)
+    const [showImage, setShowImage] = useState(false)
+    const useClickOutsideDialog = useClickOutside(()=>setShowImage(false))
     useEffect(() => {
 
         const getEvent = async () => {
             const request = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/event/${id}`)
             const response = await request.json()
-            console.log(response.data.event)
             setEvent(response.data.event)
         }
         getEvent()
     }, [id])
-
+    const handleClickShowImage = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault()
+        e.stopPropagation()
+        setShowImage(true)
+    }
     if (!event) return (<></>)
 
     return (
         <div className="min-h-screen ">
+            {
+                showImage && (
+                    <div ref={useClickOutsideDialog}>
+                        <Dialog open={showImage} modal={true}>
+                            <DialogTitle></DialogTitle>
+                            <DialogContent>
+                                <div className="relative aspect-square overflow-hidden rounded-lg mb-8">
+                                    <Image
+                                        src={event.image}
+                                        alt="cover"
+                                        fill
+                                        className="w-full h-full object-contain "
+                                    />
+                                </div>
+                            </DialogContent>
+                        </Dialog>
+                   </div>
+                )
+            }
             {/* Header */}
-
-
             <div className="max-w-4xl mx-auto px-4 py-8">
                 <div className="  mb-5 ">
                     <h1 className="text-3xl font-bold">{event.title}</h1>
@@ -41,15 +65,16 @@ function EventDetail() {
                 </div>
                 {/* Hero Image */}
                 {event.image && (
-
                     <div className="relative aspect-video overflow-hidden rounded-lg mb-8">
-                        <Image
-                            src={event.image}
-                            alt="cover"
-                            fill
-                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        <Button onClick={handleClickShowImage}>
+                            <Image
+                                src={event.image}
+                                alt="cover"
+                                fill
+                                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
 
-                        />
+                            />
+                        </Button>
                     </div>
                 )}
                 {/* Title and Badge */}
@@ -61,7 +86,7 @@ function EventDetail() {
 
 
                 </div>
-                 {/* Description */}
+                {/* Description */}
                 <div className="mb-4 text-[#222222]">
                     <div className="pt-2">
                         <p className=" leading-relaxed whitespace-pre-line">
@@ -71,7 +96,7 @@ function EventDetail() {
                 </div>
                 {/* Key Info Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                    <div className=" border rounded-md  border-[#222222] bg-white text-[#222]">
+                    <div className=" border rounded-md  border-[#222222] bg-[#F9F9F9] text-[#222]">
                         <div>
                             <div className="flex items-center gap-2 py-5 px-2">
                                 <Calendar className="size-6" />
@@ -82,20 +107,20 @@ function EventDetail() {
                             </div>
                         </div>
                     </div>
-                    <div className=" border rounded-md  border-[#222222] bg-white text-[#222]">
-                    <div>
-                        <div className="flex items-center gap-2 py-5 px-2">
-                            <MapPin className="size-6" />
-                            <div className="flex-1">
-                                <p>{event.address_name}</p>
+                    <div className=" border rounded-md  border-[#222222] bg-[#F9F9F9] text-[#222]">
+                        <div>
+                            <div className="flex items-center gap-2 py-5 px-2">
+                                <MapPin className="size-6" />
+                                <div className="flex-1">
+                                    <p>{event.location.address_name}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                </div>
-                
 
-               
+
+
 
                 {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4">
@@ -103,7 +128,7 @@ function EventDetail() {
                         <Navigation className="size-5 mr-2" />
                         Ottieni Indicazioni
                     </Button>
-                    <Button size="lg" variant="outline"  className=' bg-transparent text-[#222222] border border-[#222222] rounded-md '>
+                    <Button size="lg" variant="outline" className=' bg-transparent text-[#222222] border border-[#222222] rounded-md '>
                         Condividi Evento
                     </Button>
                 </div>
