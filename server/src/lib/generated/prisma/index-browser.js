@@ -194,6 +194,7 @@ exports.Prisma.EventScalarFieldEnum = {
   price: 'price',
   capacity: 'capacity',
   website: 'website',
+  status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -231,7 +232,12 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.EventStatus = exports.$Enums.EventStatus = {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED',
+  DELETED: 'DELETED'
+};
 
 exports.Prisma.ModelName = {
   TempImage: 'TempImage',

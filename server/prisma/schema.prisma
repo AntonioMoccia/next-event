@@ -18,7 +18,7 @@ model TempImage {
   id       String   @id @default(uuid())
   key      String   @unique
   expireAt DateTime
-  url      String  @unique
+  url      String   @unique
 
   @@map("tempImage")
 }
@@ -107,6 +107,7 @@ model Event {
   price       Float
   capacity    Int?
   website     String?
+  status      EventStatus    @default(PENDING)
   createdAt   DateTime       @default(now())
   updatedAt   DateTime       @updatedAt
   location    EventLocation?
@@ -143,4 +144,11 @@ model EventLocation {
   updatedAt DateTime @updatedAt
 
   @@map("event_location")
+}
+enum EventStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  DELETED
+
 }

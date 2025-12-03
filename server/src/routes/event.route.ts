@@ -13,5 +13,8 @@ router.get('/',eventWrap(eventController.getEvents))
 router.get('/search',eventWrap(eventController.getEventSearch))
 router.get('/:id',eventWrap(eventController.getEventById))
 
+//ADMIN ROUTE
+router.get('/status/:status',eventWrap(eventController.getEventsByStatus))
+router.patch('/:id/status',eventWrap(eventController.updateStatusEvent))
 
 export default router

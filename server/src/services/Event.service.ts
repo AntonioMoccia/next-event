@@ -1,8 +1,41 @@
+import { EventStatus } from "@lib/generated/prisma";
 import { Event } from "../types/index";
 import { prisma } from "@lib/prisma-client";
 
 export class EventService {
   constructor() {}
+
+
+  async changeEventStatus(id: string, status: EventStatus) {
+    try {
+      const updatedEvent = await prisma.event.update({
+        where: { id },
+        data: { status },
+      });
+      return updatedEvent;
+    } catch (error) {
+      console.log(error);
+      throw new Error("Qualcosa è andato storto nel cambio dello stato dell'evento");
+    }
+  }
+
+ 
+  async getEventsByStatus(status: EventStatus) {
+    console.log(status)
+    try {
+      const events = await prisma.event.findMany({
+        where: { status },
+        include: {
+          category: true,
+          location: true,
+        },
+        orderBy: { createdAt: "desc" }
+      });
+      return events;
+    } catch (error) {
+      throw new Error("Qualcosa è andato storto nell'estrazione degli eventi");
+    }
+  }
 
   async getEventById(id: string) {
     try {
@@ -25,6 +58,9 @@ export class EventService {
   async getEvents() {
     try {
       const events = await prisma.event.findMany({
+        where: {
+          status:'APPROVED'
+        },
         include: {
           category: true,
           location: true,
@@ -63,7 +99,7 @@ export class EventService {
 
       return newEvent;
     } catch (error) {
-      console.log(error);
+
       throw new Error("Qualcosa è andato storto nella creazione dell'evento");
     }
   }

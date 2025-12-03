@@ -1,68 +1,39 @@
 "use client"
-import EventCard from "@/components/EventCard";
-import { Filters } from "@/components/Filters";
-import { Pagination } from "@/components/Pagination";
-import { useEvents } from "@/hooks/use-events";
-import { EventStatus, FilterType } from "@/types";
-import { useSearchParams, useRouter } from "next/navigation";
-import { Spinner } from "@/components/ui/spinner"
+import EventCard from '@/components/EventCard';
+import { Pagination } from '@/components/Pagination';
+import { Button } from '@/components/ui/button';
+import { Spinner } from '@/components/ui/spinner';
+import { useEvents } from '@/hooks/use-events';
+import { useState } from 'react'
 
-
-function SearchEventPage() {
-    const searchParams = useSearchParams();
-    const router = useRouter();
-
-    const filters: FilterType = {
-        address_name: searchParams.get("address_name") || undefined,
-        category: searchParams.get("category") || undefined,
-        startDate: searchParams.get("startDate") || undefined,
-        lat: searchParams.get("lat") ? Number(searchParams.get("lat")) : undefined,
-        lng: searchParams.get("lng") ? Number(searchParams.get("lng")) : undefined,
-        radius: searchParams.get("radius") ? Number(searchParams.get("radius")) : undefined,
-        page: Number(searchParams.get("page") ?? 1),
-        limit: Number(searchParams.get("limit") ?? 6),
-        status: EventStatus.APPROVED,
-    };
-
-    const updateFilters = (newValues: Partial<FilterType>) => {
-        const params = new URLSearchParams(searchParams.toString());
-
-        for (const key in newValues) {
-            const value = newValues[key as keyof FilterType];
-
-            if (value === undefined || value === null || value === "") {
-                params.delete(key);
-            } else {
-                params.set(key, String(value));
-            }
-
-            if (key !== "page") {
-                params.set("page", "1");
-            }
-        }
-
-        router.push(`?${params.toString()}`);
-    };
+function StagedEventPage() {
+    const [pageNumber, setPageNumber] = useState(1);
+    const { isLoading, isError, page, total, limit, events } = useEvents({ page: pageNumber, limit: 10 });
     const handlePageChange = (newPage: number) => {
-        updateFilters({ page: newPage });
-    };
-    const { isLoading, events, isError, limit, page, total } = useEvents(filters);
-
+        setPageNumber(newPage);
+    }
+    const handleStatusChange = (eventId: string, status: 'APPROVED' | 'REJECTED') => {
+        const requestOptions = {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ status: status })
+        };
+        fetch(`/api/events/${eventId}/status`, requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                // Optionally, refresh the events list or update the UI accordingly
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });   
+    }
 
     return (
-        <div className='flex flex-col justify-center'>
-            {/**FILTERS */}
-            <div className=' w-full flex  justify-center py-5'>
-                <div className='max-w-7xl w-full px-5'>
-                    <Filters updateFilter={updateFilters} filters={filters} />
-                </div>
-            </div>
-            <div className=' w-full flex  justify-center'>
-                <div className='max-w-7xl w-full px-5'>
-                    total events: {total}
-                </div>
-            </div>
-
+        <div>
+            <h1 className=' text-center py-5 text-xl'>
+                Eventi in attesa di approvazione
+            </h1>
             {
                 isLoading ? (
                     <div className=' w-full h-full flex  justify-center py-5'>
@@ -91,6 +62,12 @@ function SearchEventPage() {
                                     events.map(event => (
                                         <div key={event.id} className=' col-span-12 md:col-span-4 '>
                                             <EventCard event={event} />
+                                            <Button onClick={()=>{
+                                                handleStatusChange(event.id,'REJECTED')
+                                            }}>reject</Button>
+                                            <Button  onClick={()=>{
+                                                handleStatusChange(event.id,'APPROVED')
+                                            }}>approve</Button>
                                         </div>
                                     ))
                                 }
@@ -115,4 +92,4 @@ function SearchEventPage() {
     )
 }
 
-export default SearchEventPage
+export default StagedEventPage
