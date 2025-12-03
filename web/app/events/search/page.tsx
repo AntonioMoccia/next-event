@@ -5,6 +5,8 @@ import { Pagination } from "@/components/Pagination";
 import { useEvents } from "@/hooks/use-events";
 import { FilterType } from "@/types";
 import { useSearchParams, useRouter } from "next/navigation";
+import { Spinner } from "@/components/ui/spinner"
+
 
 function SearchEventPage() {
     const searchParams = useSearchParams();
@@ -21,25 +23,25 @@ function SearchEventPage() {
         limit: Number(searchParams.get("limit") ?? 6),
     };
 
- const updateFilters = (newValues: Partial<FilterType>) => {
-  const params = new URLSearchParams(searchParams.toString());
+    const updateFilters = (newValues: Partial<FilterType>) => {
+        const params = new URLSearchParams(searchParams.toString());
 
-  for (const key in newValues) {
-    const value = newValues[key as keyof FilterType];
+        for (const key in newValues) {
+            const value = newValues[key as keyof FilterType];
 
-    if (value === undefined || value === null || value === "") {
-      params.delete(key);
-    } else {
-      params.set(key, String(value));
-    }
+            if (value === undefined || value === null || value === "") {
+                params.delete(key);
+            } else {
+                params.set(key, String(value));
+            }
 
-    if (key !== "page") {
-      params.set("page", "1");
-    }
-  }
+            if (key !== "page") {
+                params.set("page", "1");
+            }
+        }
 
-  router.push(`?${params.toString()}`);
-};
+        router.push(`?${params.toString()}`);
+    };
     const handlePageChange = (newPage: number) => {
         updateFilters({ page: newPage });
     };
@@ -67,30 +69,54 @@ function SearchEventPage() {
                 </div>
             </div>
 
-            {/** CARDS */}
-            <div className=' w-full flex  justify-center py-5'>
-                <div className=' max-w-7xl grid grid-cols-12 gap-5 md:gap-10 px-5'>
-                    {
-                        events.map(event => (
-                            <div key={event.id} className=' col-span-12 md:col-span-4 '>
-                                <EventCard event={event} />
+            {
+                isLoading ? (
+                    <div className=' w-full h-full flex  justify-center py-5'>
+                        <div className=' max-w-7xl w-full px-5 flex justify-center'>
+                            <Spinner className=" size-10 font-extralight " />
+                        </div>
+                    </div>
+                ) : isError ? (
+                    <div className=' w-full flex  justify-center py-10'>
+                        <div className='max-w-7xl w-full px-5 text-center text-red-500'>
+                            Errore durante il caricamento degli eventi. Per favore prova più tardi.
+                        </div>
+                    </div>
+                ) : events.length === 0 ? (
+                    <div className=' w-full flex  justify-center py-10'>
+                        <div className='max-w-7xl w-full px-5 text-center'>
+                            Nessun evento trovato con i filtri selezionati.
+                        </div>
+                    </div>
+                ) : (
+                    <>
+                        {/** CARDS */}
+                        <div className=' w-full flex  justify-center py-5'>
+                            <div className=' max-w-7xl grid grid-cols-12 gap-5 md:gap-10 px-5'>
+                                {
+                                    events.map(event => (
+                                        <div key={event.id} className=' col-span-12 md:col-span-4 '>
+                                            <EventCard event={event} />
+                                        </div>
+                                    ))
+                                }
                             </div>
-                        ))
-                    }
-                </div>
-            </div>
+                        </div>
 
-            {/** PAGINATION */}
-            <div className=' w-full flex  justify-center py-5'>
-                <div className=' max-w-7xl px-5 w-full'>
-                    <Pagination
-                        page={page}
-                        total={total}
-                        limit={limit}
-                        onPageChange={handlePageChange}
-                    />
-                </div>
-            </div>
+                        {/** PAGINATION */}
+                        <div className=' w-full flex  justify-center py-5'>
+                            <div className=' max-w-7xl px-5 w-full'>
+                                <Pagination
+                                    page={page}
+                                    total={total}
+                                    limit={limit}
+                                    onPageChange={handlePageChange}
+                                />
+                            </div>
+                        </div>
+                    </>
+                )
+            }
         </div>
     )
 }
