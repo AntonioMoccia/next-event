@@ -1,7 +1,7 @@
 import S3 from "@services/S3.service";
 import { NextFunction, Request, Response } from "express";
 import { EventService } from "@/services/event.service";
-import { Event } from "../types";
+import { Event, FilterTypes } from "../types";
 import { success } from "@/lib/send-success";
 import { prisma } from "@lib/prisma-client";
 import { parseISO } from "date-fns";
@@ -43,83 +43,14 @@ export class EventController {
 
   async getEvents(req: Request, res: Response, next: NextFunction) {
     try {
-      const events = await this.eventClass.getEvents();
+      const events = await this.eventClass.getEvents(req.query as FilterTypes);
 
-      success(res, { events });
+      success(res, { ...events });
     } catch (error) {
       next(error);
     }
   }
-  async getEventSearch(req: Request, res: Response, next: NextFunction) {
-    try {
-      const {
-        category,
-        startDate,
-        lat,
-        lng,
-        radius, // in km
-        page = "1",
-        limit = "10",
-      } = req.query;
-
-      //creazione filtri 
-      const filters: any = {};
-
-      if (category) {
-        filters.id_category = category;
-      }
-
-      if (startDate) {
-        filters.startAt = {
-          gte: parseISO(startDate as string),
-        };
-      }
-
-      // Primo filtro semplice con Prisma
-      let events = await prisma.event.findMany({
-        where: { ...filters, status: 'APPROVED' },
-        include: { location: true, category: true },
-      });
-      // Filtraggio per distanza se lat/lng/radius presenti
-      if (lat && lng && radius) {
-        const latNum = parseFloat(lat as string);
-        const lngNum = parseFloat(lng as string);
-        const radiusKm = parseFloat(radius as string);
-
-        events = events.filter((event) => {
-          if (!event.location) return false;
-          const distance = getDistanceFromRad(
-            latNum,
-            lngNum,
-            event.location.lat,
-            event.location.lng
-          );
-          return distance <= radiusKm;
-        });
-      }
-
-      //pagination
-      const pageParsed = parseQueryNumber(page as string, 1);
-      const limitParsed = parseQueryNumber(limit as string, 10);
-      
-      const { pageNumber, pageSize, start, end } = getPagination({
-        page: pageParsed,
-        limit: limitParsed,
-      });
-
-      const paginatedEvents = events.slice(start, end);
-
-      res.json({
-        total: events.length,
-        page: pageNumber,
-        limit: pageSize,
-        events: paginatedEvents,
-      });
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: "Something went wrong" });
-    }
-  }
+  async getEventSearch(req: Request, res: Response, next: NextFunction) {}
 
   async getEventById(req: Request, res: Response, next: NextFunction) {
     const id = req.params.id;
@@ -136,10 +67,12 @@ export class EventController {
 
     // Controllo che il valore sia un enum valido
     if (!Object.values(EventStatus).includes(statusParam as EventStatus)) {
-      return  success(res, { events: [] },"Invalid status value",400);
+      return success(res, { events: [] }, "Invalid status value", 400);
     }
     try {
-      const events = await this.eventClass.getEventsByStatus(statusParam as EventStatus);
+      const events = await this.eventClass.getEventsByStatus(
+        statusParam as EventStatus
+      );
 
       success(res, { events });
     } catch (error) {
@@ -158,15 +91,14 @@ export class EventController {
       next(error);
     }
   }
-
-  async updateStatusEvent(req: Request, res: Response, next: NextFunction) {
+  async updateEvent(req: Request, res: Response, next: NextFunction) {
     const id = req.params.id;
-    const { status } = req.body;
+    console.log(id);
+
+    const { event } = req.body;
+    console.log(event);
     try {
-      const updatedEvent = await this.eventClass.changeEventStatus(
-        id,
-        status
-      );
+      const updatedEvent = await this.eventClass.updateEvent(id, event);
       success(res, {
         event: updatedEvent,
       });
@@ -174,5 +106,4 @@ export class EventController {
       next(error);
     }
   }
-
 }

@@ -1,3 +1,5 @@
+import { EventStatus } from "@lib/generated/prisma";
+
 export type Event = {
   title: string;
   id_category: string;
@@ -27,3 +29,14 @@ export type Category = {
 export type EventType = {
   description: string;
 };
+
+export type FilterTypes={
+    category?: string;
+    startDate?: string;
+    lat?: string;
+    lng?: string;
+    radius?: string; // in km
+    page?: number;
+    limit?: number;
+    status?: EventStatus
+  }

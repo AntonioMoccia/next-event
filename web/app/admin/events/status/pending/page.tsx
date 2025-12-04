@@ -4,21 +4,27 @@ import { Pagination } from '@/components/Pagination';
 import { Button } from '@/components/ui/button';
 import { Spinner } from '@/components/ui/spinner';
 import { useEvents } from '@/hooks/use-events';
+import { EventStatus } from '@/types';
 import { useState } from 'react'
+
+
 
 function StagedEventPage() {
     const [pageNumber, setPageNumber] = useState(1);
-    const { isLoading, isError, page, total, limit, events } = useEvents({ page: pageNumber, limit: 10 });
+    const { isLoading, isError, page, total, limit, events } = useEvents({ page: pageNumber, limit: 10, status: EventStatus.PENDING });
     const handlePageChange = (newPage: number) => {
         setPageNumber(newPage);
     }
+
+
     const handleStatusChange = (eventId: string, status: 'APPROVED' | 'REJECTED') => {
         const requestOptions = {
-            method: 'PATCH',
+            method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ status: status })
+            body: JSON.stringify({ event: { status: status } })
         };
-        fetch(`/api/events/${eventId}/status`, requestOptions)
+
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/events/${eventId}`, requestOptions)
             .then(response => response.json())
             .then(data => {
                 console.log('Success:', data);

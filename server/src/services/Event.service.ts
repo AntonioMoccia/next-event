@@ -1,10 +1,13 @@
 import { EventStatus } from "@lib/generated/prisma";
-import { Event } from "../types/index";
+import { FilterTypes, Event } from "../types/index";
 import { prisma } from "@lib/prisma-client";
+import parseQueryNumber from "@lib/parse-query-number";
+import { getPagination } from "@lib/pagination";
+import { getDistanceFromRad } from "@lib/get-distance-from-rad";
+import { parseISO } from "date-fns";
 
 export class EventService {
   constructor() {}
-
 
   async changeEventStatus(id: string, status: EventStatus) {
     try {
@@ -15,13 +18,48 @@ export class EventService {
       return updatedEvent;
     } catch (error) {
       console.log(error);
-      throw new Error("Qualcosa è andato storto nel cambio dello stato dell'evento");
+      throw new Error(
+        "Qualcosa è andato storto nel cambio dello stato dell'evento"
+      );
+    }
+  }
+  async updateEvent(id: string, eventData: Partial<Event>) {
+    try {
+      // Extract relational fields and prepare a Prisma-compatible payload
+      const { id_category, location, ...rest } = eventData || {};
+      const data: any = { ...rest };
+
+      if (id_category) {
+        // map category id to Prisma connect shape
+        data.category = { connect: { id: id_category } };
+      }
+
+      if (location) {
+        // map location to nested update (adjust fields as needed)
+        data.location = {
+          update: {
+            address_name: (location as any).address_name,
+            place_id: (location as any).place_id,
+            lat: (location as any).lat,
+            lng: (location as any).lng,
+          },
+        };
+      }
+
+      const updatedEvent = await prisma.event.update({
+        where: { id },
+        data,
+        include: { location: true, category: true },
+      });
+      return updatedEvent;
+    } catch (error) {
+      console.log(error);
+      throw new Error("Qualcosa è andato storto nell'aggiornamento dell'evento");
     }
   }
 
- 
   async getEventsByStatus(status: EventStatus) {
-    console.log(status)
+    console.log(status);
     try {
       const events = await prisma.event.findMany({
         where: { status },
@@ -29,14 +67,13 @@ export class EventService {
           category: true,
           location: true,
         },
-        orderBy: { createdAt: "desc" }
+        orderBy: { createdAt: "desc" },
       });
       return events;
     } catch (error) {
       throw new Error("Qualcosa è andato storto nell'estrazione degli eventi");
     }
   }
-
   async getEventById(id: string) {
     try {
       const event = await prisma.event.findUnique({
@@ -55,21 +92,77 @@ export class EventService {
     }
   }
 
-  async getEvents() {
+  async getEvents(filtersInput?: FilterTypes) {
     try {
-      const events = await prisma.event.findMany({
-        where: {
-          status:'APPROVED'
-        },
-        include: {
-          category: true,
-          location: true,
-        },
+      const {
+        category,
+        startDate,
+        lat,
+        lng,
+        radius, // in km
+        page = "1",
+        limit = "10",
+        status = "APPROVED",
+      } = filtersInput || {};
+      const isAdmin = true;
+      //creazione filtri
+      const filters: any = { status };
+
+      if (category) {
+        filters.id_category = category;
+      }
+      if (!isAdmin) {
+        filters.status = "APPROVED";
+      }
+      if (startDate) {
+        filters.startAt = {
+          gte: parseISO(startDate as string),
+        };
+      }
+
+      // Primo filtro semplice con Prisma
+      let events = await prisma.event.findMany({
+        where: { ...filters },
+        include: { location: true, category: true },
       });
-      return events;
-    } catch (error) {
-      console.log(error);
-      throw new Error("Qualcosa è andato storto nell'estrazione degli eventi");
+      // Filtraggio per distanza se lat/lng/radius presenti
+      if (lat && lng && radius) {
+        const latNum = parseFloat(lat as string);
+        const lngNum = parseFloat(lng as string);
+        const radiusKm = parseFloat(radius as string);
+
+        events = events.filter((event) => {
+          if (!event.location) return false;
+          const distance = getDistanceFromRad(
+            latNum,
+            lngNum,
+            event.location.lat,
+            event.location.lng
+          );
+          return distance <= radiusKm;
+        });
+      }
+
+      //pagination
+      const pageParsed = parseQueryNumber(page as string, 1);
+      const limitParsed = parseQueryNumber(limit as string, 10);
+
+      const { pageNumber, pageSize, start, end } = getPagination({
+        page: pageParsed,
+        limit: limitParsed,
+      });
+
+      const paginatedEvents = events.slice(start, end);
+
+      return {
+        total: events.length,
+        page: pageNumber,
+        limit: pageSize,
+        events: paginatedEvents,
+      };
+    } catch (err) {
+
+      throw new Error("Something went wrong");
     }
   }
   async createEvent(event: Event) {
@@ -99,7 +192,6 @@ export class EventService {
 
       return newEvent;
     } catch (error) {
-
       throw new Error("Qualcosa è andato storto nella creazione dell'evento");
     }
   }

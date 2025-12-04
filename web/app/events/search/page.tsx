@@ -6,6 +6,7 @@ import { useEvents } from "@/hooks/use-events";
 import { EventStatus, FilterType } from "@/types";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Spinner } from "@/components/ui/spinner"
+import { useEffect } from "react";
 
 
 function SearchEventPage() {
@@ -48,6 +49,9 @@ function SearchEventPage() {
     };
     const { isLoading, events, isError, limit, page, total } = useEvents(filters);
 
+    useEffect(()=>{
+        console.log(events)
+    },[events])
 
     return (
         <div className='flex flex-col justify-center'>
