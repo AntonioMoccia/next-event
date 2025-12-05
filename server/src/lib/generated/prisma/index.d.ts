@@ -55,6 +55,25 @@ export type Event = $Result.DefaultSelection<Prisma.$EventPayload>
 export type EventLocation = $Result.DefaultSelection<Prisma.$EventLocationPayload>
 
 /**
+ * Enums
+ */
+export namespace $Enums {
+  export const EventStatus: {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED',
+  DELETED: 'DELETED'
+};
+
+export type EventStatus = (typeof EventStatus)[keyof typeof EventStatus]
+
+}
+
+export type EventStatus = $Enums.EventStatus
+
+export const EventStatus: typeof $Enums.EventStatus
+
+/**
  * ##  Prisma Client ʲˢ
  *
  * Type-safe database client for TypeScript & Node.js
@@ -8009,6 +8028,7 @@ export namespace Prisma {
     price: number | null
     capacity: number | null
     website: string | null
+    status: $Enums.EventStatus | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -8028,6 +8048,7 @@ export namespace Prisma {
     price: number | null
     capacity: number | null
     website: string | null
+    status: $Enums.EventStatus | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -8047,6 +8068,7 @@ export namespace Prisma {
     price: number
     capacity: number
     website: number
+    status: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -8078,6 +8100,7 @@ export namespace Prisma {
     price?: true
     capacity?: true
     website?: true
+    status?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -8097,6 +8120,7 @@ export namespace Prisma {
     price?: true
     capacity?: true
     website?: true
+    status?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -8116,6 +8140,7 @@ export namespace Prisma {
     price?: true
     capacity?: true
     website?: true
+    status?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -8222,6 +8247,7 @@ export namespace Prisma {
     price: number
     capacity: number | null
     website: string | null
+    status: $Enums.EventStatus
     createdAt: Date
     updatedAt: Date
     _count: EventCountAggregateOutputType | null
@@ -8260,6 +8286,7 @@ export namespace Prisma {
     price?: boolean
     capacity?: boolean
     website?: boolean
+    status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     category?: boolean | CategoryDefaultArgs<ExtArgs>
@@ -8281,6 +8308,7 @@ export namespace Prisma {
     price?: boolean
     capacity?: boolean
     website?: boolean
+    status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     category?: boolean | CategoryDefaultArgs<ExtArgs>
@@ -8301,6 +8329,7 @@ export namespace Prisma {
     price?: boolean
     capacity?: boolean
     website?: boolean
+    status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     category?: boolean | CategoryDefaultArgs<ExtArgs>
@@ -8321,11 +8350,12 @@ export namespace Prisma {
     price?: boolean
     capacity?: boolean
     website?: boolean
+    status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type EventOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "id_category" | "organizer" | "age" | "startAt" | "endAt" | "description" | "email" | "image" | "phone" | "price" | "capacity" | "website" | "createdAt" | "updatedAt", ExtArgs["result"]["event"]>
+  export type EventOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "id_category" | "organizer" | "age" | "startAt" | "endAt" | "description" | "email" | "image" | "phone" | "price" | "capacity" | "website" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["event"]>
   export type EventInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     category?: boolean | CategoryDefaultArgs<ExtArgs>
     location?: boolean | Event$locationArgs<ExtArgs>
@@ -8358,6 +8388,7 @@ export namespace Prisma {
       price: number
       capacity: number | null
       website: string | null
+      status: $Enums.EventStatus
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["event"]>
@@ -8799,6 +8830,7 @@ export namespace Prisma {
     readonly price: FieldRef<"Event", 'Float'>
     readonly capacity: FieldRef<"Event", 'Int'>
     readonly website: FieldRef<"Event", 'String'>
+    readonly status: FieldRef<"Event", 'EventStatus'>
     readonly createdAt: FieldRef<"Event", 'DateTime'>
     readonly updatedAt: FieldRef<"Event", 'DateTime'>
   }
@@ -10578,6 +10610,7 @@ export namespace Prisma {
     price: 'price',
     capacity: 'capacity',
     website: 'website',
+    status: 'status',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -10696,6 +10729,20 @@ export namespace Prisma {
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'EventStatus'
+   */
+  export type EnumEventStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EventStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'EventStatus[]'
+   */
+  export type ListEnumEventStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EventStatus[]'>
     
   /**
    * Deep Input Types
@@ -11097,6 +11144,7 @@ export namespace Prisma {
     price?: FloatFilter<"Event"> | number
     capacity?: IntNullableFilter<"Event"> | number | null
     website?: StringNullableFilter<"Event"> | string | null
+    status?: EnumEventStatusFilter<"Event"> | $Enums.EventStatus
     createdAt?: DateTimeFilter<"Event"> | Date | string
     updatedAt?: DateTimeFilter<"Event"> | Date | string
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
@@ -11118,6 +11166,7 @@ export namespace Prisma {
     price?: SortOrder
     capacity?: SortOrderInput | SortOrder
     website?: SortOrderInput | SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     category?: CategoryOrderByWithRelationInput
@@ -11142,6 +11191,7 @@ export namespace Prisma {
     price?: FloatFilter<"Event"> | number
     capacity?: IntNullableFilter<"Event"> | number | null
     website?: StringNullableFilter<"Event"> | string | null
+    status?: EnumEventStatusFilter<"Event"> | $Enums.EventStatus
     createdAt?: DateTimeFilter<"Event"> | Date | string
     updatedAt?: DateTimeFilter<"Event"> | Date | string
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
@@ -11163,6 +11213,7 @@ export namespace Prisma {
     price?: SortOrder
     capacity?: SortOrderInput | SortOrder
     website?: SortOrderInput | SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: EventCountOrderByAggregateInput
@@ -11190,6 +11241,7 @@ export namespace Prisma {
     price?: FloatWithAggregatesFilter<"Event"> | number
     capacity?: IntNullableWithAggregatesFilter<"Event"> | number | null
     website?: StringNullableWithAggregatesFilter<"Event"> | string | null
+    status?: EnumEventStatusWithAggregatesFilter<"Event"> | $Enums.EventStatus
     createdAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
   }
@@ -11736,6 +11788,7 @@ export namespace Prisma {
     price: number
     capacity?: number | null
     website?: string | null
+    status?: $Enums.EventStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     category: CategoryCreateNestedOneWithoutEventsInput
@@ -11757,6 +11810,7 @@ export namespace Prisma {
     price: number
     capacity?: number | null
     website?: string | null
+    status?: $Enums.EventStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     location?: EventLocationUncheckedCreateNestedOneWithoutEventInput
@@ -11776,6 +11830,7 @@ export namespace Prisma {
     price?: FloatFieldUpdateOperationsInput | number
     capacity?: NullableIntFieldUpdateOperationsInput | number | null
     website?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumEventStatusFieldUpdateOperationsInput | $Enums.EventStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: CategoryUpdateOneRequiredWithoutEventsNestedInput
@@ -11797,6 +11852,7 @@ export namespace Prisma {
     price?: FloatFieldUpdateOperationsInput | number
     capacity?: NullableIntFieldUpdateOperationsInput | number | null
     website?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumEventStatusFieldUpdateOperationsInput | $Enums.EventStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: EventLocationUncheckedUpdateOneWithoutEventNestedInput
@@ -11817,6 +11873,7 @@ export namespace Prisma {
     price: number
     capacity?: number | null
     website?: string | null
+    status?: $Enums.EventStatus
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -11835,6 +11892,7 @@ export namespace Prisma {
     price?: FloatFieldUpdateOperationsInput | number
     capacity?: NullableIntFieldUpdateOperationsInput | number | null
     website?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumEventStatusFieldUpdateOperationsInput | $Enums.EventStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -11854,6 +11912,7 @@ export namespace Prisma {
     price?: FloatFieldUpdateOperationsInput | number
     capacity?: NullableIntFieldUpdateOperationsInput | number | null
     website?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumEventStatusFieldUpdateOperationsInput | $Enums.EventStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -12355,6 +12414,13 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type EnumEventStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.EventStatus | EnumEventStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.EventStatus[] | ListEnumEventStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.EventStatus[] | ListEnumEventStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumEventStatusFilter<$PrismaModel> | $Enums.EventStatus
+  }
+
   export type CategoryScalarRelationFilter = {
     is?: CategoryWhereInput
     isNot?: CategoryWhereInput
@@ -12380,6 +12446,7 @@ export namespace Prisma {
     price?: SortOrder
     capacity?: SortOrder
     website?: SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -12404,6 +12471,7 @@ export namespace Prisma {
     price?: SortOrder
     capacity?: SortOrder
     website?: SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -12423,6 +12491,7 @@ export namespace Prisma {
     price?: SortOrder
     capacity?: SortOrder
     website?: SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -12462,6 +12531,16 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type EnumEventStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.EventStatus | EnumEventStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.EventStatus[] | ListEnumEventStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.EventStatus[] | ListEnumEventStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumEventStatusWithAggregatesFilter<$PrismaModel> | $Enums.EventStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumEventStatusFilter<$PrismaModel>
+    _max?: NestedEnumEventStatusFilter<$PrismaModel>
   }
 
   export type EventScalarRelationFilter = {
@@ -12744,6 +12823,10 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type EnumEventStatusFieldUpdateOperationsInput = {
+    set?: $Enums.EventStatus
+  }
+
   export type CategoryUpdateOneRequiredWithoutEventsNestedInput = {
     create?: XOR<CategoryCreateWithoutEventsInput, CategoryUncheckedCreateWithoutEventsInput>
     connectOrCreate?: CategoryCreateOrConnectWithoutEventsInput
@@ -12944,6 +13027,13 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
+  export type NestedEnumEventStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.EventStatus | EnumEventStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.EventStatus[] | ListEnumEventStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.EventStatus[] | ListEnumEventStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumEventStatusFilter<$PrismaModel> | $Enums.EventStatus
+  }
+
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -12985,6 +13075,16 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedEnumEventStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.EventStatus | EnumEventStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.EventStatus[] | ListEnumEventStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.EventStatus[] | ListEnumEventStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumEventStatusWithAggregatesFilter<$PrismaModel> | $Enums.EventStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumEventStatusFilter<$PrismaModel>
+    _max?: NestedEnumEventStatusFilter<$PrismaModel>
   }
 
   export type SessionCreateWithoutUserInput = {
@@ -13256,6 +13356,7 @@ export namespace Prisma {
     price: number
     capacity?: number | null
     website?: string | null
+    status?: $Enums.EventStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     location?: EventLocationCreateNestedOneWithoutEventInput
@@ -13275,6 +13376,7 @@ export namespace Prisma {
     price: number
     capacity?: number | null
     website?: string | null
+    status?: $Enums.EventStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     location?: EventLocationUncheckedCreateNestedOneWithoutEventInput
@@ -13324,6 +13426,7 @@ export namespace Prisma {
     price?: FloatFilter<"Event"> | number
     capacity?: IntNullableFilter<"Event"> | number | null
     website?: StringNullableFilter<"Event"> | string | null
+    status?: EnumEventStatusFilter<"Event"> | $Enums.EventStatus
     createdAt?: DateTimeFilter<"Event"> | Date | string
     updatedAt?: DateTimeFilter<"Event"> | Date | string
   }
@@ -13466,6 +13569,7 @@ export namespace Prisma {
     price: number
     capacity?: number | null
     website?: string | null
+    status?: $Enums.EventStatus
     createdAt?: Date | string
     updatedAt?: Date | string
     category: CategoryCreateNestedOneWithoutEventsInput
@@ -13486,6 +13590,7 @@ export namespace Prisma {
     price: number
     capacity?: number | null
     website?: string | null
+    status?: $Enums.EventStatus
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -13520,6 +13625,7 @@ export namespace Prisma {
     price?: FloatFieldUpdateOperationsInput | number
     capacity?: NullableIntFieldUpdateOperationsInput | number | null
     website?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumEventStatusFieldUpdateOperationsInput | $Enums.EventStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: CategoryUpdateOneRequiredWithoutEventsNestedInput
@@ -13540,6 +13646,7 @@ export namespace Prisma {
     price?: FloatFieldUpdateOperationsInput | number
     capacity?: NullableIntFieldUpdateOperationsInput | number | null
     website?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumEventStatusFieldUpdateOperationsInput | $Enums.EventStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -13658,6 +13765,7 @@ export namespace Prisma {
     price: number
     capacity?: number | null
     website?: string | null
+    status?: $Enums.EventStatus
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -13676,6 +13784,7 @@ export namespace Prisma {
     price?: FloatFieldUpdateOperationsInput | number
     capacity?: NullableIntFieldUpdateOperationsInput | number | null
     website?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumEventStatusFieldUpdateOperationsInput | $Enums.EventStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: EventLocationUpdateOneWithoutEventNestedInput
@@ -13695,6 +13804,7 @@ export namespace Prisma {
     price?: FloatFieldUpdateOperationsInput | number
     capacity?: NullableIntFieldUpdateOperationsInput | number | null
     website?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumEventStatusFieldUpdateOperationsInput | $Enums.EventStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: EventLocationUncheckedUpdateOneWithoutEventNestedInput
@@ -13714,6 +13824,7 @@ export namespace Prisma {
     price?: FloatFieldUpdateOperationsInput | number
     capacity?: NullableIntFieldUpdateOperationsInput | number | null
     website?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumEventStatusFieldUpdateOperationsInput | $Enums.EventStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

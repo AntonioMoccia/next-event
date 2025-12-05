@@ -20,8 +20,7 @@ import { errorHandler } from "@/middelwares/error-handler";
 const app: Application = express();
 app.use(
   cors({
-    // origin: "http://localhost:3000", // il tuo frontend
-    origin: "*",
+     origin: "http://localhost:3000", // il tuo frontend
     credentials: true, // necessario per cookie / Authorization headers
     methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed HTTP methods
   })
@@ -31,7 +30,7 @@ app.all("/api/auth/*", toNodeHandler(auth.handler));
 app.use(express.json());
 
 app.use("/api/google", googleRouter);
-app.use("/api/event", eventRouter);
+app.use("/api/eventS", eventRouter);
 app.use("/api/category", categoryRouter);
 app.use("/api/event_type", eventTypeRouter);
 
