@@ -21,7 +21,7 @@ function EventDetail() {
     useEffect(() => {
 
         const getEvent = async () => {
-            const request = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/event/${id}`)
+            const request = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/events/${id}`)
             const response = await request.json()
             setEvent(response.data.event)
         }
