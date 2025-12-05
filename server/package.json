@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
+ "scripts": {
+    "migrate:seed": "npx prisma migrate dev && npx prisma db seed",
     "build": "tsc && tsc-alias",
     "build:watch": "concurrently --kill-others \"tsc -w\" \"tsc-alias -w\" \"nodemon ./dist/index.js\"",
     "dev": "ts-node-dev --respawn -r tsconfig-paths/register ./src/index.ts",
-    "start": "ts-node -r tsconfig-paths/register src/index.ts"
+    "start": "ts-node -r tsconfig-paths/register src/index.ts",
+    "docker:up": "docker-compose -f ./docker/docker-compose.yaml up -d --build"
   },
   "keywords": [],
   "author": "",
