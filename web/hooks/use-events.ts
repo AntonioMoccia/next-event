@@ -1,6 +1,6 @@
 import useSWR from "swr";
 import { Event, EventStatus } from "@/types";
-export const fetcher = (url: string) => fetch(url).then((res) => res.json());
+export const fetcher = (url: string) => fetch(url,{credentials: 'include'}).then((res) => res.json());
 
 type UseEventsResponse = {
   events: Event[];

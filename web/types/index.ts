@@ -18,9 +18,9 @@ export type Location = {
 };
 
 export enum EventStatus {
-  PENDING = "PENDING",
-  APPROVED = "APPROVED",
-  REJECTED = "REJECTED",
+  PENDING = "pending",
+  APPROVED = "approved",
+  REJECTED = "rejected",
 }
 
 export type FilterType = {

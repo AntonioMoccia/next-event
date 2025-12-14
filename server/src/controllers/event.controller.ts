@@ -37,18 +37,11 @@ export class EventController {
   }
 
   async getEvents(req: Request, res: Response, next: NextFunction) {
-
-    //aggiungere la logica per sapere se è admin o no
-
-    const statusParam = req.query.status as string | undefined;
-
-    
-
     try {
+      console.log(req.query)
       const events = await this.eventClass.getEvents({
-        ...(req.query as FilterTypes),
-        status: "APPROVED",
-      });
+        ...(req.query as FilterTypes)
+      }, req.user);
 
       success(res, { ...events });
     } catch (error) {

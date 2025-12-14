@@ -17,7 +17,7 @@ function StagedEventPage() {
     }
 
 
-    const handleStatusChange = (eventId: string, status: 'APPROVED' | 'REJECTED') => {
+    const handleStatusChange = (eventId: string, status: 'approved' | 'rejected') => {
         const requestOptions = {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
@@ -69,10 +69,10 @@ function StagedEventPage() {
                                         <div key={event.id} className=' col-span-12 md:col-span-4 '>
                                             <EventCard event={event} />
                                             <Button onClick={()=>{
-                                                handleStatusChange(event.id,'REJECTED')
+                                                handleStatusChange(event.id,'rejected')
                                             }}>reject</Button>
                                             <Button  onClick={()=>{
-                                                handleStatusChange(event.id,'APPROVED')
+                                                handleStatusChange(event.id,'approved')
                                             }}>approve</Button>
                                         </div>
                                     ))

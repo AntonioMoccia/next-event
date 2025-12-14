@@ -107,10 +107,13 @@ async function main() {
   }
   const createdCategories = await Promise.all(categories);
 
+
+
   // Events & Locations
   for (let i = 0; i < 5; i++) {
     const event = await prisma.event.create({
       data: {
+        userId: createdUsers[faker.number.int({ min: 0, max: createdUsers.length - 1 })].id,
         title: faker.commerce.productName(),
         id_category:
           createdCategories[

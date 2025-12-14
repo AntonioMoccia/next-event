@@ -33,8 +33,8 @@ model User {
   updatedAt     DateTime
   sessions      Session[]
   accounts      Account[]
-
-  role       String?   @default("user")
+  events        Event[]
+  role       UserRole?   @default(user)
   banned     Boolean?  @default(false)
   banReason  String?
   banExpires DateTime?
@@ -109,7 +109,7 @@ model Event {
   organizer   String
   age         String?
   startAt     DateTime       @default(now())
-  endAt       DateTime       @default(now())
+  endAt       DateTime?      
   description String
   email       String?
   image       String
@@ -117,10 +117,12 @@ model Event {
   price       Float
   capacity    Int?
   website     String?
-  status      EventStatus    @default(PENDING)
+  status      EventStatus    @default(pending)
   createdAt   DateTime       @default(now())
   updatedAt   DateTime       @updatedAt
   location    EventLocation?
+  userId      String?
+  user        User?          @relation(fields: [userId], references: [id], onDelete: NoAction)
 
   @@map("event")
 }
@@ -157,8 +159,12 @@ model EventLocation {
 }
 
 enum EventStatus {
-  PENDING
-  APPROVED
-  REJECTED
-  DELETED
+  pending
+  approved
+  rejected
+  deleted
+}
+enum UserRole {
+  user
+  admin 
 }

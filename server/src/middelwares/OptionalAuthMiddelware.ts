@@ -12,5 +12,6 @@ export async function OptionalAuthMiddelware(
   });
 
   req.user = session?.user;
+  req.userId = session?.user?.id;
   next();
 }

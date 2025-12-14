@@ -201,7 +201,8 @@ exports.Prisma.EventScalarFieldEnum = {
   website: 'website',
   status: 'status',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  userId: 'userId'
 };
 
 exports.Prisma.EventLocationScalarFieldEnum = {
@@ -237,11 +238,16 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.UserRole = exports.$Enums.UserRole = {
+  user: 'user',
+  admin: 'admin'
+};
+
 exports.EventStatus = exports.$Enums.EventStatus = {
-  PENDING: 'PENDING',
-  APPROVED: 'APPROVED',
-  REJECTED: 'REJECTED',
-  DELETED: 'DELETED'
+  pending: 'pending',
+  approved: 'approved',
+  rejected: 'rejected',
+  deleted: 'deleted'
 };
 
 exports.Prisma.ModelName = {
