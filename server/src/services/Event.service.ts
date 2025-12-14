@@ -102,7 +102,7 @@ export class EventService {
         radius, // in km
         page = "1",
         limit = "10",
-        status = "APPROVED",
+        status
       } = filtersInput || {};
       const isAdmin = true;
       //creazione filtri

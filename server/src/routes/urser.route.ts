@@ -10,5 +10,4 @@ router.get("/session", async (req, res) => {
     headers: fromNodeHeaders(req.headers),
   });
   return res.json(session);
-
 });

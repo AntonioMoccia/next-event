@@ -4,10 +4,10 @@ import { prismaAdapter } from "better-auth/adapters/prisma";
 import { FROM_EMAIL, resend } from "@lib/resend";
 import { getResetPasswordEmailHtml } from "../email/reset_password_email";
 import { prisma } from "@lib/prisma-client";
-
+import {admin} from "better-auth/plugins"
 
 export const auth = betterAuth({
-  
+  plugins: [admin()],
   database: prismaAdapter(prisma, {
     provider: "postgresql", // or "mysql", "postgresql", ...etc
   }),
@@ -18,7 +18,6 @@ export const auth = betterAuth({
     enabled: true,
     sendResetPassword: async ({ user, token, url }) => {
       try {
-        console.log(user,token,url)
         const emailHtml = getResetPasswordEmailHtml(user.email, url);
         // Send the email using Resend
         const { data, error } = await resend.emails.send({
@@ -29,18 +28,13 @@ export const auth = betterAuth({
         });
 
         if (error) {
-          console.error("Failed to send reset password email:", error);
           throw new Error("Failed to send reset password email");
         }
-        console.log("Reset password email sent successfully to:", user.email);
-        console.log("Email ID:", data?.id);
-
         // In development, also log the URL for easy testing
         if (process.env.NODE_ENV === "development") {
           console.log("Reset URL (dev only):", url);
         }
       } catch (error) {
-        console.error("Error in sendResetPassword:", error);
         throw error;
       }
     },

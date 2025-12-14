@@ -1,4 +1,6 @@
 import { EventStatus } from "@lib/generated/prisma";
+import {InferUser} from "better-auth"
+import {auth} from "@lib/auth"
 
 export type Event = {
   title: string;
@@ -40,3 +42,12 @@ export type FilterTypes={
     limit?: number;
     status?: EventStatus
   }
+
+  declare global {
+  namespace Express {
+    interface Request {
+      user?: InferUser<typeof auth>;
+      userId?: string;
+   }
+  }
+}

@@ -3,13 +3,8 @@ import { NextFunction, Request, Response } from "express";
 import { EventService } from "@/services/event.service";
 import { Event, FilterTypes } from "../types";
 import { success } from "@/lib/send-success";
-import { prisma } from "@lib/prisma-client";
-import { parseISO } from "date-fns";
-import { getDistanceFromRad } from "@lib/get-distance-from-rad";
 
 import { EventStatus } from "@lib/generated/prisma";
-import { getPagination } from "@lib/pagination";
-import parseQueryNumber from "@lib/parse-query-number";
 export class EventController {
   private eventClass: EventService;
   constructor() {
@@ -42,15 +37,24 @@ export class EventController {
   }
 
   async getEvents(req: Request, res: Response, next: NextFunction) {
+
+    //aggiungere la logica per sapere se è admin o no
+
+    const statusParam = req.query.status as string | undefined;
+
+    
+
     try {
-      const events = await this.eventClass.getEvents(req.query as FilterTypes);
+      const events = await this.eventClass.getEvents({
+        ...(req.query as FilterTypes),
+        status: "APPROVED",
+      });
 
       success(res, { ...events });
     } catch (error) {
       next(error);
     }
   }
-  async getEventSearch(req: Request, res: Response, next: NextFunction) {}
 
   async getEventById(req: Request, res: Response, next: NextFunction) {
     const id = req.params.id;

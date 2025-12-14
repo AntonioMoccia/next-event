@@ -11,9 +11,9 @@ export class CategoryController {
   }
   async creteCategory(req: Request, res: Response, next: NextFunction) {
     const { description }: Category = req.body;
-    const categoryService = new CategoryService({ description });
+   
     try {
-      const newCategory = await categoryService.create();
+      const newCategory = await this.categoryService.create({ description });
 
       success(res, {
         category: newCategory,
@@ -23,10 +23,8 @@ export class CategoryController {
     }
   }
   async getCategories(req: Request, res: Response, next: NextFunction) {
-    const categoryService = new CategoryService();
-
     try {
-      const categories = await categoryService.getAll();
+      const categories = await this.categoryService.getAll();
       return success(res, { categories });
     } catch (error) {
       next(error);

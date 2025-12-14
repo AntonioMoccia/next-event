@@ -2,10 +2,7 @@ import { prisma } from "@/lib/prisma-client";
 import { Category } from "@/types";
 
 export class CategoryService {
-  private category: Category | null | undefined;
-  constructor(category?: Category) {
-    this.category = category;
-  }
+  constructor() {}
 
   async getAll() {
     try {
@@ -16,12 +13,12 @@ export class CategoryService {
     }
   } 
 
-  async create() {
-    if (!this.category) throw Error("Category undefined");
+  async create(category: Category) {
+    if (!category) throw Error("Category undefined");
     try {
       const newCategory = await prisma.category.create({
         data: {
-          description: this.category.description,
+          description: category.description,
         },
       });
 

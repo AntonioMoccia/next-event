@@ -92,10 +92,10 @@ function SearchEventPage() {
                     <>
                         {/** CARDS */}
                         <div className=' w-full flex  justify-center py-5'>
-                            <div className=' max-w-7xl grid grid-cols-12 gap-5 md:gap-10 px-5'>
+                            <div className='max-w-7xl grid grid-cols-12 gap-6 md:gap-10 px-2'>
                                 {
                                     events.map(event => (
-                                        <div key={event.id} className=' col-span-12 md:col-span-4 '>
+                                        <div key={event.id} className=' col-span-6 md:col-span-4 '>
                                             <EventCard event={event} />
                                         </div>
                                     ))
