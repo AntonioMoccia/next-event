@@ -79,7 +79,7 @@ function CreateEventForm() {
             endAt: values.endAt?.toISOString(),
         }
 
-        const request = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/event`, {
+        const request = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/events`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",

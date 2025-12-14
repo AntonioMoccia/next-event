@@ -17,6 +17,12 @@ export type Location = {
   address_name: number;
 };
 
+export enum EventStatus {
+  PENDING = "pending",
+  APPROVED = "approved",
+  REJECTED = "rejected",
+}
+
 export type FilterType = {
   startDate?: string;
   page?: number;
@@ -26,4 +32,5 @@ export type FilterType = {
   lat?: number;
   address_name?: string;
   radius?: number;
+  status?: EventStatus;
 };

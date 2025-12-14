@@ -3,10 +3,11 @@ import EventCard from "@/components/EventCard";
 import { Filters } from "@/components/Filters";
 import { Pagination } from "@/components/Pagination";
 import { useEvents } from "@/hooks/use-events";
-import { FilterType } from "@/types";
+import { EventStatus, FilterType } from "@/types";
 import { useSearchParams, useRouter } from "next/navigation";
 
 import { Spinner } from "@/components/ui/spinner"
+import { useEffect } from "react";
 
 
 function SearchEventPage() {
@@ -22,6 +23,7 @@ function SearchEventPage() {
         radius: searchParams.get("radius") ? Number(searchParams.get("radius")) : undefined,
         page: Number(searchParams.get("page") ?? 1),
         limit: Number(searchParams.get("limit") ?? 6),
+        status: EventStatus.APPROVED,
     };
 
     const updateFilters = (newValues: Partial<FilterType>) => {
@@ -49,13 +51,9 @@ function SearchEventPage() {
     };
     const { isLoading, events, isError, limit, page, total } = useEvents(filters);
 
-    /*     const handlePageChange = (newPage: number) => {
-            setFilters((prev) => ({
-                ...prev,
-                page: newPage,
-            }));
-        };
-     */
+    useEffect(()=>{
+        console.log(events)
+    },[events])
 
     return (
         <div className='flex flex-col justify-center'>
@@ -94,10 +92,10 @@ function SearchEventPage() {
                     <>
                         {/** CARDS */}
                         <div className=' w-full flex  justify-center py-5'>
-                            <div className=' max-w-7xl grid grid-cols-12 gap-5 md:gap-10 px-5'>
+                            <div className='max-w-7xl grid grid-cols-12 gap-6 md:gap-10 px-2'>
                                 {
                                     events.map(event => (
-                                        <div key={event.id} className=' col-span-12 md:col-span-4 '>
+                                        <div key={event.id} className=' col-span-6 md:col-span-4 '>
                                             <EventCard event={event} />
                                         </div>
                                     ))

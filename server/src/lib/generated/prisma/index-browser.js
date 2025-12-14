@@ -135,7 +135,11 @@ exports.Prisma.UserScalarFieldEnum = {
   emailVerified: 'emailVerified',
   image: 'image',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  role: 'role',
+  banned: 'banned',
+  banReason: 'banReason',
+  banExpires: 'banExpires'
 };
 
 exports.Prisma.SessionScalarFieldEnum = {
@@ -146,7 +150,8 @@ exports.Prisma.SessionScalarFieldEnum = {
   updatedAt: 'updatedAt',
   ipAddress: 'ipAddress',
   userAgent: 'userAgent',
-  userId: 'userId'
+  userId: 'userId',
+  impersonatedBy: 'impersonatedBy'
 };
 
 exports.Prisma.AccountScalarFieldEnum = {
@@ -194,8 +199,10 @@ exports.Prisma.EventScalarFieldEnum = {
   price: 'price',
   capacity: 'capacity',
   website: 'website',
+  status: 'status',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  userId: 'userId'
 };
 
 exports.Prisma.EventLocationScalarFieldEnum = {
@@ -231,7 +238,17 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.UserRole = exports.$Enums.UserRole = {
+  user: 'user',
+  admin: 'admin'
+};
 
+exports.EventStatus = exports.$Enums.EventStatus = {
+  pending: 'pending',
+  approved: 'approved',
+  rejected: 'rejected',
+  deleted: 'deleted'
+};
 
 exports.Prisma.ModelName = {
   TempImage: 'TempImage',
