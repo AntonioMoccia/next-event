@@ -1,6 +1,7 @@
 import useSWR from "swr";
 import { Event, EventStatus } from "@/types";
-export const fetcher = (url: string) => fetch(url,{credentials: 'include'}).then((res) => res.json());
+export const fetcher = (url: string) =>
+  fetch(url, { credentials: "include" }).then((res) => res.json());
 
 type UseEventsResponse = {
   events: Event[];
@@ -19,7 +20,7 @@ export function useEvents(filters: {
   radius?: number;
   page?: number;
   limit?: number;
-  status?:EventStatus;
+  status?: EventStatus;
 }): UseEventsResponse {
   const query = new URLSearchParams();
 
@@ -29,8 +30,12 @@ export function useEvents(filters: {
     }
   });
 
-  const { data, error } = useSWR(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/events?${query.toString()}`,
+
+
+  const { data, error, isLoading } = useSWR(
+    `${process.env.NEXT_PUBLIC_API_URL}/${
+      process.env.NEXT_PUBLIC_API_VERSION
+    }/events?${query.toString()}`,
     fetcher
   );
 

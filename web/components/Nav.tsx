@@ -30,7 +30,7 @@ function Nav() {
 
                     <Link href={'/'}>
                         <div className=' text-[#222222] font-bold'>
-                            <h1>Logo</h1>
+                            <h1>Brokeless</h1>
                         </div>
                     </Link>
 

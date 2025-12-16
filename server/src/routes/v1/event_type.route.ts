@@ -1,4 +1,4 @@
-import {EventTypeController} from '@/controllers/event_type.controller'
+import {EventTypeController} from '@controllers/v1/event_type.controller'
 import {wrap} from '@/lib/wrapAsync'
 import {Router} from 'express'
 

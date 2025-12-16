@@ -7,7 +7,7 @@ export async function authMiddelware(req: Request, res: Response, next: NextFunc
         headers: fromNodeHeaders(req.headers),
     });
     if (!session || !session.user) {{
-        return res.status(401).json({ error: "Unauthorized user" });
+        return res.status(401).json({ error: "Unauthorized" });
     }}
     req.user = session.user;
     next();

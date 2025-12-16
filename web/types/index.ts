@@ -34,3 +34,11 @@ export type FilterType = {
   radius?: number;
   status?: EventStatus;
 };
+export type GetEventsResponse = {
+  events: Event[];
+  total: number;
+  page: number;
+  limit: number;
+  isLoading: boolean;
+  isError: boolean;
+};

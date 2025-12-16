@@ -1,11 +1,11 @@
 import S3 from "@services/S3.service";
 import { NextFunction, Request, Response } from "express";
-import { EventService } from "@/services/event.service";
-import { Event, FilterTypes } from "../types";
+import { EventService } from "@services/event.service";
+import { Event, FilterTypes, User } from "../../types";
 import { success } from "@/lib/send-success";
 
 import { EventStatus } from "@lib/generated/prisma";
-export class EventController {
+export class EventsController {
   private eventClass: EventService;
   constructor() {
     this.eventClass = new EventService();
@@ -26,6 +26,7 @@ export class EventController {
       //      console.log(error);
     }
   }
+
   async removeImageFromCloud(req: Request, res: Response, next: NextFunction) {
     const { key }: { key: string } = req.body;
 
@@ -38,16 +39,31 @@ export class EventController {
 
   async getEvents(req: Request, res: Response, next: NextFunction) {
     try {
-      console.log(req.query)
-      const events = await this.eventClass.getEvents({
-        ...(req.query as FilterTypes)
-      }, req.user);
+      const filters: FilterTypes = req.query as FilterTypes;
+
+      const events = await this.eventClass.getPublicEvents({
+        ...filters,
+      });
 
       success(res, { ...events });
     } catch (error) {
       next(error);
     }
   }
+  async getUserEvents(req: Request, res: Response, next: NextFunction) {
+    try {
+      const events = await this.eventClass.getUserEvents({
+        filters: req.query as FilterTypes,
+        user: req.user as User,
+      });
+
+      success(res, { events });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+
 
   async getEventById(req: Request, res: Response, next: NextFunction) {
     const id = req.params.id;
@@ -59,23 +75,7 @@ export class EventController {
       next(error);
     }
   }
-  async getEventsByStatus(req: Request, res: Response, next: NextFunction) {
-    const statusParam = req.params.status as string;
 
-    // Controllo che il valore sia un enum valido
-    if (!Object.values(EventStatus).includes(statusParam as EventStatus)) {
-      return success(res, { events: [] }, "Invalid status value", 400);
-    }
-    try {
-      const events = await this.eventClass.getEventsByStatus(
-        statusParam as EventStatus
-      );
-
-      success(res, { events });
-    } catch (error) {
-      next(error);
-    }
-  }
   async createEvent(req: Request, res: Response, next: NextFunction) {
     const event: Event = req.body;
     //usare i dto per verificare il body

@@ -1,6 +1,11 @@
-import React from 'react'
+"use client"
+import React, { useEffect } from 'react'
+import {events} from '@/api/events'
 
 function EventsPage() {
+
+
+
   return (
     <div>
         <div className=' w-full'>

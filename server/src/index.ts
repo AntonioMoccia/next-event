@@ -7,14 +7,16 @@ import { toNodeHandler } from "better-auth/node";
 import { auth } from "./lib/auth";
 
 //routers
-import googleRouter from "@routes/google.route";
-import eventRouter from "@routes/event.route";
-import categoryRouter from "@/routes/category.route";
-import eventTypeRouter from "@/routes/event_type.route";
+import googleRouter from "@routes/v1/google.route";
+import eventsRouter from "@routes/v1/events.route";
+import categoriesRouter from "@routes/v1/categories.route";
+import eventTypeRouter from "@routes/v1/event_type.route";
+import adminRouter from "@routes/v1/admin.route";
+
 
 //middelwares
 import cors from "cors";
-import { authMiddelware } from "@middelwares/authMiddelware";
+import { adminAuthMiddelware } from "@middelwares/adminAuthMiddelware";
 import { errorHandler } from "@/middelwares/error-handler";
 
 const app: Application = express();
@@ -29,10 +31,14 @@ app.all("/api/auth/*", toNodeHandler(auth.handler));
 
 app.use(express.json());
 
-app.use("/api/google", googleRouter);
-app.use("/api/eventS", eventRouter);
-app.use("/api/category", categoryRouter);
-app.use("/api/event_type", eventTypeRouter);
+//V1
+app.use("/api/v1/google", googleRouter);
+app.use("/api/v1/events", eventsRouter);
+app.use("/api/v1/categories", categoriesRouter);
+app.use("/api/v1/event_types", eventTypeRouter);
+app.use("/api/v1/admin", adminAuthMiddelware, adminRouter);
+
+
 
 app.get("/", (req: Request, res: Response) => {
   res.send("hello world");

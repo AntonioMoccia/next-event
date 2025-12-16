@@ -51,10 +51,6 @@ function SearchEventPage() {
     };
     const { isLoading, events, isError, limit, page, total } = useEvents(filters);
 
-    useEffect(()=>{
-        console.log(events)
-    },[events])
-
     return (
         <div className='flex flex-col justify-center'>
             {/**FILTERS */}

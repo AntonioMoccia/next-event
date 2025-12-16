@@ -13,7 +13,6 @@ function EventCard({ event }: { event: Event }) {
         <div
             className="cursor-pointer w-full border border-[#222222] max-w-[200px] bg-transparent text-[#222222] pt-0 transition-shadow rounded-md overflow-hidden h-full flex flex-col"
             onClick={() => router.push(`/events/${event.id}`)}>
-
             <div className="w-full px-1 pt-1 flex justify-center items-center">
                 <div
                     className="relative w-full aspect-[3/4] min-h-[280px] max-h-[420px] rounded overflow-hidden bg-gray-200"

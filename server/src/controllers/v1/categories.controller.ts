@@ -3,7 +3,7 @@ import { Category } from "@/types/index";
 import { success } from "@/lib/send-success";
 import { NextFunction, Request, Response } from "express";
 
-export class CategoryController {
+export class CategoriesController {
   private categoryService: CategoryService;
 
   constructor() {

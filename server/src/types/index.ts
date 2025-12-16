@@ -36,6 +36,7 @@ export type EventType = {
 export type FilterTypes = {
   category?: string;
   startDate?: string;
+  endDate?: string;
   lat?: string;
   lng?: string;
   radius?: string; // in km
